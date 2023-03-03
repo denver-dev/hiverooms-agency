@@ -1,0 +1,101 @@
+.login{
+    &__heading{
+        text-align: center;
+        font-size: 60px;
+        color: #404040;
+        font-weight: 700;
+        span{
+            color: #935D1F;
+        }
+    }
+    &__sub-heading{
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+    }
+    &__container{
+        margin: 0 auto;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 370px;
+        display: table;
+        @media(max-width: 640px){
+            width: 90%;
+        }
+    }
+    &__bee{
+        text-align: center;
+        figure{
+            width: 35px;
+            margin: 15px auto 0 auto;
+        }
+    }
+    form{
+        .container{
+            label{
+                display: block;
+                padding: 5px 0;
+            }
+            input[type=text],
+            input[type=password]{
+                width: -webkit-fill-available;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #757575;
+            }
+        }
+        .btn1{
+            margin: 7px 0;
+            button{
+                cursor: pointer;
+                padding: 10px 5px;
+                border: 1px solid #757575;
+                border-radius: 5px;
+                font-weight: 700;
+                transition: 0.2s;
+                &:nth-child(1){
+                    width: 41%;
+                    background-color: #2F5597;
+                    color: #fff;
+                    &:hover{
+                        background-color: #2b65ca;
+                    }
+                }
+                &:nth-child(2){
+                    background-color: #7F6000;
+                    width: 57%;
+                    color: #fff;
+                    &:hover{
+                        background-color: #8b6900;
+                    }
+                }
+            }
+      
+        }
+
+        .chckbox{
+            cursor: pointer;
+        }
+        .btn2{
+            span{
+                a{
+                    color: #0070C0;
+                    font-weight: 700;
+                    font-size: 13px;
+                }
+            }
+        }
+        .chckbox{
+            font-size: 13px;
+            input{
+                vertical-align: middle;
+            }
+        }
+
+    }
+
+
+
+}

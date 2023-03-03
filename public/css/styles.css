@@ -1,0 +1,48 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+input,
+select,
+option,
+textarea,
+p,
+table,
+th,
+tr,
+td,
+figure {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-style: normal;
+  list-style: none;
+  font-weight: normal;
+  border: none;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  background-color: #E8BD01;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
