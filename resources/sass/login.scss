@@ -1,3 +1,9 @@
+body.template-login\._login{
+    background-color: #E8BD01;
+    background-image: radial-gradient(white 1%, transparent 23%);
+    background-size: 5px 5px;
+}
+
 .login{
     &__heading{
         text-align: center;
@@ -33,6 +39,8 @@
         }
     }
     form{
+        width: 85%;
+        margin: 0 auto;
         .container{
             label{
                 display: block;

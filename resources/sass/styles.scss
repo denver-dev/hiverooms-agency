@@ -1,3 +1,10 @@
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+
+
 body,
 div,
 dl,
@@ -14,35 +21,40 @@ h5,
 h6,
 form,
 fieldset,
-input,
-select,
-option,
-textarea,
 p,
 table,
 th,
 tr,
 td,
-figure 
+figure,
+a
 {
     margin: 0;
     padding: 0;
     text-decoration: none;
     font-style: normal;
     list-style: none;
-    font-weight: normal;
     border: none;
+    font-family: 'Gotham', sans-serif;
+    font-weight: 500;
+    color: initial;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+button{
+    cursor: pointer;
 }
 img{
     width: 100%;
-}
-
-body{
-    background-color: #E8BD01;
 }
 
 .wrapper{
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 10px;
+}
+
+i::before{
+    vertical-align: middle;
 }

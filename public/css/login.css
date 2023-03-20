@@ -1,3 +1,9 @@
+body.template-login\._login {
+  background-color: #E8BD01;
+  background-image: radial-gradient(white 1%, transparent 23%);
+  background-size: 5px 5px;
+}
+
 .login__heading {
   text-align: center;
   font-size: 60px;
@@ -32,6 +38,10 @@
 .login__bee figure {
   width: 35px;
   margin: 15px auto 0 auto;
+}
+.login form {
+  width: 85%;
+  margin: 0 auto;
 }
 .login form .container label {
   display: block;

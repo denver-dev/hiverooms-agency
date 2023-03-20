@@ -6,9 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hiverooms</title>
     <link rel="stylesheet" href="{{ mix('css/login.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/formdate.css') }}">
+
+    {{-- flatpicker date --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 </head>
-<body>
+<body class="template-{{ $viewName }}">
 
 
     

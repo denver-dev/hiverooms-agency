@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+View::composer('*', function ($view) {
+    View::share('viewName', $view->getName());
+});
+
+
+
 Route::get('/', function () {
     return view('layouts.app');
 });
@@ -20,3 +26,12 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login._login');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard._dashboard');
+});
+
+Route::get('/travel', function () {
+    return view('travel._travel');
+});
+

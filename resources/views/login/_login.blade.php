@@ -1,13 +1,18 @@
 @include('header')
 
 
+@section('class', 'Your boddy class')
+
+
+
+
+
 <section class="login">
-    <div class="wrapper">
         <div class="login__container">
             <h2 class="login__heading"><span>Hive</span>Rooms</h2>
             <h3 class="login__sub-heading">- Travel Agent Login -</h3>
             <div class="login__bee">
-            <figure><img src="{{ asset('images/icon-bee.png') }}" alt="Bee"></figure>
+            <figure><img src="{{ asset('images/icons/icon-bee.png') }}" alt="Bee"></figure>
             </div>
             <form action="/action_page.php" method="post">
                 <div class="container">
@@ -32,12 +37,6 @@
                 </div>
             </form>
         </div>
-
-        
-
-
-
-    </div>
 </section>
 
 
