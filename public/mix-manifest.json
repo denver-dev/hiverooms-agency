@@ -2,7 +2,6 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/app.js": "/js/app.js",
     "/css/styles.css": "/css/styles.css",
-    "/css/formdate.css": "/css/formdate.css",
     "/css/dashboard.css": "/css/dashboard.css",
     "/css/login.css": "/css/login.css"
 }

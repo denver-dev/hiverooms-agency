@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ mix('css/login.css') }}">
     <link rel="stylesheet" href="{{ mix('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/formdate.css') }}">
 
     {{-- flatpicker date --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -17,6 +16,3 @@
 
 </head>
 <body class="template-{{ $viewName }}">
-
-
-    

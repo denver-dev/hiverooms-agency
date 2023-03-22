@@ -1,10 +1,5 @@
 @include('header')
-
-
 @section('class', 'Your boddy class')
-
-
-
 
 
 <section class="login">

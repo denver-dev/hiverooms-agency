@@ -13,11 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Global for body class
 View::composer('*', function ($view) {
     View::share('viewName', $view->getName());
 });
 
 
+Route::get('/hotels', function () { 
+    return view('component._hotels'); 
+});
+
+Route::get('/component', function () { 
+    return view('component._sidebar'); 
+});
 
 Route::get('/', function () {
     return view('layouts.app');
@@ -30,8 +38,3 @@ Route::get('/login', function () {
 Route::get('/dashboard', function () {
     return view('dashboard._dashboard');
 });
-
-Route::get('/travel', function () {
-    return view('travel._travel');
-});
-

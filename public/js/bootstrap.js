@@ -19318,19 +19318,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/formdate.scss":
-/*!**************************************!*\
-  !*** ./resources/sass/formdate.scss ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/sass/styles.scss":
 /*!************************************!*\
   !*** ./resources/sass/styles.scss ***!
@@ -19661,7 +19648,6 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		var installedChunks = {
 /******/ 			"/js/bootstrap": 0,
 /******/ 			"css/styles": 0,
-/******/ 			"css/formdate": 0,
 /******/ 			"css/dashboard": 0,
 /******/ 			"css/login": 0
 /******/ 		};
@@ -19713,11 +19699,10 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/formdate","css/dashboard","css/login"], () => (__webpack_require__("./resources/js/bootstrap.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/formdate","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/login.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/formdate","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/formdate","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/formdate.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styles","css/formdate","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/js/bootstrap.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/styles.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
