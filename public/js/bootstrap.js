@@ -19292,6 +19292,84 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/sass/transactions.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/transactions.scss ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/component.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/component.scss ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/booking.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/booking.scss ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/commission.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/commission.scss ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/points.scss":
+/*!************************************!*\
+  !*** ./resources/sass/points.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/create_booking.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/create_booking.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/login.scss":
 /*!***********************************!*\
   !*** ./resources/sass/login.scss ***!
@@ -19322,6 +19400,32 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************!*\
   !*** ./resources/sass/styles.scss ***!
   \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/hotels.scss":
+/*!************************************!*\
+  !*** ./resources/sass/hotels.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/profile.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/profile.scss ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19647,9 +19751,17 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/bootstrap": 0,
+/******/ 			"css/profile": 0,
+/******/ 			"css/hotels": 0,
 /******/ 			"css/styles": 0,
 /******/ 			"css/dashboard": 0,
-/******/ 			"css/login": 0
+/******/ 			"css/login": 0,
+/******/ 			"css/create_booking": 0,
+/******/ 			"css/points": 0,
+/******/ 			"css/commission": 0,
+/******/ 			"css/booking": 0,
+/******/ 			"css/component": 0,
+/******/ 			"css/transactions": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19699,10 +19811,18 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/js/bootstrap.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/login.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/styles","css/dashboard","css/login"], () => (__webpack_require__("./resources/sass/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/js/bootstrap.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/hotels.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/profile.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/transactions.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/component.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/booking.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/commission.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/points.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/profile","css/hotels","css/styles","css/dashboard","css/login","css/create_booking","css/points","css/commission","css/booking","css/component","css/transactions"], () => (__webpack_require__("./resources/sass/create_booking.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

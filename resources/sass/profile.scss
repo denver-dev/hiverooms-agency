@@ -1,0 +1,40 @@
+body.template-profile\._profile{
+    background-color: #f8f5f4;
+}
+
+.profile{
+
+    &__form{
+        background-color: #fff;
+        form{
+            dl{
+                display: flex;
+                padding: 10px 0;
+                &:first-child{
+                    border-top: 2px solid #f8f5f4;
+                }
+                &:last-child{
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                &:not(:last-child){
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                dt{
+                    width: 170px;
+                }
+                dd{
+                    &:nth-child(2){
+                        width: 65px;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+}

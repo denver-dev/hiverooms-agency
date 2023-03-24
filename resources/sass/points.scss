@@ -1,0 +1,101 @@
+body.template-points\._points{
+    background-color: #f8f5f4;
+}
+
+.points{
+    &__record--main{
+        background-color: #fff;
+    }
+    .global-bg{
+        padding: 60px 25px;
+    }
+    &__earn-points{
+        dl{
+            text-align: center;
+            dd{
+                &:nth-child(1),
+                &:nth-child(3){
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #595959;
+                }
+                &:nth-child(2){
+                    color: #935d1f;
+                    font-size: 50px;
+                    span{
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+    &__discounts{
+        padding: 65px 0 0 0;
+        .hdng{
+            color: #595959;
+            font-weight: 600;
+            padding: 0 0 25px 0;
+        }
+        .card-inner{
+            display: flex;
+            column-gap: 30px;
+            .card{
+                box-shadow: 5px 6px 13px -4px #c0bebe;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                &:nth-child(n+1){
+                    .card-upper{
+                        background-image: linear-gradient(62deg, #35699d 0%, #d0a0ff 100%);
+                    }
+                }
+                &:nth-child(n+2){
+                    .card-upper{
+                        background-image: linear-gradient(62deg, #00b370 0%, #bdcb5e 100%);
+                    }
+                }
+                &:nth-child(n+3){
+                    .card-upper{
+                        background-image: linear-gradient(62deg, #0d528e 0%, #929eff 100%);
+                    }
+                }
+                .card-upper{
+                    padding: 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    h4{
+                        color: #fff;
+                        font-size: 13px;
+                    }
+                    h3{
+                        color: #fff; 
+                        font-size: 38px;
+                        font-weight: 600;
+                    }
+                }
+                .card-btm{
+                    padding: 25px 20px;
+                    dl{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        column-gap: 15px;
+                    }
+                    dd{
+                        .btn-link{
+                            background-color: #935d1f;
+                            color: #fff;
+                            padding: 7px 15px;
+                            border-radius: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+}

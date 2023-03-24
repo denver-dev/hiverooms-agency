@@ -1,0 +1,79 @@
+body.template-booking-history\._booking {
+  background-color: #f8f5f4;
+}
+
+.commission__record--main {
+  background-color: #fff;
+}
+.commission__record--main table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 90px;
+}
+.commission__record--main table tr:first-child {
+  border-top: 2px solid #f8f5f4;
+}
+.commission__record--main table tr:last-child {
+  border-bottom: 2px solid #f8f5f4;
+}
+.commission__record--main table tr:not(:last-child) {
+  border-bottom: 2px solid #f8f5f4;
+}
+.commission__record--main table tr th {
+  text-align: initial;
+  padding: 10px;
+  font-weight: 600;
+  color: #935d1f;
+}
+.commission__record--main table tr td {
+  font-size: 15px;
+  padding: 15px 10px;
+}
+.commission__record--main .table-1 {
+  margin: 0 0 40px 0;
+}
+.commission__search {
+  padding: 0 0 20px 0;
+}
+.commission__search .hdng-title {
+  padding: 0;
+}
+.commission__search .ttl-w-search {
+  display: flex;
+  justify-content: space-between;
+}
+.commission__search .d-flex {
+  display: flex;
+  align-items: center;
+}
+.commission__search .d-flex .search-inner .search-field input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #939393;
+}
+.commission__search .d-flex .add-button {
+  margin: 0 0 0 10px;
+}
+.commission__search .d-flex .add-button .btn-1 {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #935d1f;
+  color: #fff;
+  border-radius: 100px;
+}
+.commission__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0 0 0;
+}
+.commission__pagination .entries p {
+  font-size: 14px;
+}
+.commission__pagination .pagination-number .numb {
+  padding: 5px 10px;
+}
+.commission__pagination .pagination-number .numb.active {
+  background-color: #935d1f;
+  color: #fff;
+}

@@ -16,4 +16,11 @@ const mix = require('laravel-mix');
  mix.sass('resources/sass/login.scss', 'public/css');
  mix.sass('resources/sass/dashboard.scss', 'public/css');
  mix.sass('resources/sass/styles.scss', 'public/css');
-
+ mix.sass('resources/sass/hotels.scss', 'public/css');
+ mix.sass('resources/sass/profile.scss', 'public/css');
+ mix.sass('resources/sass/transactions.scss', 'public/css');
+ mix.sass('resources/sass/component.scss', 'public/css');
+ mix.sass('resources/sass/booking.scss', 'public/css');
+ mix.sass('resources/sass/commission.scss', 'public/css');
+ mix.sass('resources/sass/points.scss', 'public/css');
+ mix.sass('resources/sass/create_booking.scss', 'public/css');

@@ -1,7 +1,15 @@
 {
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/app.js": "/js/app.js",
+    "/css/profile.css": "/css/profile.css",
+    "/css/hotels.css": "/css/hotels.css",
     "/css/styles.css": "/css/styles.css",
     "/css/dashboard.css": "/css/dashboard.css",
-    "/css/login.css": "/css/login.css"
+    "/css/login.css": "/css/login.css",
+    "/css/create_booking.css": "/css/create_booking.css",
+    "/css/points.css": "/css/points.css",
+    "/css/commission.css": "/css/commission.css",
+    "/css/booking.css": "/css/booking.css",
+    "/css/component.css": "/css/component.css",
+    "/css/transactions.css": "/css/transactions.css"
 }

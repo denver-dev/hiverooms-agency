@@ -1,0 +1,91 @@
+body.template-booking-history\._booking {
+  background-color: #f8f5f4;
+}
+
+.booking_history__record--main {
+  background-color: #fff;
+}
+.booking_history__record--main table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 90px;
+}
+.booking_history__record--main table tr:first-child {
+  border-top: 2px solid #f8f5f4;
+}
+.booking_history__record--main table tr:last-child {
+  border-bottom: 2px solid #f8f5f4;
+}
+.booking_history__record--main table tr:not(:last-child) {
+  border-bottom: 2px solid #f8f5f4;
+}
+.booking_history__record--main table tr th {
+  text-align: initial;
+  padding: 10px;
+  font-weight: 600;
+  color: #935d1f;
+}
+.booking_history__record--main table tr td {
+  font-size: 15px;
+  padding: 15px 10px;
+}
+.booking_history__record--main table tr td a:last-child {
+  color: #5151e1;
+}
+.booking_history__record--main table tr td a:last-child:hover {
+  text-decoration: underline;
+}
+.booking_history__record--main table .status {
+  background: #e8bd01;
+  color: #fff;
+  margin: 10px 0;
+  display: inline-block;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 100px;
+}
+.booking_history__search {
+  padding: 0 0 20px 0;
+}
+.booking_history__search .hdng-title {
+  padding: 0;
+}
+.booking_history__search .ttl-w-search {
+  display: flex;
+  justify-content: space-between;
+}
+.booking_history__search .d-flex {
+  display: flex;
+  align-items: center;
+}
+.booking_history__search .d-flex .search-inner .search-field input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #939393;
+}
+.booking_history__search .d-flex .add-button {
+  margin: 0 0 0 10px;
+}
+.booking_history__search .d-flex .add-button .btn-1 {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #935d1f;
+  color: #fff;
+  border-radius: 100px;
+}
+.booking_history__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0 0 0;
+}
+.booking_history__pagination .entries p {
+  font-size: 14px;
+}
+.booking_history__pagination .pagination-number .numb {
+  padding: 5px 10px;
+}
+.booking_history__pagination .pagination-number .numb.active {
+  background-color: #935d1f;
+  color: #fff;
+}

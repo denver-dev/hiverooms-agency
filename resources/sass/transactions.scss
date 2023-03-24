@@ -1,0 +1,103 @@
+body.template-transactions\._transactions{
+    background-color: #f8f5f4;
+}
+
+.transactions{
+    &__record--main{
+        background-color: #fff;
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            height: 90px;
+            tr{
+                &:first-child{
+                    border-top: 2px solid #f8f5f4;
+                }
+                &:last-child{
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                &:not(:last-child){
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                th{
+                    text-align: initial;
+                    padding: 10px;
+                    font-weight: 600;
+                    color: #935d1f;
+                }
+                td{
+                    font-size: 15px;
+                    padding: 15px 10px;
+                }
+            }
+            .status{
+                background: green;
+                color: #fff;
+                margin: 10px 0;
+                display: inline-block;
+                padding: 10px;
+                font-size: 13px;
+                border-radius: 100px;
+            }
+        }
+    }
+    &__search{
+        padding: 0 0 20px 0;
+        .hdng-title{
+            padding: 0;
+        }
+        .ttl-w-search{
+            display: flex;
+            justify-content: space-between;
+        }
+        .d-flex{
+            display: flex;
+            align-items: center;
+            .search-inner{
+                .search-field{
+                    input{
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        border: 1px solid #939393;
+                    }
+                }
+            }
+            .add-button{
+                margin: 0 0 0 10px;
+                .btn-1{
+                    padding: 10px;
+                    font-size: 15px;
+                    background-color: #935d1f;
+                    color: #fff;
+                    border-radius: 100px;
+                }
+            }
+        }
+    }
+    &__pagination{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 0 0 0;
+        .entries{
+            p{
+                font-size: 14px;
+            }
+        }
+        .pagination-number{
+            .numb{
+                padding: 5px 10px;
+                &.active{
+                    background-color: #935d1f;
+                    color: #fff;
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+}

@@ -1,0 +1,103 @@
+body.template-component\._hotels {
+  background-color: #f8f5f4;
+}
+
+.hotel__rm-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+.hotel__rm-card:not(:last-child) {
+  margin: 0 0 20px 0;
+}
+.hotel__rm-card .rm-img figure {
+  width: 370px;
+  position: relative;
+}
+.hotel__rm-card .rm-img figure .fa-heart {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #fff;
+  padding: 10px;
+  color: #e8bd01;
+  border-radius: 100px;
+}
+.hotel__rm-card .rm-img figure img {
+  border-radius: 5px;
+}
+.hotel__rm-card .rm-content {
+  width: 100%;
+  padding: 0 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hotel__rm-card .rm-content .rm-main-row {
+  display: flex;
+  justify-content: space-between;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-star {
+  padding: 6px 0;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-star .fa-star {
+  color: #e8bd01;
+  font-size: 12px;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-location p {
+  font-size: 13px;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-location p span {
+  padding: 0 0 0 7px;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-description {
+  padding: 15px 0 0 0;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-refund {
+  width: 100%;
+  text-align: right;
+}
+.hotel__rm-card .rm-content .rm-main-row .rm-refund .btn-link {
+  color: #404040;
+  font-weight: 600;
+}
+.hotel__rm-card .rm-content .rm-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.hotel__rm-card .rm-content .rm-bottom .btn-link {
+  background-color: #935d1f;
+  color: #fff;
+  padding: 10px 15px;
+  display: inline-block;
+}
+.hotel__rm-card .rm-content .rm-bottom .rm-reviews p {
+  font-size: 13px;
+}
+.hotel__rm-card .rm-content .rm-bottom .rm-reviews p span {
+  font-weight: 600;
+}
+.hotel__rm-card .rm-content .rm-bottom .price {
+  color: #935d1f;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: right;
+  padding: 0 0 15px 0;
+}
+.hotel__rm-card .rm-content .rm-bottom .price span {
+  padding: 0 8px 0 0;
+  font-size: 20px;
+}
+.hotel .dashboard__sidebar--content {
+  padding: 25px 40px 50px 300px;
+}
+.hotel__heading {
+  font-weight: 600;
+  padding: 0 0 30px 0;
+}

@@ -1,0 +1,26 @@
+body.template-profile\._profile {
+  background-color: #f8f5f4;
+}
+
+.profile__form {
+  background-color: #fff;
+}
+.profile__form form dl {
+  display: flex;
+  padding: 10px 0;
+}
+.profile__form form dl:first-child {
+  border-top: 2px solid #f8f5f4;
+}
+.profile__form form dl:last-child {
+  border-bottom: 2px solid #f8f5f4;
+}
+.profile__form form dl:not(:last-child) {
+  border-bottom: 2px solid #f8f5f4;
+}
+.profile__form form dl dt {
+  width: 170px;
+}
+.profile__form form dl dd:nth-child(2) {
+  width: 65px;
+}

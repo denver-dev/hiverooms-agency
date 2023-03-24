@@ -8303,6 +8303,7 @@ a {
   font-family: "Gotham", sans-serif;
   font-weight: 500;
   color: initial;
+  line-height: 1.5;
 }
 
 textarea:focus, input:focus {
@@ -8315,6 +8316,7 @@ button {
 
 img {
   width: 100%;
+  height: auto;
 }
 
 .wrapper {
@@ -8325,4 +8327,31 @@ img {
 
 i::before {
   vertical-align: middle;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-right {
+  text-align: right;
+}
+
+.btn-link {
+  transition: 0.2s;
+}
+.btn-link:hover {
+  opacity: 0.8;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.hdng-title {
+  color: #935d1f;
 }
