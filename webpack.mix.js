@@ -24,3 +24,6 @@ const mix = require('laravel-mix');
  mix.sass('resources/sass/commission.scss', 'public/css');
  mix.sass('resources/sass/points.scss', 'public/css');
  mix.sass('resources/sass/create_booking.scss', 'public/css');
+ mix.sass('resources/sass/sidebar.scss', 'public/css');
+ mix.sass('resources/sass/search_results.scss', 'public/css');
+ mix.sass('resources/sass/search_confirmation.scss', 'public/css');

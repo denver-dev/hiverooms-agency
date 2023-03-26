@@ -35,6 +35,12 @@ Route::get('/points', [ControllerName::class, 'points'])->name('points.points');
 
 Route::get('/create-booking', [ControllerName::class, 'create_booking'])->name('create-booking.create_booking');
 
+Route::get('/search-results', [ControllerName::class, 'search_results'])->name('search-results.search_results');
+
+Route::get('/search-confirmation', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
+
+Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flights');
+
 Route::get('/', function () {
     return view('layouts.app');
 });

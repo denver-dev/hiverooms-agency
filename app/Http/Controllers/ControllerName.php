@@ -39,4 +39,16 @@ class ControllerName extends Controller
         return view('create-booking._create_booking');
     }
 
+    public function search_results(){
+        return view('search-results._search_results');
+    }
+
+    public function search_confirmation(){
+        return view('search-confirmation._search_confirmation');
+    }
+
+    public function flights(){
+        return view('flights._flights');
+    }
+
 }

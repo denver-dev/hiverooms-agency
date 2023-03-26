@@ -4,14 +4,14 @@
 @include('component._heading')
 
 <section class="points">
-    <div class="dasboard__container">
+    <div class="points__container">
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="dashboard__sidebar--content"> 
+       <div class="main-content"> 
             {{-- Tab selection --}}
                 @yield('tab')
-            <div class="dashboard__main--content">
+            <div class="main-content--inner">
                 <div class="content-inner">
                     <h2 class="ttl1">Points</h2>
                     <div class="points__record">

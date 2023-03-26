@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{ mix('css/commission.css') }}">
     <link rel="stylesheet" href="{{ mix('css/points.css') }}">
     <link rel="stylesheet" href="{{ mix('css/create_booking.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/search_results.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/search_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">

@@ -3,33 +3,46 @@
 @include('component._tab')
 @include('component._search')
 
-
 <section class="dashboard">
         <div class="dasboard__container">
             {{-- Sidebar Menu --}}
                 @yield('sidebar')
            {{-- Main content --}}
-           <div class="dashboard__sidebar--content"> 
-                {{-- Tab selection --}}
-                    @yield('tab')
-                {{-- Search hotels --}}
-                    @yield('search')
+           <div class="main-content"> 
                 <div class="dashboard__main--content">
-                    <div class="content-inner">
-                        <h2 class="ttl1 txt-center">TOP DESTINATIONS</h2>
-                        <div class="destinations">
-                            <a href="{{ route('hotels.hotels') }}">
-                                <figure><img src="{{ asset('images/bohol.png') }}" alt="Bohol - Jewel of the Philippines"></figure>
-                            </a>
-                            <a href="{{ route('hotels.hotels') }}">
-                                <figure><img src="{{ asset('images/cebu.png') }}" alt="Cebu - Queen City of the South"></figure>
-                            </a>
-                            <a href="{{ route('hotels.hotels') }}">
-                                <figure><img src="{{ asset('images/negros.png') }}" alt="Negros - Sugarbowl of the"></figure>
-                            </a>
-                            <a href="{{ route('hotels.hotels') }}">
-                                <figure><img src="{{ asset('images/siquijor.png') }}" alt="Siquijor - The Healing Island"></figure>
-                            </a>
+                    <div class="dashboard__logo">
+                        <a href="#">
+                            <figure class="hive-logo">
+                                <img src="{{ asset('images/icons/main-logo.png') }}" alt="Bee">
+                            </figure>
+                        </a>
+                            <figure class="dashboard-bee">
+                                <img src="{{ asset('images/icons/icon-bee-dashboard.png') }}" alt="Bee">
+                            </figure>
+                    </div>
+                    <div class="dashboard__greetings">
+                        <h2 class="hdng">Welcome Agent! <span>Today is March 25, 2023</span></h2>
+                        <p class="sub-hdng">
+                            How's your day?
+                            <span>
+                                Beeyah is here to help.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="dashboard__summary">
+                        <div class="summary-inner">
+                            <div class="commissions">
+                                <h2 class="hdng">Here's the summary of your earnings.</h2>
+                                <div class="earnings">
+                                    <p class="price"><span>PHP 5,000</span> Commission</p>
+                                    <p class="price"><span>5,000</span> Points</p>
+                                    <i>1 point is equivalent to 1 peso (PHP)</i>
+                                </div>
+                            </div>
+                            <div class="btns">
+                                <p><a href="#" class="btn-link">Cashout</a></p>
+                                <p><a href="{{route ('create-booking.create_booking')}}" class="btn-link">Create a Booking</a></p>
+                            </div>
                         </div>
                     </div>
                </div>

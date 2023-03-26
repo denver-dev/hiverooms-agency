@@ -8,10 +8,10 @@
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="dashboard__sidebar--content"> 
+       <div class="main-content"> 
             {{-- Tab selection --}}
                 @yield('tab')
-            <div class="dashboard__main--content">
+            <div class="main-content--inner">
                 <div class="content-inner">
                     <h2 class="ttl1">Commission</h2>
                     <div class="commission__record">

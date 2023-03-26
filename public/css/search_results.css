@@ -1,0 +1,102 @@
+body.template-search-results\._search_results {
+  background-color: #f8f5f4;
+}
+
+.search-results .main-content--inner .content-inner {
+  margin: 35px 0 0 0;
+}
+.search-results__rm-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
+}
+.search-results__heading {
+  padding: 0 0 13px 0;
+}
+.search-results__heading .ttl {
+  font-weight: 600;
+}
+.search-results__heading .stars {
+  padding: 6px 0;
+}
+.search-results__heading .stars i {
+  color: #e8bd01;
+  font-size: 12px;
+}
+.search-results__heading .location p {
+  font-size: 13px;
+}
+.search-results__heading .location p i {
+  width: 20px;
+}
+.search-results__heading .phone p {
+  font-size: 13px;
+}
+.search-results__heading .phone p i {
+  width: 20px;
+}
+.search-results__rm-card--inner {
+  display: flex;
+  padding: 10px;
+  background-color: #f8f5f4;
+}
+.search-results__rm-card--inner .rm-card--content {
+  width: 320px;
+  padding: 20px;
+  margin: 0 15px 0 0;
+  background-color: #fff;
+}
+.search-results__rm-card--inner .rm-card--content .hdng {
+  font-size: 13px;
+  color: red;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 0 15px 0;
+}
+.search-results__rm-card--inner .rm-card--content .hdng .fa-user {
+  vertical-align: baseline;
+}
+.search-results__rm-card--inner .rm-card--content dl {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 25px 0;
+}
+.search-results__rm-card--inner .rm-card--content dl:nth-child(2) {
+  border-top: 1px solid #c3c3c3;
+}
+.search-results__rm-card--inner .rm-card--content dl:nth-child(3) {
+  border-top: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+}
+.search-results__rm-card--inner .rm-card--content dl:last-child {
+  border-bottom: 1px solid #c3c3c3;
+}
+.search-results__rm-card--inner .rm-card--content dl dt {
+  color: #3535eb;
+  font-weight: 600;
+  width: 115px;
+}
+.search-results__rm-card--inner .rm-card--content dl dt span {
+  color: #140093;
+}
+.search-results__rm-card--inner .rm-card--content dl dd {
+  font-weight: 600;
+}
+.search-results__rm-card--inner .rm-card--content dl dd:nth-child(4) {
+  font-size: 13px;
+  padding: 10px 0 0 0;
+}
+.search-results__rm-card--inner .rm-card--content dl dd:nth-child(4) .fa-check {
+  padding: 0 5px 0 0;
+}
+.search-results__rm-card--inner .rm-card--content dl dd a {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 100px;
+  background-color: #e8bd01;
+}
+.search-results__rm-card--inner .rm-img {
+  width: 74%;
+}

@@ -1,0 +1,115 @@
+body.template-search-confirmation\._search_confirmation{
+    background-color: #f8f5f4;
+}
+
+.search-confirmation{
+
+    &__rm-card{
+        display: flex;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        &:not(:last-child){
+            margin: 0 0 20px 0;
+        }
+        .rm-img{
+            figure{
+                width: 370px;
+                position: relative;
+                .fa-heart{
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    background-color: #fff;
+                    padding: 10px;
+                    color: #e8bd01;
+                    border-radius: 100px;
+                }
+                img{
+                    border-radius: 5px;
+                }
+            }
+        }
+        .rm-content{
+            width: 100%;
+            padding: 0 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .rm-main-row{
+                display: flex;
+                justify-content: space-between;
+                .rm-main{
+                    .rm-heading{
+                        .rm-title{
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+                        .rm-star{
+                            padding: 6px 0;
+                            .fa-star{
+                                color: #e8bd01;
+                                font-size: 12px;
+                            }
+                        }
+                        .rm-location{
+                            p{
+                                font-size: 13px;
+                                span{
+                                    padding: 0 0 0 7px;
+                                }
+                            }
+                        }
+                    }
+                    .rm-description{
+                        padding: 15px 0 0 0;
+                    }
+                }
+                .rm-refund{
+                    width: 100%;
+                    text-align: right;
+                    .btn-link{
+                        color: #404040;
+                        font-weight: 600;
+                    }
+                }
+            }
+            .rm-bottom{
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+                .btn-link{
+                    background-color: #935d1f;
+                    color: #fff;
+                    padding: 10px 15px;
+                    display: inline-block;
+                }
+                .rm-reviews{
+                    p{
+                        font-size: 13px;
+                        span{
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .price{
+                    color: #935d1f;
+                    font-weight: 600;
+                    font-size: 20px;
+                    text-align: right;
+                    padding: 0 0 15px 0;
+                    span{
+                        padding: 0 8px 0 0;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__heading{
+        font-weight: 600;
+        padding: 0 0 30px 0;
+    }
+    
+}

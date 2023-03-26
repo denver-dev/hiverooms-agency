@@ -4,17 +4,56 @@
 @include('component._search')
 
 
-<section class="dashboard">
-        <div class="dasboard__container">
+
+<section class="creat-booking">
+        <div class="creat-booking__container">
             {{-- Sidebar Menu --}}
                 @yield('sidebar')
            {{-- Main content --}}
-           <div class="dashboard__sidebar--content"> 
+           <div class="main-content"> 
                 {{-- Tab selection --}}
                     @yield('tab')
                 {{-- Search hotels --}}
-                    @yield('search')
-                <div class="dashboard__main--content">
+                <form action="" class="search-form">
+                    <h2 class="ttl1">Search hotels</h2>
+                    <div class="c-field">
+                        <dl>
+                            <div class="date">
+                                <dt><input type="text" id="destination-search" placeholder="Going to" class="" >
+                                    <label for=""><i class="fa-solid fa-location-dot"></i></label>
+                                </dt>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div class="date">
+                                <dt><input type="datetime-local" placeholder="Check in" class="form-control" >
+                                    <label for=""><i class="fa-regular fa-calendar-minus"></i></label>
+                                </dt>
+                            </div>
+                            <div class="date">
+                                <dt><input type="datetime-local" placeholder="Check out" class="form-control" >
+                                    <label for=""><i class="fa-regular fa-calendar-minus"></i></label>
+                                </dt>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div class="date">
+                                <dt><input type="text" class="is-hidden">
+                                    <button><i class="fa-solid fa-user"></i> Travellers</button>
+                                </dt>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div>
+                                <dd>
+                                    <a href="{{route ('search-results.search_results')}}"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    {{-- <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button> --}}
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </form>
+                <div class="main-content--inner">
                     <div class="content-inner">
                         <h2 class="ttl1 txt-center">TOP DESTINATIONS</h2>
                         <div class="destinations">

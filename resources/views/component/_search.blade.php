@@ -1,7 +1,7 @@
 
 
 @section('search')
-<form action="" class="dashboard__form">
+{{-- <form action="" class="search-form">
     <h2 class="ttl1">Search hotels</h2>
     <div class="c-field">
         <dl>
@@ -32,9 +32,9 @@
         </dl>
         <dl>
             <div>
-                <dd><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></dd>
+                <dd><button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button></dd>
             </div>
         </dl>
     </div>
-</form>
+</form> --}}
 @endsection

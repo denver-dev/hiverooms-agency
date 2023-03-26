@@ -4,14 +4,14 @@
 @include('component._heading')
 
 <section class="hotel">
-    <div class="dasboard__container">
+    <div class="hotel__container">
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="dashboard__sidebar--content"> 
+       <div class="main-content"> 
             {{-- Tab selection --}}
                 @yield('tab')
-            <div class="dashboard__main--content">
+            <div class="main-content--inner">
                 <div class="content-inner">
                     {{-- Heading title --}}
                     @yield('title')

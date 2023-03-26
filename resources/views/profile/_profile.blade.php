@@ -4,14 +4,14 @@
 @include('component._heading')
 
 <section class="profile">
-    <div class="dasboard__container">
+    <div class="profile__container">
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="dashboard__sidebar--content"> 
+       <div class="main-content"> 
             {{-- Tab selection --}}
                 @yield('tab')
-            <div class="dashboard__main--content">
+            <div class="main-content--inner">
                 <div class="content-inner">
                     <h2 class="ttl1">Profile</h2>
                     <div class="profile__form global-bg">
@@ -20,12 +20,12 @@
                             <dl>
                                 <dt><label for="fname">First name</label></dt>
                                 <dd>:</dd>
-                                <dd><label for="">Hive</label></dd>
+                                <dd><label for="">Herbert</label></dd>
                             </dl>
                             <dl>
                                 <dt><label for="lname">Last name</label></dt>
                                 <dd>:</dd>
-                                <dd><label for="">Rooms</label></dd>
+                                <dd><label for="">Dionzon</label></dd>
                             </dl>
                             <dl>
                                 <dt><label for="email">Email address</label></dt>
@@ -48,7 +48,6 @@
                                 <dd><label for="">Talisay Mohon Cebu City</label></dd>
                             </dl>
                         </form>
-         
                     </div>
                 </div>
            </div>
