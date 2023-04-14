@@ -6,6 +6,8 @@
     "/css/styles.css": "/css/styles.css",
     "/css/dashboard.css": "/css/dashboard.css",
     "/css/login.css": "/css/login.css",
+    "/css/booking_success.css": "/css/booking_success.css",
+    "/css/final_confirmation.css": "/css/final_confirmation.css",
     "/css/search_confirmation.css": "/css/search_confirmation.css",
     "/css/search_results.css": "/css/search_results.css",
     "/css/sidebar.css": "/css/sidebar.css",

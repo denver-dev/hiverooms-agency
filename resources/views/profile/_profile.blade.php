@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @include('component._sidebar')
 @include('component._tab')
-@include('component._heading')
+@include('component._logo')
 
 <section class="profile">
     <div class="profile__container">
@@ -10,7 +10,12 @@
        {{-- Main content --}}
        <div class="main-content"> 
             {{-- Tab selection --}}
-                @yield('tab')
+            <div class="tab--content">
+                <div class="tab--flex">
+                   @yield('tab')
+                   @yield('logo')
+                </div>
+            </div>
             <div class="main-content--inner">
                 <div class="content-inner">
                     <h2 class="ttl1">Profile</h2>

@@ -47,8 +47,16 @@ class ControllerName extends Controller
         return view('search-confirmation._search_confirmation');
     }
 
+    public function final_confirmation(){
+        return view('final-confirmation._final_confirmation');
+    }
+
     public function flights(){
         return view('flights._flights');
+    }
+
+    public function booking_success(){
+        return view('booking-success._booking_success');
     }
 
 }

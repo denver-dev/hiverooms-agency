@@ -11,6 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
+
  mix.js('resources/js/bootstrap.js', 'public/js');
  mix.js('resources/js/app.js', 'public/js');
  mix.sass('resources/sass/login.scss', 'public/css');
@@ -27,3 +28,6 @@ const mix = require('laravel-mix');
  mix.sass('resources/sass/sidebar.scss', 'public/css');
  mix.sass('resources/sass/search_results.scss', 'public/css');
  mix.sass('resources/sass/search_confirmation.scss', 'public/css');
+ mix.sass('resources/sass/final_confirmation.scss', 'public/css');
+ mix.sass('resources/sass/booking_success.scss', 'public/css');
+ 

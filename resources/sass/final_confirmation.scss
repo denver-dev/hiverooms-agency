@@ -1,0 +1,93 @@
+body.template-final-confirmation\._final_confirmation{
+    background-color: #f8f5f4;
+}
+
+.final-confirmation{
+    &__table{
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            tr{
+                th{
+                    text-align: left;
+                    padding: 10px;
+                    font-weight: 600;
+                    color: #935d1f;
+                }
+                td{
+                    padding: 10px;
+                    font-size: 14px;
+                }
+            }
+        }
+        .ttl{
+            background-color: #935d1f;
+            color: #fff;
+            display: inline-block;
+            padding: 0 10px;
+            font-size: 18px;
+        }
+        .btn{
+            text-align: center;
+            a{
+                display: inline-block;
+                padding: 10px 35px;
+            }
+        }
+    }
+    &__table-1{
+        margin: 0 0 75px 0;
+        table{
+            tr{
+                &:nth-child(2){
+                    border-top: 2px solid #f8f5f4;
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                &:last-child{
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                td{
+                    padding: 10px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    &__table-2{
+        margin: 0 0 40px 0;
+        table{
+            tr{
+                &:nth-child(2){
+                    border-top: 2px solid #f8f5f4;
+                    border-bottom: 2px solid #f8f5f4;
+                }
+                .sub-total,.total{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    &__table-3{
+        form{
+            margin: 20px 0 0 0;
+            dl{
+                padding: 10px;
+                .details{
+                    width: 160px;
+                    display: inline-block;
+                }
+                select{
+                    border-radius: 5px;
+                    padding: 10px 0 10px 7px;
+                }
+            }
+        }
+    }
+
+
+
+
+}

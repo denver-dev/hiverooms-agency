@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @include('component._sidebar')
 @include('component._tab')
-@include('component._heading')
 
 <section class="hotel">
     <div class="hotel__container">

@@ -1,0 +1,90 @@
+body.template-booking-success\._booking_success{
+    background-color: #f8f5f4;
+}
+
+.booking-success{
+    
+    .tab--content{
+        .tab--flex{
+            justify-content: end;
+        }
+    }
+    .success--heading{
+        color: #767171;
+        font-weight: 600;
+    }
+
+    &__confirmed{
+        
+        .row-1{
+            text-align: center;
+            margin: 70px 0 0 0;
+            .fa-circle-check{
+                color: #82CE34;
+                font-size: 130px;
+            }
+            dl{
+                dt{
+                    color: #767171;
+                    font-size: 35px;
+                    margin: 12px 0 15px 0;
+                }
+                dd{
+                    color: #767171;
+                }
+            }
+            .btn-success{
+                margin: 40px 0 0 0;
+                a{
+                    color: #fff;
+                    background-color: #82CE34;
+                    display: inline-block;
+                    padding: 10px 120px;
+                    border-radius: 5px;
+                }
+            }
+        }
+        .row-2{
+            text-align: center;
+            margin: 60px 0 0 0;
+            dl{
+                dt{
+                    display: block;
+                    color: #0070C0;
+                    font-weight: 600;
+                }
+                dd{
+                    color: #0070C0;
+                }
+            }
+        }
+        .note{
+            margin: 90px 0 0 0;
+            p{
+                color: #ED7D31;
+                font-weight: 600;
+                text-align: center;
+                font-size: 13px;
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+}

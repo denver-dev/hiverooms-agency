@@ -58,6 +58,9 @@ body.template-dashboard\._dashboard {
   color: #595959;
   font-size: 20px;
 }
+.dashboard__summary .summary-inner .btns {
+  margin: 50px 0 0 0;
+}
 .dashboard__summary .summary-inner .btns p:nth-child(1) {
   text-align: right;
   margin: 0 0 25px 0;

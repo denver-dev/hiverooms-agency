@@ -1,0 +1,75 @@
+body.template-final-confirmation\._final_confirmation {
+  background-color: #f8f5f4;
+}
+
+.final-confirmation__table {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+}
+.final-confirmation__table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.final-confirmation__table table tr th {
+  text-align: left;
+  padding: 10px;
+  font-weight: 600;
+  color: #935d1f;
+}
+.final-confirmation__table table tr td {
+  padding: 10px;
+  font-size: 14px;
+}
+.final-confirmation__table .ttl {
+  background-color: #935d1f;
+  color: #fff;
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 18px;
+}
+.final-confirmation__table .btn {
+  text-align: center;
+}
+.final-confirmation__table .btn a {
+  display: inline-block;
+  padding: 10px 35px;
+}
+.final-confirmation__table-1 {
+  margin: 0 0 75px 0;
+}
+.final-confirmation__table-1 table tr:nth-child(2) {
+  border-top: 2px solid #f8f5f4;
+  border-bottom: 2px solid #f8f5f4;
+}
+.final-confirmation__table-1 table tr:last-child {
+  border-bottom: 2px solid #f8f5f4;
+}
+.final-confirmation__table-1 table tr td {
+  padding: 10px;
+  font-size: 14px;
+}
+.final-confirmation__table-2 {
+  margin: 0 0 40px 0;
+}
+.final-confirmation__table-2 table tr:nth-child(2) {
+  border-top: 2px solid #f8f5f4;
+  border-bottom: 2px solid #f8f5f4;
+}
+.final-confirmation__table-2 table tr .sub-total, .final-confirmation__table-2 table tr .total {
+  font-weight: 600;
+}
+.final-confirmation__table-3 form {
+  margin: 20px 0 0 0;
+}
+.final-confirmation__table-3 form dl {
+  padding: 10px;
+}
+.final-confirmation__table-3 form dl .details {
+  width: 160px;
+  display: inline-block;
+}
+.final-confirmation__table-3 form dl select {
+  border-radius: 5px;
+  padding: 10px 0 10px 7px;
+}

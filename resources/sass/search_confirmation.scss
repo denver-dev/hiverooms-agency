@@ -3,18 +3,112 @@ body.template-search-confirmation\._search_confirmation{
 }
 
 .search-confirmation{
+    &__destinations{
+        display: flex;
+        column-gap: 20px;
+        .destinations--content{
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            width: 70%;
+        }
+        .destinations--prices{
+            width: 30%;
+            .row{
+                padding: 20px;
+                background-color: #fff;
+                &:not(:last-child){
+                    margin: 0 0 20px 0;
+                }
+                .ttl{
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin: 0 0 20px 0;
+                }
+                &.row-1{
+                    dl{
+                        display: flex;
+                        justify-content: space-between;
+                            &:not(:last-child){
+                                margin: 0 0 10px 0;
+                            }
+                        dt,dd{
+                            font-size: 14px;
+                        }
+                        .discount{
+                            color: #ffa500;
+                            font-weight: 600;
+                        }
+                    }
+                    .total{
+                        display: flex;
+                        justify-content: space-between;
+                        p{
+                            &:nth-child(1){
+                                color: #404040;
+                                font-weight: 600;
+                            }
+                            &:nth-child(2){
+                                font-size: 18px;
+                                color: #404040;
+                                font-weight: 600;
+                                text-align: center;
+                                span{
+                                    display: block;
+                                    font-size: 14px;
+                                    color: #008000;
+                                    font-weight: 600;
+                                }
+                                .fa-heart{
 
+                                }
+                            }
+                        }
+                    }
+                    .hr-line{
+                        margin: 20px 0;
+                    }
+                }
+                &.row-2{
+                    .ttl{
+                        span{
+                            color: #ffa600;
+                            font-weight: 600;
+                        }
+                        .fa-coins{
+                            color: #e8bd01;
+                            margin: 0 10px 0 0;
+                        }
+                    }
+                    dl{
+                        dt{
+                            background-color: #f4f4f4;
+                            padding: 10px;
+                            font-size: 14px;
+                        }
+                        dd{
+                            margin: 10px 0 0 0;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                &.row-3{
+                    ul{
+                        li{
+                            list-style: disc;
+                            margin: 0 0 0 20px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     &__rm-card{
         display: flex;
-        background-color: #fff;
-        border-radius: 5px;
-        padding: 20px;
-        &:not(:last-child){
-            margin: 0 0 20px 0;
-        }
         .rm-img{
             figure{
-                width: 370px;
+                width: 200px;
                 position: relative;
                 .fa-heart{
                     position: absolute;
@@ -27,15 +121,14 @@ body.template-search-confirmation\._search_confirmation{
                 }
                 img{
                     border-radius: 5px;
+                    height: 220px;
+                    object-fit: cover;
                 }
             }
         }
         .rm-content{
             width: 100%;
             padding: 0 0 0 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             .rm-main-row{
                 display: flex;
                 justify-content: space-between;
@@ -64,49 +157,117 @@ body.template-search-confirmation\._search_confirmation{
                     .rm-description{
                         padding: 15px 0 0 0;
                     }
-                }
-                .rm-refund{
-                    width: 100%;
-                    text-align: right;
-                    .btn-link{
-                        color: #404040;
-                        font-weight: 600;
-                    }
-                }
-            }
-            .rm-bottom{
-                display: flex;
-                justify-content: space-between;
-                align-items: end;
-                .btn-link{
-                    background-color: #935d1f;
-                    color: #fff;
-                    padding: 10px 15px;
-                    display: inline-block;
-                }
-                .rm-reviews{
-                    p{
-                        font-size: 13px;
-                        span{
+                    .rm-type{
+                        h3{
+                            font-size: 16px;
                             font-weight: 600;
+                            padding: 15px 0 5px 0;
                         }
                     }
                 }
-                .price{
-                    color: #935d1f;
-                    font-weight: 600;
-                    font-size: 20px;
-                    text-align: right;
-                    padding: 0 0 15px 0;
-                    span{
-                        padding: 0 8px 0 0;
-                        font-size: 20px;
+                .rm-amenities{
+                    dl{
+                        display: flex;
+                        align-items: center;
+                        column-gap: 25px;
+                        flex-wrap: wrap;
+                        &:nth-child(2){
+                            margin: 10px 0 0 0;
+                            dd{
+                                color: green;
+                                font-weight: 600;
+                            }
+                        }
+                        dd{
+                            font-size: 14px;
+                            span{
+                                vertical-align: middle;
+                                padding: 0 0 0 10px;
+                            }
+                        }
                     }
                 }
             }
         }
     }
+    &__rm-selected-date{
+        padding: 15px 0 15px 0;
+        margin: 20px 0 0 0;
+        border-top: 1px dashed #cececefe;
+        border-bottom: 1px dashed #cececefe;
+        dl{
+            display: flex;
+            dd{
+                font-size: 13px;
+                width: 50%;
+                &:nth-child(1){
+                    margin-right: 25px;
+                    border-right: 1px solid #8b8b8b;
+                }
+                span{
+                    color: #868686;
+                }
+            }
+        }
+    }
+    &__booking{
+        padding: 15px 0;
+        dl{
+            dd{
+                font-weight: 600;
+                padding: 10px;
+                font-size: 13px;
+                &:nth-child(1){
+                    color: rgb(255, 166, 0);
+                    background-color: #ffa6001f;
+                }
+                &:nth-child(2){
+                    color: rgb(255, 0, 221);
+                    background-color: #ff00dd1f;
+                }
+                i{
+                    margin: 0 7px 0 0;
+                }
+            }
+        }
+    }
+    &__form{
+        background-color: #eeefff;
+        padding: 15px;
+        .desc{
+            color: #767171;
+            font-size: 14px;
+        }
+        form{
+            margin: 25px 0 0 0;
+            dl{
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: 15px;
+                row-gap: 15px;
+                input::placeholder {
+                    color: rgb(197, 197, 197);
+                }
+                input{
+                    width: 48%;
+                    padding: 10px;
+                    border: 1px solid #d2d2d2;
+                    border-radius: 5px;
+                }
+                .iti{
+                    width: 48%;
+                    .form-control{
+                        width: 100%;
+                    }
+                }
 
+            }
+        }
+        .btn{
+            text-align: center;
+            margin: 30px 30px 0 30px;
+        }
+    }
     &__heading{
         font-weight: 600;
         padding: 0 0 30px 0;

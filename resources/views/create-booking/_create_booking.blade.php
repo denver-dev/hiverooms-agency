@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('component._sidebar')
 @include('component._tab')
+@include('component._logo')
 @include('component._search')
 
 
@@ -12,7 +13,12 @@
            {{-- Main content --}}
            <div class="main-content"> 
                 {{-- Tab selection --}}
-                    @yield('tab')
+                <div class="tab--content">
+                    <div class="tab--flex">
+                       @yield('tab')
+                       @yield('logo')
+                    </div>
+                </div>
                 {{-- Search hotels --}}
                 <form action="" class="search-form">
                     <h2 class="ttl1">Search hotels</h2>

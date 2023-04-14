@@ -39,6 +39,10 @@ Route::get('/search-results', [ControllerName::class, 'search_results'])->name('
 
 Route::get('/search-confirmation', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
 
+Route::get('/final-confirmation', [ControllerName::class, 'final_confirmation'])->name('final-confirmation.final_confirmation');
+
+Route::get('/booking-success', [ControllerName::class, 'booking_success'])->name('booking-success.booking_success');
+
 Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flights');
 
 Route::get('/', function () {

@@ -210,6 +210,28 @@
     }  
 }
 
+.btn-opa{
+    transition: 0.3s;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+
+.btn a {
+    background-color: #3264FF;
+    color: #fff;
+    font-weight: 600;
+    display: block;
+    padding: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    .arrow{
+        margin: 0 0 0 10px;
+    }
+}
+
+
+
 .main-logo{
     figure{
         width: 185px;
