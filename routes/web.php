@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerName;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +47,13 @@ Route::get('/booking-success', [ControllerName::class, 'booking_success'])->name
 Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flights');
 
 Route::get('/', function () {
-    return view('layouts.app');
-});
-
-Route::get('/login', function () {
     return view('login._login');
 });
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.login');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login.loginUser');
+
+// Route::get('/login', function () {
+//     return view('login._login');
+// });
