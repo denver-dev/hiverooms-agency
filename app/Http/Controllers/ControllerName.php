@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 class ControllerName extends Controller
 {
@@ -12,7 +14,23 @@ class ControllerName extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard._dashboard');
+        $client = new Client();
+
+        $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'query' => [
+                'data' => '{
+                    "id":"city_hotel_berlin_east",
+                    "language":"en"
+                }',
+            ]
+        ]);
+
+        // dd($response);
+
+        return view('dashboard._dashboard', [
+            'response' => $response->getBody(),
+        ]);
     }
 
     public function profile(){
