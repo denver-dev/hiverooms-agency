@@ -131,7 +131,7 @@ class ControllerName extends Controller
 
             $response = $response->getBody();
             $data = json_decode($response, true);
-            dd($data);
+            // dd($data);
             $results[] = $data;
         }
 
