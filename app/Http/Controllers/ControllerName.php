@@ -6,31 +6,136 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
+use Illuminate\Http\Client\Response;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 
 class ControllerName extends Controller
 {
     public function index(){
-        return view('component._hotels');
+
+        $client = new Client();
+
+        $ids = [
+            'access_international_hotel_annex',
+            'crowne_plaza_berlin_city_centre',
+            'city_hotel_berlin_east',
+        ];
+        $results = [];
+
+        foreach($ids as $id){
+            $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+                'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                'query' => [
+                    'data' => '{
+                        "id": "'.$id.'",
+                        "language": "en"
+                    }',
+                ],
+                'debug' => null,
+                'error' => null,
+                'status' => "ok",
+            ]);
+
+            $response = $response->getBody();
+            $data = json_decode($response, true);
+            // dd($data);
+            $results[] = $data;
+        }
+        return view('component._hotels', [
+            'data' => $data,
+            'hotels' => $results,
+        ]);
     }
 
     public function dashboard(){
+
+        // $body = '{
+        //         "checkin": "2023-06-25",
+        //         "checkout": "2023-06-26",
+        //         "residency": "gb",
+        //         "language": "en",
+        //         "guests": [
+        //             {
+        //             "adults": 2,
+        //             "children": []
+        //             }
+        //         ],
+        //         "id": "access_international_hotel_annex",
+        //         "currency": "EUR"
+        //         "requests_number": 10,
+        // }';
+
+        // $psr7Request = new Psr7Request(
+        //     'POST',
+        //     'https://api.worldota.net/api/b2b/v3/search/hp/',
+        //     [
+        //         'Authorization' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+        //         'Content-Type' => 'application/json',
+        //     ],
+        //     json_encode($body)
+        // );
+
+        // // dd($psr7Request);
+
+        // $client = new Client();
+        // $response = $client->send($psr7Request);
+
+
+        // $client = new Client();
+        // $headers = [
+        //     'Content-Type' => 'application/json',
+        //     'Authorization' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+        // ];
+        // $body = '{
+        //     "checkin": "2020-04-25",
+        //     "checkout": "2020-04-26",
+        //     "residency": "gb",
+        //     "language": "en",
+        //     "guests": [
+        //         {
+        //         "adults": 2,
+        //         "children": []
+        //         }
+        //     ],
+        //     "id": "access_international_hotel_annex",
+        //     "currency": "EUR"
+        // }';
+        // $response = $client->post('https://api.worldota.net/api/b2b/v3/search/hp/', [
+        //     'headers' => $headers,
+        //     'body' => $body
+        // ]);
+        // return $response->getBody();
+
         $client = new Client();
 
-        $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
-            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-            'query' => [
-                'data' => '{
-                    "id":"city_hotel_berlin_east",
-                    "language":"en"
-                }',
-            ]
-        ]);
+        $ids = [
+            'access_international_hotel_annex',
+            'crowne_plaza_berlin_city_centre',
+            'city_hotel_berlin_east',
+        ];
+        $results = [];
 
-        // dd($response);
+        foreach($ids as $id){
+            $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+                'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                'query' => [
+                    'data' => '{
+                        "id": "'.$id.'",
+                        "language": "en"
+                    }',
+                ],
+                'debug' => null,
+                'error' => null,
+                'status' => "ok",
+            ]);
 
-        return view('dashboard._dashboard', [
-            'response' => $response->getBody(),
-        ]);
+            $response = $response->getBody();
+            $data = json_decode($response, true);
+            dd($data);
+            $results[] = $data;
+        }
+
+        return view('dashboard._dashboard');
     }
 
     public function profile(){

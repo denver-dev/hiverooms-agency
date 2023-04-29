@@ -34,7 +34,6 @@
                             <div class="commissions">
                                 <h2 class="hdng">Here's the summary of your earnings.</h2>
                                 <div class="earnings">
-                                    {{ $response }}
                                     <p class="price"><span>PHP 5,000</span> Commission</p>
                                     <p class="price"><span>5,000</span> Points</p>
                                     <i>1 point is equivalent to 1 peso (PHP)</i>
