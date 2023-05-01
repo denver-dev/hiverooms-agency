@@ -166,8 +166,29 @@ class ControllerName extends Controller
         return view('search-results._search_results');
     }
 
-    public function search_confirmation(){
-        return view('search-confirmation._search_confirmation');
+    public function search_confirmation($hotel_id){
+
+        $client = new Client();
+
+            $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+                'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                'query' => [
+                    'data' => '{
+                        "id": "'.$hotel_id.'",
+                        "language": "en"
+                    }',
+                ],
+                'debug' => null,
+                'error' => null,
+                'status' => "ok",
+            ]);
+
+            $response = $response->getBody();
+            $data = json_decode($response, true);
+            // dd($data);
+        return view('search-confirmation._search_confirmation', [
+            'hotels' => $data
+        ]);
     }
 
     public function final_confirmation(){

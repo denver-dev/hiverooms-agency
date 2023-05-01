@@ -38,7 +38,7 @@ Route::get('/create-booking', [ControllerName::class, 'create_booking'])->name('
 
 Route::get('/search-results', [ControllerName::class, 'search_results'])->name('search-results.search_results');
 
-Route::get('/search-confirmation', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
+Route::get('/search-confirmation/{hotel_id}', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
 
 Route::get('/final-confirmation', [ControllerName::class, 'final_confirmation'])->name('final-confirmation.final_confirmation');
 
