@@ -6,7 +6,7 @@ body.template-booking-success\._booking_success {
   justify-content: end;
 }
 .booking-success .success--heading {
-  color: #767171;
+  color: #768171;
   font-weight: 600;
 }
 .booking-success__confirmed .row-1 {
@@ -18,12 +18,12 @@ body.template-booking-success\._booking_success {
   font-size: 130px;
 }
 .booking-success__confirmed .row-1 dl dt {
-  color: #767171;
+  color: #768171;
   font-size: 35px;
   margin: 12px 0 15px 0;
 }
 .booking-success__confirmed .row-1 dl dd {
-  color: #767171;
+  color: #768171;
 }
 .booking-success__confirmed .row-1 .btn-success {
   margin: 40px 0 0 0;

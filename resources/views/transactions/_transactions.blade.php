@@ -38,48 +38,50 @@
                                     </div>
                                 </div>
                             </div>
-                            <table>
-                                <tr>
-                                    <th>Transaction ID #</th>
-                                    <th>Date</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>01234567890</td>
-                                    <td>03-24-2023</td>
-                                    <td>Charlie</td>
-                                    <td>hiverooms@gmail.com</td>
-                                    <td>$100</td>
-                                    <td class="status">Completed</td>
-                                </tr>
-                                <tr>
-                                    <td>01234567890</td>
-                                    <td>03-24-2023</td>
-                                    <td>Charlie</td>
-                                    <td>hiverooms@gmail.com</td>
-                                    <td>$100</td>
-                                    <td class="status">Completed</td>
-                                </tr>
-                                <tr>
-                                    <td>01234567890</td>
-                                    <td>03-24-2023</td>
-                                    <td>Charlie</td>
-                                    <td>hiverooms@gmail.com</td>
-                                    <td>$100</td>
-                                    <td class="status">Completed</td>
-                                </tr>
-                                <tr>
-                                    <td>01234567890</td>
-                                    <td>03-24-2023</td>
-                                    <td>Charlie</td>
-                                    <td>hiverooms@gmail.com</td>
-                                    <td>$100</td>
-                                    <td class="status">Completed</td>
-                                </tr>
-                          </table>
+                            <div class="transactions__responsive">
+                                <table>
+                                    <tr>
+                                        <th>Transaction ID #</th>
+                                        <th>Date</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <tr>
+                                        <td>01234567890</td>
+                                        <td>03-24-2023</td>
+                                        <td>Charlie</td>
+                                        <td>hiverooms@gmail.com</td>
+                                        <td>$100</td>
+                                        <td class="status">Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>01234567890</td>
+                                        <td>03-24-2023</td>
+                                        <td>Charlie</td>
+                                        <td>hiverooms@gmail.com</td>
+                                        <td>$100</td>
+                                        <td class="status">Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>01234567890</td>
+                                        <td>03-24-2023</td>
+                                        <td>Charlie</td>
+                                        <td>hiverooms@gmail.com</td>
+                                        <td>$100</td>
+                                        <td class="status">Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>01234567890</td>
+                                        <td>03-24-2023</td>
+                                        <td>Charlie</td>
+                                        <td>hiverooms@gmail.com</td>
+                                        <td>$100</td>
+                                        <td class="status">Completed</td>
+                                    </tr>
+                                </table>
+                            </div>
                           <div class="transactions__pagination">
                                 <div class="entries">
                                     <p>Showing 4 to 10 of 13 entries</p>

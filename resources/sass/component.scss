@@ -11,25 +11,38 @@
 
 .main-content{
     padding: 25px 40px 0 300px;
+    @media(max-width: 768px){
+        padding: 25px 20px;
+    }
     .tab--content{
       .tab--flex{
         display: flex;
         justify-content: space-between;
+        @media(max-width: 768px){
+            flex-direction: column-reverse;
+            align-items: center;
+        }
         ul{
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             column-gap: 30px;
             row-gap: 10px;
+            @media(max-width: 768px){
+                margin: 50px 0 0 0;
+            }
             li{
                 a{
                     font-weight: 600;
-                    color: #767171;
+                    color: #768171;
                     transition: 0.2s;
                     padding: 8px 15px;
                     border-radius: 20px;
                     position: relative;
                     display: inline-block;
+                    @media(max-width: 768px){
+                        padding: 8px 13px;
+                    }
                     &:hover{
                         background: #935d1f;
                         color: #fff;
@@ -67,6 +80,9 @@
                 }
                 @media(max-width: 1024px){
                     width: 48%;
+                }
+                @media(max-width: 376px){
+                    width: 100%;
                 }
             }
             img{
@@ -161,7 +177,7 @@
                         padding: 10px 15px 10px 30px;
                         cursor: pointer;
                         border-radius: 5px;
-                        border: 1px solid #767171;
+                        border: 1px solid #768171;
                         width: -webkit-fill-available;
                         font-weight: bold;
                     }
@@ -199,12 +215,12 @@
         }
         button{
             background-color: transparent;
-            border: 1px solid #767171;
+            border: 1px solid #768171;
             border-radius: 5px;
             width: 100%;
             padding: 10px;
             text-align: left;
-            color: #767171;
+            color: #768171;
             font-weight: 600;
         }
     }  
@@ -225,6 +241,7 @@
     padding: 15px 0;
     border-radius: 5px;
     text-align: center;
+    line-height: normal;
     .arrow{
         margin: 0 0 0 10px;
     }

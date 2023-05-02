@@ -1,5 +1,25 @@
 // require('./bootstrap');
 
+  const menu_btn = document.querySelector('.hamburger');
+  const mobile_btn = document.querySelector('.sidebar-left__nav--mobile');
+  
+  menu_btn.addEventListener('click', function () {
+    menu_btn.classList.toggle('is-active');
+    mobile_btn.classList.toggle('is-active');
+  });
+
+
+//   var btns = document.getElementsByClassName("nav-link");
+//   for (var i = 0; i < btns.length; i++){
+//     btns[i].addEventListener("click", function() {
+//     var current = document.getElementsByClassName("is-active");
+//     current[0].className = current[0].className.replace("is-active", "");
+//     this.className += "is-active";
+//   });
+// }
+
+
+
 
 
 config = {
@@ -10,9 +30,6 @@ config = {
   
 }
 flatpickr("input[type=datetime-local]", config);
-
-
-
 
 // function searchDestinations() {
 //     var searchText = document.getElementById("destination-search").value;
@@ -43,3 +60,6 @@ window.intlTelInput(input, {
   separateDialCode: true,
   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/utils.js",
 });
+
+
+

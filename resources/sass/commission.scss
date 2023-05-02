@@ -9,6 +9,9 @@ body.template-commission\._commission{
             border-collapse: collapse;
             width: 100%;
             height: 90px;
+            @media(max-width: 1400px){
+                width: 1010px;
+            }
             tr{
                 &:first-child{
                     border-top: 2px solid #f8f5f4;
@@ -43,6 +46,8 @@ body.template-commission\._commission{
         .ttl-w-search{
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            row-gap: 20px;
         }
         .d-flex{
             display: flex;
@@ -67,6 +72,9 @@ body.template-commission\._commission{
                 }
             }
         }
+    }
+    &__table-responsive{
+        overflow-x: auto;
     }
     &__pagination{
         display: flex;

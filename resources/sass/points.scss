@@ -22,6 +22,9 @@ body.template-points\._points{
                 &:nth-child(2){
                     color: #935d1f;
                     font-size: 50px;
+                    @media(max-width: 768px){
+                        font-size: 40px;
+                    }
                     span{
                         font-weight: 600;
                     }
@@ -39,10 +42,13 @@ body.template-points\._points{
         .card-inner{
             display: flex;
             column-gap: 30px;
+            row-gap: 30px;
+            flex-wrap: wrap;
             .card{
                 box-shadow: 5px 6px 13px -4px #c0bebe;
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
+                flex: 1 1 30%;
                 &:nth-child(n+1){
                     .card-upper{
                         background-image: linear-gradient(62deg, #35699d 0%, #d0a0ff 100%);
@@ -79,6 +85,8 @@ body.template-points\._points{
                         align-items: center;
                         justify-content: space-between;
                         column-gap: 15px;
+                        row-gap: 15px;
+                        flex-wrap: wrap;
                     }
                     dd{
                         .btn-link{

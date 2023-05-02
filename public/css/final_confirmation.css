@@ -6,6 +6,7 @@ body.template-final-confirmation\._final_confirmation {
   background-color: #fff;
   padding: 25px;
   border-radius: 10px;
+  overflow-x: auto;
 }
 .final-confirmation__table table {
   width: 100%;

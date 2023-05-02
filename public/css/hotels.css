@@ -7,6 +7,12 @@ body.template-component\._hotels {
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
+  row-gap: 30px;
+}
+@media (max-width: 1024px) {
+  .hotel__rm-card {
+    flex-wrap: wrap;
+  }
 }
 .hotel__rm-card:not(:last-child) {
   margin: 0 0 20px 0;
@@ -14,6 +20,11 @@ body.template-component\._hotels {
 .hotel__rm-card .rm-img figure {
   width: 370px;
   position: relative;
+}
+@media (max-width: 1024px) {
+  .hotel__rm-card .rm-img figure {
+    width: 100%;
+  }
 }
 .hotel__rm-card .rm-img figure .fa-heart {
   position: absolute;
@@ -34,9 +45,20 @@ body.template-component\._hotels {
   flex-direction: column;
   justify-content: space-between;
 }
+@media (max-width: 1024px) {
+  .hotel__rm-card .rm-content {
+    padding: 0 0 0 0;
+  }
+}
 .hotel__rm-card .rm-content .rm-main-row {
   display: flex;
   justify-content: space-between;
+  row-gap: 20px;
+}
+@media (max-width: 1024px) {
+  .hotel__rm-card .rm-content .rm-main-row {
+    flex-wrap: wrap;
+  }
 }
 .hotel__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-title {
   font-size: 16px;
@@ -76,6 +98,12 @@ body.template-component\._hotels {
   color: #fff;
   padding: 10px 15px;
   display: inline-block;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .hotel__rm-card .rm-content .rm-bottom .btn-link {
+    padding: 5px 15px;
+  }
 }
 .hotel__rm-card .rm-content .rm-bottom .rm-reviews p {
   font-size: 13px;

@@ -21,7 +21,7 @@
                             </figure>
                     </div>
                     <div class="dashboard__greetings">
-                        <h2 class="hdng">Welcome Agent! <span>Today is April 14, 2023</span></h2>
+                        <h2 class="hdng">Welcome Agent! <span>Today is May 02, 2023</span></h2>
                         <p class="sub-hdng">
                             How's your day?
                             <span>
