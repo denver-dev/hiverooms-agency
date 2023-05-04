@@ -8,7 +8,7 @@
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="main-content"> 
+       <div class="main-content">
             {{-- Tab selection --}}
             <div class="tab--content">
                 <div class="tab--flex">
@@ -39,24 +39,29 @@
                                         <div class="rm-main">
                                             <div class="rm-heading">
                                                 <a href="#" class="btn-link">
-                                                    <h2 class="rm-title">Radisson Blue Cebu</h2>
+                                                    <h2 class="rm-title">{{ $hotels['data']['name'] }}</h2>
                                                     <div class="rm-star">
                                                         <?php
-                                                            for($i=0; $i<5; $i++){
+                                                            $star_rating = $hotels['data']['star_rating'];
+                                                            for($i=0; $i<$star_rating; $i++){
                                                                 echo '<i class="fa-solid fa-star"></i>';
                                                             }
-                                                        ?>  
+                                                        ?>
                                                     </div>
                                                     <div class="rm-location">
-                                                        <p><i class="fa-solid fa-location-dot "></i><span>Serging Osmena Boulevard, Corner Pope John Paul II Ave, Cebu City, 6000 Cebu<span></p>
+                                                        <p><i class="fa-solid fa-location-dot "></i><span>{{ $hotels['data']['address'] }}<span></p>
                                                     </div>
                                                 </a>
                                             </div>
                                             <div class="rm-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                <p>
+                                                    {{ $hotels['data']['description_struct'][0]['paragraphs'][0] }}
+                                                    {{ $hotels['data']['description_struct'][1]['paragraphs'][0] }}
+                                                    {{ $hotels['data']['description_struct'][1]['paragraphs'][1] }}</p>
                                             </div>
+                                            @foreach($hotels['data']['room_groups'] as $room_group)
                                             <div class="rm-type">
-                                                <h3>Superior Room</h3>
+                                                <h3>{{ $room_group['name'] }}</h3>
                                             </div>
                                             <div class="rm-amenities">
                                                 <dl>
@@ -70,6 +75,7 @@
                                                     <dd><i class="fa fa-circle-check"></i><span>Free cancellation before 00:00, April 03, 2023 GMT+8 (hotel's local time)</span></dd>
                                                 </dl>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +102,7 @@
                                         <input type="email" id="email" name="email" placeholder="Email">
                                         <input id="form-field-phone" type="tel" class="form-control" name="phone" required>
                                     </dl>
-                                </form> 
+                                </form>
                                 <div class="btn">
                                     <a href="{{route ('final-confirmation.final_confirmation') }}" class="btn-opa">Next Step: Final Confirmation <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>
                                 </div>

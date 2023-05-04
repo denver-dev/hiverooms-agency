@@ -8,7 +8,7 @@
             {{-- Sidebar Menu --}}
                 @yield('sidebar')
            {{-- Main content --}}
-           <div class="main-content"> 
+           <div class="main-content">
                 <div class="dashboard__main--content">
                     <div class="dashboard__logo">
                         <a href="#">
