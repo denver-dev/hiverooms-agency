@@ -108,6 +108,19 @@ class ControllerName extends Controller
 
         $client = new Client();
 
+        $testResponse = $client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/info/dump/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'inventory' => 'all',
+                'language' => 'en',
+            ]
+        ]);
+
+        echo $testResponse->getBody()->getContents();
+
         $ids = [
             'access_international_hotel_annex',
             'crowne_plaza_berlin_city_centre',
