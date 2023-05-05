@@ -70,7 +70,7 @@
                                     </div>
                                     <div>
                                         <p class="price"><span>₱</span>1,234.10</p>
-                                        <a href="{{ route('search-confirmation.search_confirmation', $hotel['data']['id']) }}" class="btn-link">Check availability</a>
+                                        <a href="{{ route('search-confirmation.search_confirmation', $hotel['data']['id']) }}" class="btn-link">Book Now</a>
                                     </div>
                                 </div>
                             </div>

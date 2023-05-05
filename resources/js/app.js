@@ -19,9 +19,6 @@
 // }
 
 
-
-
-
 config = {
     dateFormat: "Y-m-d",
     altInput: true,

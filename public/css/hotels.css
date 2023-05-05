@@ -80,6 +80,15 @@ body.template-component\._hotels {
 .hotel__rm-card .rm-content .rm-main-row .rm-main .rm-description {
   padding: 15px 0 0 0;
 }
+.hotel__rm-card .rm-content .rm-main-row .rm-main .rm-description p {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 14px;
+  text-overflow: ellipsis;
+}
 .hotel__rm-card .rm-content .rm-main-row .rm-refund {
   width: 100%;
   text-align: right;
@@ -96,9 +105,11 @@ body.template-component\._hotels {
 .hotel__rm-card .rm-content .rm-bottom .btn-link {
   background-color: #935d1f;
   color: #fff;
-  padding: 10px 15px;
+  padding: 5px 15px;
   display: inline-block;
   text-align: center;
+  border-radius: 50px;
+  font-size: 15px;
 }
 @media (max-width: 768px) {
   .hotel__rm-card .rm-content .rm-bottom .btn-link {
