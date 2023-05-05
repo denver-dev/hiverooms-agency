@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @include('component._sidebar')
 @include('component._tab')
-@include('component._tab')
 @include('component._logo')
 
 <section class="commission">
@@ -39,40 +38,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <table class="table-1">
-                                <tr>
-                                    <th>Commission Percentage</th>
-                                    <th>Total Sales</th>
-                                    <th>Total Commission Paid</th>
-                                </tr>
-                                <tr>
-                                    <td>10%</td>
-                                    <td class="bold">Php 600,000.00</td>
-                                    <td class="bold">Php 1,000,000.00</td>
-                                </tr>
-                            </table>
-                            <table class="table-2">
-                                <tr>
-                                    <th>Sales Person</th>
-                                    <th>Total Sales Amount</th>
-                                    <th>Commission</th>
-                                </tr>
-                                <tr>
-                                    <td>Person 1</td>
-                                    <td>Php 66,000.00</td>
-                                    <td>Php 32,000,000.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Person 2</td>
-                                    <td>Php 66,000.00</td>
-                                    <td>Php 32,000,000.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Person 3</td>
-                                    <td>Php 66,000.00</td>
-                                    <td>Php 32,000,000.00</td>
-                                </tr>
-                            </table>
+                            <div class="commission__table-responsive">
+                                <table class="table-1">
+                                    <tr>
+                                        <th>Commission Percentage</th>
+                                        <th>Total Sales</th>
+                                        <th>Total Commission Paid</th>
+                                    </tr>
+                                    <tr>
+                                        <td>10%</td>
+                                        <td class="bold">Php 600,000.00</td>
+                                        <td class="bold">Php 1,000,000.00</td>
+                                    </tr>
+                                </table>
+                                <table class="table-2">
+                                    <tr>
+                                        <th>Sales Person</th>
+                                        <th>Total Sales Amount</th>
+                                        <th>Commission</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Person 1</td>
+                                        <td>Php 66,000.00</td>
+                                        <td>Php 32,000,000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Person 2</td>
+                                        <td>Php 66,000.00</td>
+                                        <td>Php 32,000,000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Person 3</td>
+                                        <td>Php 66,000.00</td>
+                                        <td>Php 32,000,000.00</td>
+                                    </tr>
+                                </table>
+                            </div>
                           <div class="commission__pagination">
                                 <div class="entries">
                                     <p>Showing 4 to 10 of 13 entries</p>

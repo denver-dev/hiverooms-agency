@@ -10,6 +10,11 @@ body.template-transactions\._transactions {
   width: 100%;
   height: 90px;
 }
+@media (max-width: 1400px) {
+  .transactions__record--main table {
+    width: 1010px;
+  }
+}
 .transactions__record--main table tr:first-child {
   border-top: 2px solid #f8f5f4;
 }
@@ -47,6 +52,8 @@ body.template-transactions\._transactions {
 .transactions__search .ttl-w-search {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 .transactions__search .d-flex {
   display: flex;
@@ -66,6 +73,11 @@ body.template-transactions\._transactions {
   background-color: #935d1f;
   color: #fff;
   border-radius: 100px;
+  text-align: center;
+  white-space: nowrap;
+}
+.transactions__responsive {
+  overflow-x: auto;
 }
 .transactions__pagination {
   display: flex;

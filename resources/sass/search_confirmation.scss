@@ -6,14 +6,23 @@ body.template-search-confirmation\._search_confirmation{
     &__destinations{
         display: flex;
         column-gap: 20px;
+        @media(max-width: 1200px){
+            flex-wrap: wrap;
+        }
         .destinations--content{
             background-color: #fff;
             border-radius: 5px;
             padding: 20px;
             width: 70%;
+            @media(max-width: 1200px){
+                width: 100%;
+            }
         }
         .destinations--prices{
             width: 30%;
+            @media(max-width: 1200px){
+                width: 100%;
+            }
             .row{
                 padding: 20px;
                 background-color: #fff;
@@ -105,11 +114,18 @@ body.template-search-confirmation\._search_confirmation{
         }
     }
     &__rm-card{
-        display: flex;
+        // display: flex;
+        // row-gap: 20px;
+        @media(max-width: 992px){
+            flex-wrap: wrap;
+        }
         .rm-img{
             figure{
-                width: 200px;
+                width: 400px;
                 position: relative;
+                @media(max-width: 992px){
+                    width: 100%;
+                }
                 .fa-heart{
                     position: absolute;
                     right: 10px;
@@ -121,22 +137,31 @@ body.template-search-confirmation\._search_confirmation{
                 }
                 img{
                     border-radius: 5px;
-                    height: 220px;
+                    height: auto;
                     object-fit: cover;
+                    float: left;
+                    margin: 0 10px 0 0;
+                    @media(max-width: 992px){
+                        height: auto;
+                    }
                 }
             }
         }
         .rm-content{
             width: 100%;
-            padding: 0 0 0 20px;
             .rm-main-row{
-                display: flex;
-                justify-content: space-between;
                 .rm-main{
+                    @media(max-width: 992px){
+                        padding-top: 12px;
+                    }
                     .rm-heading{
                         .rm-title{
                             font-size: 16px;
                             font-weight: 600;
+                            @media(max-width: 992px){
+                                padding-top: 12px;
+                                display: inline-block;
+                            }
                         }
                         .rm-star{
                             padding: 6px 0;
@@ -165,30 +190,75 @@ body.template-search-confirmation\._search_confirmation{
                         }
                     }
                 }
-                .rm-amenities{
-                    dl{
-                        display: flex;
-                        align-items: center;
-                        column-gap: 25px;
-                        flex-wrap: wrap;
-                        &:nth-child(2){
-                            margin: 10px 0 0 0;
-                            dd{
-                                color: green;
+            }
+        }
+    }
+    &__ch-room-type{
+        padding: 25px 0;
+        form{
+            label{
+                strong{
+                    font-size: 20px;
+                }
+            }
+            select{
+                padding: 5px;
+                border-radius: 10px;
+                width: 190px;
+            }
+        }
+        .selection{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 15px;
+        }
+    }
+    &__room-type{
+        overflow-y: auto;
+        .room-type-inner{
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+            clear: both;
+            height: 800px;
+            margin: 0 15px 0 0;
+            .layout-grid{
+                .layout-grid-item{
+                    .rm-inner-content{
+                        padding: 12px;
+                        .rm-type{
+                            h3{
                                 font-weight: 600;
                             }
                         }
-                        dd{
-                            font-size: 14px;
-                            span{
-                                vertical-align: middle;
-                                padding: 0 0 0 10px;
+                        .rm-amenities{
+                            dl{
+                                display: flex;
+                                align-items: center;
+                                column-gap: 25px;
+                                flex-wrap: wrap;
+                                &:nth-child(2){
+                                    margin: 10px 0 0 0;
+                                    dd{
+                                        color: green;
+                                        font-weight: 600;
+                                    }
+                                }
+                                dd{
+                                    font-size: 14px;
+                                    span{
+                                        vertical-align: middle;
+                                        padding: 0 0 0 10px;
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
     }
     &__rm-selected-date{
         padding: 15px 0 15px 0;
@@ -196,14 +266,8 @@ body.template-search-confirmation\._search_confirmation{
         border-top: 1px dashed #cececefe;
         border-bottom: 1px dashed #cececefe;
         dl{
-            display: flex;
             dd{
                 font-size: 13px;
-                width: 50%;
-                &:nth-child(1){
-                    margin-right: 25px;
-                    border-right: 1px solid #8b8b8b;
-                }
                 span{
                     color: #868686;
                 }
@@ -235,7 +299,7 @@ body.template-search-confirmation\._search_confirmation{
         background-color: #eeefff;
         padding: 15px;
         .desc{
-            color: #767171;
+            color: #768171;
             font-size: 14px;
         }
         form{
@@ -253,9 +317,15 @@ body.template-search-confirmation\._search_confirmation{
                     padding: 10px;
                     border: 1px solid #d2d2d2;
                     border-radius: 5px;
+                    @media(max-width: 768px){
+                        flex: 1 1 48%;
+                    }
                 }
                 .iti{
                     width: 48%;
+                    @media(max-width: 768px){
+                        width: 100%;
+                    }
                     .form-control{
                         width: 100%;
                     }
@@ -266,6 +336,9 @@ body.template-search-confirmation\._search_confirmation{
         .btn{
             text-align: center;
             margin: 30px 30px 0 30px;
+            @media(max-width: 768px){
+                margin: 30px 0 10px 0;
+            }
         }
     }
     &__heading{

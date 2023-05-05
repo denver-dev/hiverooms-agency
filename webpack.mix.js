@@ -14,7 +14,11 @@ const mix = require('laravel-mix');
 
  mix.js('resources/js/bootstrap.js', 'public/js');
  mix.js('resources/js/app.js', 'public/js');
+ mix.js('resources/js/swiper.js', 'public/js');
+ 
+ mix.sass('resources/sass/swiper.scss', 'public/css');
  mix.sass('resources/sass/login.scss', 'public/css');
+ mix.sass('resources/sass/app.scss', 'public/css');
  mix.sass('resources/sass/dashboard.scss', 'public/css');
  mix.sass('resources/sass/styles.scss', 'public/css');
  mix.sass('resources/sass/hotels.scss', 'public/css');

@@ -20,9 +20,13 @@
     <link rel="stylesheet" href="{{ mix('css/search_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/final_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/booking_success.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/swiper.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/intlTelInput.css') }}">
     <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
+
+
     
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,24 +36,25 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
+
+
 </head>
 <body class="template-{{ $viewName }}">
 
 
 
 <footer>
-
-
-
-    
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/intlTelInput.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.8/jquery.inputmask.bundle.min.js'></script>
 
 {{-- flatpicker date --}}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{{ mix('js/swiper.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('js/bootstrap.js') }}"></script>
+
 
 </footer>
 

@@ -10,6 +10,9 @@ body.template-login\._login{
         font-size: 60px;
         color: #404040;
         font-weight: 700;
+        @media(max-width: 768px){
+            font-size: 47px;
+        }
         span{
             color: #935D1F;
         }

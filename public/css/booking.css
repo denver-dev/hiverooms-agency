@@ -10,6 +10,11 @@ body.template-booking-history\._booking {
   width: 100%;
   height: 90px;
 }
+@media (max-width: 1400px) {
+  .booking_history__record--main table {
+    width: 1010px;
+  }
+}
 .booking_history__record--main table tr:first-child {
   border-top: 2px solid #f8f5f4;
 }
@@ -53,6 +58,8 @@ body.template-booking-history\._booking {
 .booking_history__search .ttl-w-search {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 .booking_history__search .d-flex {
   display: flex;
@@ -72,6 +79,11 @@ body.template-booking-history\._booking {
   background-color: #935d1f;
   color: #fff;
   border-radius: 100px;
+  text-align: center;
+  white-space: nowrap;
+}
+.booking_history__table-responsive {
+  overflow-x: auto;
 }
 .booking_history__pagination {
   display: flex;

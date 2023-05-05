@@ -5,6 +5,14 @@ body.template-profile\._profile {
 .profile__form {
   background-color: #fff;
 }
+.profile__form form {
+  width: 100%;
+}
+@media (max-width: 1400px) {
+  .profile__form form {
+    width: 1010px;
+  }
+}
 .profile__form form dl {
   display: flex;
   padding: 10px 0;
@@ -23,4 +31,10 @@ body.template-profile\._profile {
 }
 .profile__form form dl dd:nth-child(2) {
   width: 65px;
+}
+.profile__form .form-responsive {
+  width: 100%;
+  z-index: 150;
+  overflow-x: auto;
+  position: relative;
 }

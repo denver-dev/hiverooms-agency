@@ -7,6 +7,10 @@ body.template-profile\._profile{
     &__form{
         background-color: #fff;
         form{
+            width: 100%;
+            @media(max-width: 1400px){
+                width: 1010px;
+            }
             dl{
                 display: flex;
                 padding: 10px 0;
@@ -28,6 +32,12 @@ body.template-profile\._profile{
                     }
                 }
             }
+        }
+        .form-responsive{
+            width: 100%;
+            z-index: 150;
+            overflow-x: auto;
+            position: relative;
         }
     }
 

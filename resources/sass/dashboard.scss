@@ -15,6 +15,10 @@ body.template-dashboard\._dashboard{
                 position: absolute;
                 right: 0;
                 top: 0;
+                @media(max-width: 768px){
+                    position: relative;
+                    margin: 0 auto;
+                }
             }
         }
         .dashboard-bee{
@@ -22,15 +26,29 @@ body.template-dashboard\._dashboard{
             right: 35px;
             position: absolute;
             top: 50px;
+            @media(max-width: 768px){
+                position: relative;
+                margin: 0 auto;
+                right: 0;
+                top: 0;
+                width: 80px;
+            }
         }
     }
 
     &__greetings{
+        @media(max-width: 768px){
+            padding: 35px 0 0 0;
+        }
         .hdng{
             color: #0070C0;
             font-weight: 600;
             font-size: 30px;
             padding: 0 185px 0 0;
+            @media(max-width: 768px){
+                padding: 0 0 0 0;
+                font-size: 23px;
+            }
             span{
                 color: #595959;
                 font-weight: 600;
@@ -48,11 +66,22 @@ body.template-dashboard\._dashboard{
             display: flex;
             align-items: center;
             margin: 120px 0 0 0;
+            @media(max-width: 768px){
+                margin: 70px 0 0 0;
+                flex-direction: column;
+                align-items: baseline;
+            }
+            @media(max-width: 500px){
+                align-items: center;
+            }
             .commissions{
                 .hdng{
                     color: #595959;
                     padding: 0 0 20px 0;
                     font-size: 30px;
+                    @media(max-width: 768px){
+                        font-size: 23px;
+                    }
                 }
                 .earnings{
                     .price{
@@ -63,6 +92,9 @@ body.template-dashboard\._dashboard{
                             font-size: 60px;
                             color: #FFC000;
                             padding: 0 5px 0 0;
+                            @media(max-width: 768px){
+                                font-size: 35px;
+                            }
                         }
                     }
                     i{
@@ -73,6 +105,12 @@ body.template-dashboard\._dashboard{
             }
             .btns{
                 margin: 50px 0 0 0;
+                @media(max-width: 768px){
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                }
                 p{
                     &:nth-child(1){
                         text-align: right;

@@ -59,31 +59,65 @@
                                                     {{ $hotels['data']['description_struct'][1]['paragraphs'][0] }}
                                                     {{ $hotels['data']['description_struct'][1]['paragraphs'][1] }}</p>
                                             </div>
-                                            @foreach($hotels['data']['room_groups'] as $room_group)
-                                            <div class="rm-type">
-                                                <h3>{{ $room_group['name'] }}</h3>
-                                            </div>
-                                            <div class="rm-amenities">
-                                                <dl>
-                                                    <dd><i class="fa-regular fa-user"></i><span>2 adults</span></dd>
-                                                    <dd><i class="fa fa-bed"></i><span>1 king bed or 2 single beds</span></dd>
-                                                    <dd><i class="fa fa-light fa-utensils"></i><span>includes breakfast for 2 guest</span></dd>
-                                                    <dd><i class="fa fa-ban-smoking"></i><span>Non-smoking</span></dd>
-                                                    <dd><i class="fa fa-house-chimney-window"></i><span>Fixed window</span></dd>
-                                                </dl>
-                                                <dl>
-                                                    <dd><i class="fa fa-circle-check"></i><span>Free cancellation before 00:00, April 03, 2023 GMT+8 (hotel's local time)</span></dd>
-                                                </dl>
-                                            </div>
-                                            @endforeach
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="search-confirmation__ch-room-type">
+                                <form action="">
+                                    <div class="selection">
+                                        <label for="cars"><i class="fa-solid fa-bed">&nbsp;</i>
+                                            <strong>Choose your room</strong>
+                                        </label>
+                                        <select id="room-type" name="" form="">
+                                        <option value="">Select room type</option>
+                                        <option value="">Room type 1</option>
+                                        <option value="">Room type 2</option>
+                                        <option value="">Room type 3</option>
+                                        <option value="">Room type 4</option>
+                                        <option value="">Room type 5</option>
+                                        <option value="">Room type 6</option>
+                                        <option value="">Room type 7</option>
+                                        <option value="">Room type 8</option>
+                                        <option value="">Room type 9</option>
+                                        <option value="">Room type 10</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="search-confirmation__room-type">
+                                <div class="room-type-inner">    
+                                    @foreach($hotels['data']['room_groups'] as $room_group)
+                                        <div class="swiper-slide layout-grid">
+                                            <div class="layout-grid-item">
+                                                <div class="gallery">
+                                                    <a href="#"><figure><img src="{{ asset('images/hotel-room/bohol-hotel.jpg') }}" alt=""></figure></a>
+                                                </div>
+                                                <div class="rm-inner-content">
+                                                    <div class="rm-type">
+                                                        <h3>{{ $room_group['name'] }}</h3>
+                                                    </div>
+                                                    <div class="rm-amenities">
+                                                        <dl>
+                                                            <dd><i class="fa-regular fa-user"></i><span>2 adults</span></dd>
+                                                            <dd><i class="fa fa-bed"></i><span>1 king bed or 2 single beds</span></dd>
+                                                            <dd><i class="fa fa-light fa-utensils"></i><span>includes breakfast for 2 guest</span></dd>
+                                                            <dd><i class="fa fa-ban-smoking"></i><span>Non-smoking</span></dd>
+                                                            <dd><i class="fa fa-house-chimney-window"></i><span>Fixed window</span></dd>
+                                                        </dl>
+                                                        <dl>
+                                                            <dd><i class="fa fa-circle-check"></i><span>Free cancellation before 00:00, April 03, 2023 GMT+8 (hotel's local time)</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="search-confirmation__rm-selected-date">
                                 <dl>
                                     <dd><i class="fa fa-calendar-days" style="vertical-align: text-top;"></i> Date Tue, April 05 - Wed, Mar 1 <span>1 night</span></dd>
-                                    <dd>Our last room!</dd>
                                 </dl>
                             </div>
                             <div class="search-confirmation__booking">

@@ -10,6 +10,11 @@ body.template-login\._login {
   color: #404040;
   font-weight: 700;
 }
+@media (max-width: 768px) {
+  .login__heading {
+    font-size: 47px;
+  }
+}
 .login__heading span {
   color: #935D1F;
 }

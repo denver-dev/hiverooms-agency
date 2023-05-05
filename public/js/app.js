@@ -5,6 +5,22 @@ var __webpack_exports__ = {};
   \*****************************/
 // require('./bootstrap');
 
+var menu_btn = document.querySelector('.hamburger');
+var mobile_btn = document.querySelector('.sidebar-left__nav--mobile');
+menu_btn.addEventListener('click', function () {
+  menu_btn.classList.toggle('is-active');
+  mobile_btn.classList.toggle('is-active');
+});
+
+//   var btns = document.getElementsByClassName("nav-link");
+//   for (var i = 0; i < btns.length; i++){
+//     btns[i].addEventListener("click", function() {
+//     var current = document.getElementsByClassName("is-active");
+//     current[0].className = current[0].className.replace("is-active", "");
+//     this.className += "is-active";
+//   });
+// }
+
 config = {
   dateFormat: "Y-m-d",
   altInput: true,

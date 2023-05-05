@@ -41,15 +41,15 @@ input, select {
 :-ms-input-placeholder {
   color: #BBB; }
 
-button {
+/* button {
   color: #FFF;
   background-color: #428BCA;
-  border: 1px solid #357EBD; }
-  button:hover {
+  border: 1px solid #357EBD; } */
+  /* button:hover {
     background-color: #3276B1;
     border-color: #285E8E;
     cursor: pointer; 
-  text-decoration: none;}
+  text-decoration: none;} */
 
 #result {
   margin-bottom: 100px; }

@@ -38,53 +38,55 @@
                                     </div>
                                 </div>
                             </div>
-                            <table>
-                                <tr>
-                                    <th>Booking Ref ID #</th>
-                                    <th>Date</th>
-                                    <th>Event</th>
-                                    <th>Tickets</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Cancel</th>
-                                </tr>
-                                <tr>
-                                    <td>#1234</td>
-                                    <td>03-24-2023</td>
-                                    <td>Summer Madness</td>
-                                    <td>Available 123</td>
-                                    <td>100</td>
-                                    <td class="status">Pending</td>
-                                    <td><a href="#">Cancel Booking</a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1235</td>
-                                    <td>03-24-2023</td>
-                                    <td>Summer Madness</td>
-                                    <td>Available 123</td>
-                                    <td>100</td>
-                                    <td class="status">Pending</td>
-                                    <td><a href="#">Cancel Booking</a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1236</td>
-                                    <td>03-24-2023</td>
-                                    <td>Summer Madness</td>
-                                    <td>Available 123</td>
-                                    <td>100</td>
-                                    <td class="status">Pending</td>
-                                    <td><a href="#">Cancel Booking</a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1237</td>
-                                    <td>03-24-2023</td>
-                                    <td>Summer Madness</td>
-                                    <td>Available 123</td>
-                                    <td>100</td>
-                                    <td class="status">Pending</td>
-                                    <td><a href="#">Cancel Booking</a></td>
-                                </tr>
-                          </table>
+                            <div class="booking_history__table-responsive">
+                                <table>
+                                    <tr>
+                                        <th>Booking Ref ID #</th>
+                                        <th>Date</th>
+                                        <th>Event</th>
+                                        <th>Tickets</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Cancel</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#1234</td>
+                                        <td>03-24-2023</td>
+                                        <td>Summer Madness</td>
+                                        <td>Available 123</td>
+                                        <td>100</td>
+                                        <td class="status">Pending</td>
+                                        <td><a href="#">Cancel Booking</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1235</td>
+                                        <td>03-24-2023</td>
+                                        <td>Summer Madness</td>
+                                        <td>Available 123</td>
+                                        <td>100</td>
+                                        <td class="status">Pending</td>
+                                        <td><a href="#">Cancel Booking</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1236</td>
+                                        <td>03-24-2023</td>
+                                        <td>Summer Madness</td>
+                                        <td>Available 123</td>
+                                        <td>100</td>
+                                        <td class="status">Pending</td>
+                                        <td><a href="#">Cancel Booking</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1237</td>
+                                        <td>03-24-2023</td>
+                                        <td>Summer Madness</td>
+                                        <td>Available 123</td>
+                                        <td>100</td>
+                                        <td class="status">Pending</td>
+                                        <td><a href="#">Cancel Booking</a></td>
+                                    </tr>
+                                </table>
+                            </div>
                           <div class="booking_history__pagination">
                                 <div class="entries">
                                     <p>Showing 4 to 10 of 13 entries</p>

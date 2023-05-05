@@ -12,17 +12,43 @@ body.template-dashboard\._dashboard {
   right: 0;
   top: 0;
 }
+@media (max-width: 768px) {
+  .dashboard__logo a .hive-logo {
+    position: relative;
+    margin: 0 auto;
+  }
+}
 .dashboard__logo .dashboard-bee {
   width: 120px;
   right: 35px;
   position: absolute;
   top: 50px;
 }
+@media (max-width: 768px) {
+  .dashboard__logo .dashboard-bee {
+    position: relative;
+    margin: 0 auto;
+    right: 0;
+    top: 0;
+    width: 80px;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard__greetings {
+    padding: 35px 0 0 0;
+  }
+}
 .dashboard__greetings .hdng {
   color: #0070C0;
   font-weight: 600;
   font-size: 30px;
   padding: 0 185px 0 0;
+}
+@media (max-width: 768px) {
+  .dashboard__greetings .hdng {
+    padding: 0 0 0 0;
+    font-size: 23px;
+  }
 }
 .dashboard__greetings .hdng span {
   color: #595959;
@@ -39,10 +65,27 @@ body.template-dashboard\._dashboard {
   align-items: center;
   margin: 120px 0 0 0;
 }
+@media (max-width: 768px) {
+  .dashboard__summary .summary-inner {
+    margin: 70px 0 0 0;
+    flex-direction: column;
+    align-items: baseline;
+  }
+}
+@media (max-width: 500px) {
+  .dashboard__summary .summary-inner {
+    align-items: center;
+  }
+}
 .dashboard__summary .summary-inner .commissions .hdng {
   color: #595959;
   padding: 0 0 20px 0;
   font-size: 30px;
+}
+@media (max-width: 768px) {
+  .dashboard__summary .summary-inner .commissions .hdng {
+    font-size: 23px;
+  }
 }
 .dashboard__summary .summary-inner .commissions .earnings .price {
   font-weight: 600;
@@ -54,12 +97,25 @@ body.template-dashboard\._dashboard {
   color: #FFC000;
   padding: 0 5px 0 0;
 }
+@media (max-width: 768px) {
+  .dashboard__summary .summary-inner .commissions .earnings .price span {
+    font-size: 35px;
+  }
+}
 .dashboard__summary .summary-inner .commissions .earnings i {
   color: #595959;
   font-size: 20px;
 }
 .dashboard__summary .summary-inner .btns {
   margin: 50px 0 0 0;
+}
+@media (max-width: 768px) {
+  .dashboard__summary .summary-inner .btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
 .dashboard__summary .summary-inner .btns p:nth-child(1) {
   text-align: right;

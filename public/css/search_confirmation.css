@@ -7,14 +7,29 @@ body.template-search-confirmation\._search_confirmation {
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
+@media (max-width: 1200px) {
+  .search-confirmation__destinations {
+    flex-wrap: wrap;
+  }
+}
 .search-confirmation__destinations .destinations--content {
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
   width: 70%;
 }
+@media (max-width: 1200px) {
+  .search-confirmation__destinations .destinations--content {
+    width: 100%;
+  }
+}
 .search-confirmation__destinations .destinations--prices {
   width: 30%;
+}
+@media (max-width: 1200px) {
+  .search-confirmation__destinations .destinations--prices {
+    width: 100%;
+  }
 }
 .search-confirmation__destinations .destinations--prices .row {
   padding: 20px;
@@ -87,12 +102,19 @@ body.template-search-confirmation\._search_confirmation {
   margin: 0 0 0 20px;
   font-size: 14px;
 }
-.search-confirmation__rm-card {
-  display: flex;
+@media (max-width: 992px) {
+  .search-confirmation__rm-card {
+    flex-wrap: wrap;
+  }
 }
 .search-confirmation__rm-card .rm-img figure {
-  width: 200px;
+  width: 400px;
   position: relative;
+}
+@media (max-width: 992px) {
+  .search-confirmation__rm-card .rm-img figure {
+    width: 100%;
+  }
 }
 .search-confirmation__rm-card .rm-img figure .fa-heart {
   position: absolute;
@@ -105,21 +127,34 @@ body.template-search-confirmation\._search_confirmation {
 }
 .search-confirmation__rm-card .rm-img figure img {
   border-radius: 5px;
-  height: 220px;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
+  float: left;
+  margin: 0 10px 0 0;
+}
+@media (max-width: 992px) {
+  .search-confirmation__rm-card .rm-img figure img {
+    height: auto;
+  }
 }
 .search-confirmation__rm-card .rm-content {
   width: 100%;
-  padding: 0 0 0 20px;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row {
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 992px) {
+  .search-confirmation__rm-card .rm-content .rm-main-row .rm-main {
+    padding-top: 12px;
+  }
 }
 .search-confirmation__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-title {
   font-size: 16px;
   font-weight: 600;
+}
+@media (max-width: 992px) {
+  .search-confirmation__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-title {
+    padding-top: 12px;
+    display: inline-block;
+  }
 }
 .search-confirmation__rm-card .rm-content .rm-main-row .rm-main .rm-heading .rm-star {
   padding: 6px 0;
@@ -142,24 +177,58 @@ body.template-search-confirmation\._search_confirmation {
   font-weight: 600;
   padding: 15px 0 5px 0;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row .rm-amenities dl {
+.search-confirmation__ch-room-type {
+  padding: 25px 0;
+}
+.search-confirmation__ch-room-type form label strong {
+  font-size: 20px;
+}
+.search-confirmation__ch-room-type form select {
+  padding: 5px;
+  border-radius: 10px;
+  width: 190px;
+}
+.search-confirmation__ch-room-type .selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 15px;
+}
+.search-confirmation__room-type {
+  overflow-y: auto;
+}
+.search-confirmation__room-type .room-type-inner {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  clear: both;
+  height: 800px;
+  margin: 0 15px 0 0;
+}
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content {
+  padding: 12px;
+}
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-type h3 {
+  font-weight: 600;
+}
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-amenities dl {
   display: flex;
   align-items: center;
   -moz-column-gap: 25px;
        column-gap: 25px;
   flex-wrap: wrap;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row .rm-amenities dl:nth-child(2) {
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-amenities dl:nth-child(2) {
   margin: 10px 0 0 0;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row .rm-amenities dl:nth-child(2) dd {
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-amenities dl:nth-child(2) dd {
   color: green;
   font-weight: 600;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row .rm-amenities dl dd {
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-amenities dl dd {
   font-size: 14px;
 }
-.search-confirmation__rm-card .rm-content .rm-main-row .rm-amenities dl dd span {
+.search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content .rm-amenities dl dd span {
   vertical-align: middle;
   padding: 0 0 0 10px;
 }
@@ -169,16 +238,8 @@ body.template-search-confirmation\._search_confirmation {
   border-top: 1px dashed rgba(206, 206, 206, 0.9960784314);
   border-bottom: 1px dashed rgba(206, 206, 206, 0.9960784314);
 }
-.search-confirmation__rm-selected-date dl {
-  display: flex;
-}
 .search-confirmation__rm-selected-date dl dd {
   font-size: 13px;
-  width: 50%;
-}
-.search-confirmation__rm-selected-date dl dd:nth-child(1) {
-  margin-right: 25px;
-  border-right: 1px solid #8b8b8b;
 }
 .search-confirmation__rm-selected-date dl dd span {
   color: #868686;
@@ -207,7 +268,7 @@ body.template-search-confirmation\._search_confirmation {
   padding: 15px;
 }
 .search-confirmation__form .desc {
-  color: #767171;
+  color: #768171;
   font-size: 14px;
 }
 .search-confirmation__form form {
@@ -232,8 +293,18 @@ body.template-search-confirmation\._search_confirmation {
   border: 1px solid #d2d2d2;
   border-radius: 5px;
 }
+@media (max-width: 768px) {
+  .search-confirmation__form form dl input {
+    flex: 1 1 48%;
+  }
+}
 .search-confirmation__form form dl .iti {
   width: 48%;
+}
+@media (max-width: 768px) {
+  .search-confirmation__form form dl .iti {
+    width: 100%;
+  }
 }
 .search-confirmation__form form dl .iti .form-control {
   width: 100%;
@@ -241,6 +312,11 @@ body.template-search-confirmation\._search_confirmation {
 .search-confirmation__form .btn {
   text-align: center;
   margin: 30px 30px 0 30px;
+}
+@media (max-width: 768px) {
+  .search-confirmation__form .btn {
+    margin: 30px 0 10px 0;
+  }
 }
 .search-confirmation__heading {
   font-weight: 600;
