@@ -1,0 +1,108 @@
+body.template-referral\._referral {
+    background-color: #f8f5f4;
+}
+
+.referral{
+
+    &__program{
+        position: relative;
+        .modal {
+            display: none;
+            position: fixed;
+            padding-top: 100px;
+            padding-left: 300px;
+            left: 50%;
+            top: 66%;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            transform: translate(-50%, -50%);
+          /* background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4); */
+        }
+        .btn{
+            padding: 5px 20px;
+        }
+    }
+    &__modal-content {
+        position: relative;
+        background-color: #fefefe;
+        padding: 50px 20px 40px 20px;
+        border: 1px solid #888;
+        width: 95%;
+        border-radius: 10px;
+        .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .ttl{
+            margin: 0 0 23px 0;
+        }
+    }
+    &__form{
+        form{
+            dl{
+                &:nth-child(1){
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                dd{
+                    input[type=text]{
+                        border: 1px solid #888888;
+                        padding: 10px;
+                        border-radius: 5px;
+                        width: 250px;
+                    }
+                }
+            }
+            .submit{
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #888888;
+            }
+            .updt{
+                width: 150px;
+                padding: 10px;
+            }
+            .table-responsive{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 50px;
+                .table-list{
+                    padding: 20px;
+                    ul{
+                        padding: 20px;
+                        li{
+                            list-style: auto;
+                        }
+                    }
+                }
+            }
+
+
+
+
+        }
+    }
+    
+
+
+
+
+
+}

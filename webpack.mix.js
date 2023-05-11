@@ -34,4 +34,6 @@ const mix = require('laravel-mix');
  mix.sass('resources/sass/search_confirmation.scss', 'public/css');
  mix.sass('resources/sass/final_confirmation.scss', 'public/css');
  mix.sass('resources/sass/booking_success.scss', 'public/css');
+ mix.sass('resources/sass/referral.scss', 'public/css');
+
  

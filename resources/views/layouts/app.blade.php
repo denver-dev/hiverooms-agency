@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ mix('css/search_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/final_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/booking_success.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/referral.css') }}">
     <link rel="stylesheet" href="{{ mix('css/swiper.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}">

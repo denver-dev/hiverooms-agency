@@ -38,6 +38,11 @@
                         <i class="fa-sharp fa-solid fa-angle-right fa-2xs"></i> Points
                     </a>
                 </li>
+                <li>
+                    <a class="nav-link" href="{{ route('referral.referral')}}">
+                        <i class="fa-sharp fa-solid fa-angle-right fa-2xs"></i> Referral Program
+                    </a>
+                </li>
             </ul>
             <ul>
                 <h2 class="cat"><i class="fa-solid fa-plane"></i> CREATE A BOOKING</h2>

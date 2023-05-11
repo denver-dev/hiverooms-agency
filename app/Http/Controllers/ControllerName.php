@@ -216,4 +216,8 @@ class ControllerName extends Controller
         return view('booking-success._booking_success');
     }
 
+    public function referral(){
+        return view('referral._referral');
+    }
+
 }
