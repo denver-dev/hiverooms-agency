@@ -17,11 +17,11 @@ class CreateReferralsTable extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->integer('referral_id')->nullable();
+            $table->integer('package_id')->nullable();
             $table->integer('level')->nullable();
             $table->integer('payment_id')->nullable();
-            $table->float('comission')->nullable();
+            $table->float('commission')->nullable();
             $table->float('price')->nullable();
-            $table->integer('package_id')->nullable();
             $table->timestamps();
         });
     }

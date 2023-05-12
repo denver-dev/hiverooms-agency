@@ -6,14 +6,14 @@
 <section class="profile">
     <div class="profile__container">
         {{-- Sidebar Menu --}}
-            @yield('sidebar')
-       {{-- Main content --}}
-       <div class="main-content"> 
+        @yield('sidebar')
+        {{-- Main content --}}
+        <div class="main-content">
             {{-- Tab selection --}}
             <div class="tab--content">
                 <div class="tab--flex">
-                   @yield('tab')
-                   @yield('logo')
+                    @yield('tab')
+                    @yield('logo')
                 </div>
             </div>
             <div class="main-content--inner">
@@ -26,38 +26,38 @@
                                 <dl>
                                     <dt><label for="fname">First name</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">Herbert</label></dd>
+                                    <dd><label for="">{{ $user->firstName }}</label></dd>
                                 </dl>
                                 <dl>
                                     <dt><label for="lname">Last name</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">Dionzon</label></dd>
+                                    <dd><label for="">{{ $user->lastName }}</label></dd>
                                 </dl>
                                 <dl>
                                     <dt><label for="email">Email address</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">hiverooms@gmail.com</label></dd>
+                                    <dd><label for="">{{ $user->email }}</label></dd>
                                 </dl>
                                 <dl>
                                     <dt><label for="number">Phone number</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">(+63) 91234567891</label></dd>
+                                    <dd><label for="">{{ $user->phone }}</label></dd>
                                 </dl>
                                 <dl>
                                     <dt><label for="number">Date of birth</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">03 - Jun - 1990</label></dd>
+                                    <dd><label for="">{{ $user->birthdate }}</label></dd>
                                 </dl>
                                 <dl>
                                     <dt><label for="address">Address</label></dt>
                                     <dd>:</dd>
-                                    <dd><label for="">Talisay Mohon Cebu City</label></dd>
+                                    <dd><label for="">{{ $user->address }}</label></dd>
                                 </dl>
                             </form>
                         </div>
                     </div>
                 </div>
-           </div>
-       </div>
+            </div>
+        </div>
     </div>
 </section>
