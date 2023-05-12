@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ mix('css/search_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/final_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/booking_success.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/referral.css') }}">
     <link rel="stylesheet" href="{{ mix('css/swiper.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}">
@@ -42,8 +43,13 @@
 <body class="template-{{ $viewName }}">
 
 
+    @yield('content')
+
 
 <footer>
+
+<script src="{{ mix('js/app.js') }}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/intlTelInput.min.js'></script>
@@ -52,9 +58,7 @@
 {{-- flatpicker date --}}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ mix('js/swiper.js') }}"></script>
-<script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('js/bootstrap.js') }}"></script>
-
 
 </footer>
 

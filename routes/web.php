@@ -46,6 +46,8 @@ Route::get('/booking-success', [ControllerName::class, 'booking_success'])->name
 
 Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flights');
 
+Route::get('/referral', [ControllerName::class, 'referral'])->name('referral.referral');
+
 Route::get('/', function () {
     return view('login._login');
 });
