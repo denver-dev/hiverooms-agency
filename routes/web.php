@@ -48,6 +48,8 @@ Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flight
 
 Route::get('/referral', [ControllerName::class, 'referral'])->name('referral.referral');
 
+Route::get('/register', [ControllerName::class, 'register'])->name('register.register');
+
 Route::get('/', function () {
     return view('login._login');
 });

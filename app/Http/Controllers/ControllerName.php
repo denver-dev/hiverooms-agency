@@ -263,4 +263,8 @@ class ControllerName extends Controller
         return view('referral._referral')->with('user', $user);
     }
 
+    public function register(){
+        return view('register._register');
+    }
+
 }

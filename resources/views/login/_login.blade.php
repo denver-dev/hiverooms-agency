@@ -1,4 +1,4 @@
-@include('header')
+@extends('layouts.app')
 
 
 @section('class', 'Your boddy class')
