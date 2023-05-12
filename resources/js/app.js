@@ -7,7 +7,7 @@
     menu_btn.classList.toggle('is-active');
     mobile_btn.classList.toggle('is-active');
   });
-
+  
 
 
   // Get the modal
@@ -85,6 +85,3 @@ window.intlTelInput(input, {
   separateDialCode: true,
   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.0/js/utils.js",
 });
-
-
-
