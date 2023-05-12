@@ -1,4 +1,5 @@
 
+
 @section('search')
 <form action="" class="search-form">
     <h2 class="ttl1">Search hotels</h2>
@@ -102,9 +103,9 @@
 
 <script>
   // Travellers button
-  let popup = document.getElementById("subPopup");
-  function toggleMenu(){
-        popup.classList.toggle("open-menu");
-  }
+//   let popup = document.getElementById("subPopup");
+//   function toggleMenu(){
+//         popup.classList.toggle("open-menu");
+//   }
 </script>
 @endsection

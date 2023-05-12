@@ -3,6 +3,7 @@
 @include('component._tab')
 @include('component._logo')
 
+@section('content')
 <section class="referral">
     <div class="referral__container">
         {{-- Sidebar Menu --}}
@@ -73,3 +74,4 @@
        </div>
     </div>
 </section>
+@endsection

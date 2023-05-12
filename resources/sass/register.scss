@@ -1,15 +1,35 @@
-body.template-login\._login{
+body.template-register\._register{
     background-color: #E8BD01;
     background-image: radial-gradient(white 1%, transparent 23%);
-    background-size: 5px 5px;
+    background-size: 5px 5px;;
 }
 
-.login{
+
+
+.register{
+    &__responsive-input{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        dl{
+            flex: 1 1 40%;
+            &:nth-child(3){
+                flex: 1 100%;
+            }
+            &:nth-child(9){
+                flex: 1 100%;
+            }
+        }
+    }
+    &__btn-acct{
+        margin: 20px 0 0 0;
+    }
     &__heading{
         text-align: center;
         font-size: 60px;
         color: #404040;
         font-weight: 700;
+        margin: 0 0 40px 0;
         @media(max-width: 768px){
             font-size: 47px;
         }
@@ -18,31 +38,41 @@ body.template-login\._login{
         }
     }
     &__sub-heading{
-        text-align: center;
-        color: #fff;
+        color: #404040;
         font-size: 25px;
+        font-weight: 700;
+        margin: 0 0 25px 0;
     }
     &__container{
-        margin: 0 auto;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-        width: 370px;
-        display: table;
+        // margin: 0 auto;
+        // position: absolute;
+        // transform: translate(-50%, -50%);
+        // top: 50%;
+        // left: 50%;
+        // width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        margin: 30px auto;
         @media(max-width: 640px){
             width: 90%;
         }
     }
+    &__main-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(502px, 1fr));
+        align-items: center;
+    }
     &__bee{
         text-align: center;
         figure{
-            width: 35px;
+            width: 60px;
             margin: 15px auto 0 auto;
         }
     }
     form{
-        width: 85%;
+        // width: 85%;
         margin: 0 auto;
         .container{
             label{
@@ -50,7 +80,16 @@ body.template-login\._login{
                 padding: 5px 0;
             }
             input[type=text],
-            input[type=password]{
+            input[type=password],
+            input[type=email],
+            input[type=number],
+            input[type=date]{
+                width: -webkit-fill-available;
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #757575;
+            }
+            select{
                 width: -webkit-fill-available;
                 padding: 10px;
                 border-radius: 6px;
@@ -67,19 +106,11 @@ body.template-login\._login{
                 font-weight: 700;
                 transition: 0.2s;
                 &:nth-child(1){
-                    width: 41%;
+                    width: 250px;
                     background-color: #2F5597;
                     color: #fff;
                     &:hover{
                         background-color: #2b65ca;
-                    }
-                }
-                &:nth-child(2){
-                    background-color: #7F6000;
-                    width: 57%;
-                    color: #fff;
-                    &:hover{
-                        background-color: #8b6900;
                     }
                 }
             }
@@ -87,17 +118,7 @@ body.template-login\._login{
         .chckbox{
             cursor: pointer;
         }
-        .btn2{
-            span{
-                a{
-                    color: #0070C0;
-                    font-weight: 700;
-                    font-size: 13px;
-                }
-            }
-        }
         .chckbox{
-            font-size: 13px;
             input{
                 vertical-align: middle;
             }

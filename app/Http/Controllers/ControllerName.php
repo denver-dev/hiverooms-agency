@@ -220,4 +220,8 @@ class ControllerName extends Controller
         return view('referral._referral');
     }
 
+    public function register(){
+        return view('register._register');
+    }
+
 }

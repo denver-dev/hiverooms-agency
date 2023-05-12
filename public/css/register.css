@@ -1,0 +1,116 @@
+body.template-register\._register {
+  background-color: #E8BD01;
+  background-image: radial-gradient(white 1%, transparent 23%);
+  background-size: 5px 5px;
+}
+
+.register__responsive-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.register__responsive-input dl {
+  flex: 1 1 40%;
+}
+.register__responsive-input dl:nth-child(3) {
+  flex: 1 100%;
+}
+.register__responsive-input dl:nth-child(9) {
+  flex: 1 100%;
+}
+.register__btn-acct {
+  margin: 20px 0 0 0;
+}
+.register__heading {
+  text-align: center;
+  font-size: 60px;
+  color: #404040;
+  font-weight: 700;
+  margin: 0 0 40px 0;
+}
+@media (max-width: 768px) {
+  .register__heading {
+    font-size: 47px;
+  }
+}
+.register__heading span {
+  color: #935D1F;
+}
+.register__sub-heading {
+  color: #404040;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+}
+.register__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 30px auto;
+}
+@media (max-width: 640px) {
+  .register__container {
+    width: 90%;
+  }
+}
+.register__main-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(502px, 1fr));
+  align-items: center;
+}
+.register__bee {
+  text-align: center;
+}
+.register__bee figure {
+  width: 60px;
+  margin: 15px auto 0 auto;
+}
+.register form {
+  margin: 0 auto;
+}
+.register form .container label {
+  display: block;
+  padding: 5px 0;
+}
+.register form .container input[type=text],
+.register form .container input[type=password],
+.register form .container input[type=email],
+.register form .container input[type=number],
+.register form .container input[type=date] {
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #757575;
+}
+.register form .container select {
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #757575;
+}
+.register form .btn1 {
+  margin: 7px 0;
+}
+.register form .btn1 button {
+  cursor: pointer;
+  padding: 10px 5px;
+  border: 1px solid #757575;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+.register form .btn1 button:nth-child(1) {
+  width: 250px;
+  background-color: #2F5597;
+  color: #fff;
+}
+.register form .btn1 button:nth-child(1):hover {
+  background-color: #2b65ca;
+}
+.register form .chckbox {
+  cursor: pointer;
+}
+.register form .chckbox input {
+  vertical-align: middle;
+}
