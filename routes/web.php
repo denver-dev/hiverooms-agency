@@ -48,6 +48,8 @@ Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flight
 
 Route::get('/referral', [ControllerName::class, 'referral'])->name('referral.referral');
 
+Route::get('/addReferral/{id}', [ControllerName::class, 'addReferral'])->name('referral.addReferral');
+
 Route::get('/register', [ControllerName::class, 'register'])->name('register.register');
 
 Route::get('/', function () {
@@ -58,7 +60,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.logi
 
 Route::post('/login', [AuthController::class, 'login'])->name('login.loginUser');
 
-Route::post('/register', [AuthController::class, 'register'])->name('register.registerUser');
+Route::post('/membership', [AuthController::class, 'register'])->name('register.membership');
 // Route::get('/login', function () {
 //     return view('login._login');
 // });

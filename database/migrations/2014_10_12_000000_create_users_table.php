@@ -20,6 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('phone');
             $table->date('birthdate');
+            $table->integer('level')->default(0);
+            $table->integer('commission')->default(0);
+            $table->integer('price')->default(0);
+            $table->integer('points')->default(0);
+            $table->string('referral_code');
             $table->string('email')->unique();
             $table->string('address');
             $table->timestamp('email_verified_at')->nullable();

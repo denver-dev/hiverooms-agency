@@ -15,6 +15,7 @@ class CreatePaymentInfo extends Migration
     {
         Schema::create('payment_info', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string("payment_type");
             $table->string("payment_type_name");
             $table->string("api_login");

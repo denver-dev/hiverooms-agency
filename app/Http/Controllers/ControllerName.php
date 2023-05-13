@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
+use App\Models\Referral;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
@@ -260,11 +263,159 @@ class ControllerName extends Controller
     {
         $userId = Auth::user();
         $user = User::find($userId->id);
-        return view('referral._referral')->with('user', $user);
+        $refers = DB::table('userS')
+            ->join('packages', 'users.package_id', '=', 'packages.ID')
+            ->select('users.*', 'packages.*', 'users.id as userId')
+            ->where('users.id', '<>', $userId->id)
+            ->get();
+        $referred = DB::table('referrals')
+            ->join('users', 'users.id', '=', 'referrals.referral_id')
+            ->select('users.*', 'users.id as userId')
+            ->where('referrals.user_id', '=', $userId->id)
+            ->get();
+
+        return view('referral._referral', [
+            'user' => $user,
+            'refers' => $refers,
+            'referred' => $referred
+        ]);
     }
 
-    public function register(){
-        return view('register._register');
+    public function addReferral(Request $request, $id)
+    {
+
+
+        $userId = Auth::user();
+        $user = User::find($userId->id);
+        //Check the referral List if the referred User already exists
+        $checkReferralList = DB::table('referrals')
+            ->where('user_id', '=', $userId->id)
+            ->get();
+
+        if ($checkReferralList->count() > 20) {
+            return redirect()->back();
+        }
+
+        $package = Package::find($user->package_id);
+
+        //check Current User Level
+        $userLevel = $user->level;
+        $level = $userLevel === 0 ? 1 : $userLevel;
+        $commission = 0;
+        switch ($level) {
+            case 1:
+                $commission = $package->package_price * 0.20;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 2:
+                $commission = $package->package_price * 0.05;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 3:
+                $commission = $package->package_price * 0.03;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 4:
+                $commission = $package->package_price * 0.02;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 5:
+                $commission = $package->package_price * 0.01;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 6:
+                $commission = $package->package_price * 0.01;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+            case 7:
+                $commission = $package->package_price * 0.01;
+                $points = $commission / 100;
+                $price = $commission;
+                break;
+        }
+
+        //Update Current User's Commission, Points, and level
+        $user->commission = $commission;
+        $user->points = $points;
+        $user->price = $price;
+        $user->level = $level;
+
+        $user->save();
+
+
+        //Check Referred User Level
+        $referredUser = User::find($id);
+        $referredUserLevel = $referredUser->level;
+        $referredUserPackage = Package::find($referredUser->package_id);
+        if ($referredUserLevel !== 0) {
+            return redirect()->back();
+        }
+
+        $referredUserLevel = $level + 1;
+
+        switch ($referredUserLevel) {
+            case 1:
+                $referredComm = $referredUserPackage->package_price * 0.20;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 2:
+                $referredComm = $referredUserPackage->package_price * 0.05;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 3:
+                $referredComm = $referredUserPackage->package_price * 0.03;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 4:
+                $referredComm = $referredUserPackage->package_price * 0.02;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 5:
+                $referredComm = $referredUserPackage->package_price * 0.01;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 6:
+                $referredComm = $referredUserPackage->package_price * 0.01;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+            case 7:
+                $referredComm = $referredUserPackage->package_price * 0.01;
+                $referredPoints = $referredComm / 100;
+                $referredPrice = $referredComm;
+                break;
+        }
+
+        $referredUser->commission = $referredComm;
+        $referredUser->points = $referredPoints;
+        $referredUser->price = $referredPrice;
+        $referredUser->level = $referredUserLevel;
+
+        $referredUser->save();
+
+        Referral::create([
+            'user_id' => $userId->id,
+            'referral_id' => $id
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function register()
+    {
+        $package = Package::all();
+        return view('register._register')->with('packages', $package);
     }
 
 }

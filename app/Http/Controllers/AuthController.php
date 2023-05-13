@@ -42,20 +42,28 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => ['string', 'max:255'],
+            'package_id' => ['required', 'numeric'],
+            'firstName' => ['required', 'string'],
+            'lastName' => ['required', 'string'],
+            'phone' => ['required', 'string'],
+            'birthdate' => ['required', 'date'],
+            'address' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create([
-            'name' => $validatedData['name'],
+        User::create([
+            'package_id' => $validatedData['package_id'],
+            'firstName' => $validatedData['firstName'],
+            'lastName' => $validatedData['lastName'],
+            'phone' => $validatedData['phone'],
+            'birthdate' => $validatedData['birthdate'],
+            'address' => $validatedData['address'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'password' => Hash::make($validatedData['password'])
         ]);
 
-        Auth::login($user);
-
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
     public function logout(Request $request)
