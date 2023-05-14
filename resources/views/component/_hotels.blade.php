@@ -24,9 +24,15 @@
                         {{-- Hotel Row 1 --}}
                         @foreach($hotels as $hotel)
                         <div class="hotel__rm-card">
+                            {{--  {{ dd($going_to, $check_in, $check_out) }}  --}}
                             <div class="rm-img">
-                                <a href="{{ route('search-confirmation.search_confirmation', $hotel['data']['id']) }}" class="btn-link">
-                                    <figure>
+                                <a href="{{ route('search-confirmation.search_confirmation', [
+                                        'hotel_id' => $hotel['data']['id'],
+                                        'going_to' => $going_to,
+                                        'check_in' => $check_in,
+                                        'check_out' => $check_out,
+                                    ]) }}" class="btn-link">
+                                        <figure>
                                         {{--  <img src="{{ $hotel['data']['images'][4] }}" alt="">  --}}
                                         <img src="{{ 'images/hotel-room/bohol-hotel.jpg' }}" alt="">
                                         <i class="fa-solid fa-heart"></i>

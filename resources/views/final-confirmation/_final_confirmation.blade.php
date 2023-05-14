@@ -8,7 +8,7 @@
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="main-content"> 
+       <div class="main-content">
             {{-- Tab selection --}}
             <div class="tab--content">
                 <div class="tab--flex">
@@ -34,9 +34,9 @@
                                     <th>State</th>
                                 </tr>
                                 <tr>
-                                    <td>Abra</td>
-                                    <td>Test</td>
-                                    <td>Talisay Muhon Cebu City</td>
+                                    <td>{{ $user->firstName }}</td>
+                                    <td>{{ $user->lastName }}</td>
+                                    <td>{{ $user->address }}</td>
                                     <td>Cebu City</td>
                                     <td>6000</td>
                                     <td>Philippines</td>
@@ -58,9 +58,9 @@
                                 </tr>
                                 <tr>
                                     <td>Junior Suite</td>
-                                    <td>13/04/2023</td>
-                                    <td>13/05/2023</td>
-                                    <td>7</td>
+                                    <td>{{ $check_in_format }}</td>
+                                    <td>{{ $check_out_format }}</td>
+                                    <td>{{ $nights }}</td>
                                     <td>1</td>
                                     <td>3</td>
                                     <td>PHP 784</td>
@@ -94,9 +94,17 @@
 
                             </form>
                         </div>
-                        <div class="btn">
-                            <a href="{{route ('booking-success.booking_success')}}" class="btn-opa">Submit Booking <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>
-                        </div>
+                        <form action="{{ route('booking_store') }}" method="POST" class="search-form">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" name="check_in" value="{{ $check_in }}">
+                            <input type="hidden" name="check_out" value="{{ $check_out }}">
+                            <input type="hidden" name="hotel_id" value="{{ $hotel_id }}"
+                            <input type="hidden" name="book_hash" value="{{ $book_hash }}">
+                            <div class="btn">
+                                {{--  <a href="{{ route ('booking_store') }}" class="btn-opa">Submit Booking <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>  --}}
+                                <button type="submit" class="btn-opa">Submit Booking <span class="arrow"><i class="fa fa-chevron-right"></i></span></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
            </div>

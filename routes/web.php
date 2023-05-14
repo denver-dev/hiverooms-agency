@@ -38,9 +38,11 @@ Route::get('/create-booking', [ControllerName::class, 'create_booking'])->name('
 
 Route::get('/search-results', [ControllerName::class, 'search_results'])->name('search-results.search_results');
 
-Route::get('/search-confirmation/{hotel_id}', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
+Route::get('/search-confirmation/{hotel_id}/{check_in?}/{check_out?}', [ControllerName::class, 'search_confirmation'])->name('search-confirmation.search_confirmation');
 
-Route::get('/final-confirmation', [ControllerName::class, 'final_confirmation'])->name('final-confirmation.final_confirmation');
+Route::get('/final-confirmation/{hotel_id}/{book_hash?}/{check_in?}/{check_out?}', [ControllerName::class, 'final_confirmation'])->name('final-confirmation.final_confirmation');
+
+Route::post('/booking_store', [ControllerName::class, 'booking_store'])->name('booking_store');
 
 Route::get('/booking-success', [ControllerName::class, 'booking_success'])->name('booking-success.booking_success');
 

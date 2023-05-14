@@ -56,8 +56,9 @@
                                             <div class="rm-description">
                                                 <p>
                                                     {{ $hotels['data']['description_struct'][0]['paragraphs'][0] }}
-                                                    {{ $hotels['data']['description_struct'][1]['paragraphs'][0] }}
-                                                    {{ $hotels['data']['description_struct'][1]['paragraphs'][1] }}</p>
+                                                    {{--  {{ $hotels['data']['description_struct'][1]['paragraphs'][0] }}  --}}
+                                                    {{--  {{ $hotels['data']['description_struct'][1]['paragraphs'][1] }}  --}}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -69,20 +70,13 @@
                                         <label for="cars"><i class="fa-solid fa-bed">&nbsp;</i>
                                             <strong>Choose your room</strong>
                                         </label>
-                                        <select id="room-type" name="" form="">
+                                        <select id="room_type" name="" form="">
                                         <option value="">Select room type</option>
-                                        @foreach($hotels['data']['room_groups'] as $room_types)
-                                        <option value="">{{ $room_types['name'] }}</option>
-                                        @endforeach
-                                        {{--  <option value="">Room type 2</option>
-                                        <option value="">Room type 3</option>
-                                        <option value="">Room type 4</option>
-                                        <option value="">Room type 5</option>
-                                        <option value="">Room type 6</option>
-                                        <option value="">Room type 7</option>
-                                        <option value="">Room type 8</option>
-                                        <option value="">Room type 9</option>
-                                        <option value="">Room type 10</option>  --}}
+                                        @if($hotel_data['data']['hotels'] != [])
+                                            @foreach($hotel_data['data']['hotels'][0]['rates'] as $room_types)
+                                                <option value="{{ $room_types['book_hash'] }}">{{ $room_types['room_name'] }}</option>
+                                            @endforeach
+                                        @endif
                                         </select>
                                     </div>
                                 </form>
@@ -140,7 +134,11 @@
                                     </dl>
                                 </form>
                                 <div class="btn">
-                                    <a href="{{route ('final-confirmation.final_confirmation') }}" class="btn-opa">Next Step: Final Confirmation <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>
+                                    @if($hotel_data['data']['hotels'] != [])
+                                    <a href="#" id="next_step_btn" class="btn-opa">Next Step: Final Confirmation <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>
+                                    @else
+                                    <a href="#" id="next_step_btn" class="btn-opa" style="pointer-events: none;">Next Step: Final Confirmation <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -184,4 +182,31 @@
            </div>
        </div>
     </div>
+    <script>
+        // JavaScript code
+        var selectElement = document.getElementById('room_type');
+        var nextStepBtn = document.getElementById('next_step_btn');
+
+        nextStepBtn.addEventListener('click', function() {
+            var selectedOption = selectElement.value;
+
+            var hotelId = '{{ $hotel_id }}';
+            var checkIn = '{{ $check_in }}';
+            var checkOut = '{{ $check_out }}';
+
+            var url = "{{ route('final-confirmation.final_confirmation', [
+                'hotel_id' => ':hotel_id',
+                'book_hash' => ':book_hash',
+                'check_in' => ':check_in',
+                'check_out' => ':check_out'
+            ]) }}";
+
+            url = url.replace(':hotel_id', hotelId)
+                     .replace(':book_hash', selectedOption)
+                     .replace(':check_in', checkIn)
+                     .replace(':check_out', checkOut);
+
+            window.location.href = url;
+        });
+    </script>
 </section>

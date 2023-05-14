@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Package;
-use App\Models\Referral;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use App\Models\Booking;
+use App\Models\Package;
+use App\Models\Referral;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Psr7\Request as Psr7Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\User;
 
 class ControllerName extends Controller
 {
@@ -97,6 +99,7 @@ class ControllerName extends Controller
             $response = $response->getBody();
             $data = json_decode($response, true);
             $results[] = $data;
+            // dd($data);
         }
 
         $userId = Auth::user();
@@ -105,6 +108,9 @@ class ControllerName extends Controller
             'data' => $data,
             'hotels' => $results,
             'user' => $user,
+            'going_to' => $going_to,
+            'check_in' => $check_in,
+            'check_out' => $check_out,
         ]);
     }
 
@@ -213,13 +219,13 @@ class ControllerName extends Controller
         return view('search-results._search_results')->with('user', $user);
     }
 
-    public function search_confirmation($hotel_id)
+    public function search_confirmation($hotel_id, $check_in, $check_out)
     {
+        // dd($hotel_id);
         $userId = Auth::user();
         $user = User::find($userId->id);
 
         $client = new Client();
-
         $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
             'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
             'query' => [
@@ -235,17 +241,141 @@ class ControllerName extends Controller
 
         $response = $response->getBody();
         $data = json_decode($response, true);
+        // dd($data);
+
+        $hotel_client = new Client();
+        $hotel_response = $hotel_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/hp/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'json' => [
+                "checkin" => $check_in,
+                "checkout" => $check_out,
+                "language" => "en",
+                "guests" => [
+                    [
+                        "adults" => 2,
+                        "children" => [],
+                    ]
+                ],
+                "id" => $hotel_id,
+            ],
+            'debug' => null,
+            'error' => null,
+            'status' => "ok",
+        ]);
+
+        $hotel_response = $hotel_response->getBody();
+        $hotel_data = json_decode($hotel_response, true);
+        // dd($hotel_data);
+
         return view('search-confirmation._search_confirmation', [
             'hotels' => $data,
-            'user' => $user
+            'user' => $user,
+            'hotel_data' => $hotel_data,
+            'hotel_id' => $hotel_id,
+            'check_in' => $check_in,
+            'check_out' => $check_out,
         ]);
     }
 
-    public function final_confirmation()
+    public function final_confirmation($hotel_id, $book_hash, $check_in, $check_out)
     {
         $userId = Auth::user();
         $user = User::find($userId->id);
-        return view('final-confirmation._final_confirmation')->with('user', $user);
+
+        $check_in_date = Carbon::createFromDate($check_in);
+        $check_out_date = Carbon::createFromDate($check_out);
+
+        $check_in_format = $check_in_date->format('F d, Y');
+        $check_out_format = $check_out_date->format('F d, Y');
+        $nights = $check_in_date->diffInDays($check_out_date);
+
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'query' => [
+                'data' => '{
+                        "id": "' . $hotel_id . '",
+                        "language": "en"
+                    }',
+            ],
+            'debug' => null,
+            'error' => null,
+            'status' => "ok",
+        ]);
+
+        $response = $response->getBody();
+        $data = json_decode($response, true);
+
+        return view('final-confirmation._final_confirmation', [
+            'hotels' => $data,
+            'user' => $user,
+            'hotel_id' => $hotel_id,
+            'book_hash' => $book_hash,
+            'check_in' => $check_in,
+            'check_out' => $check_out,
+            'check_in_format' => $check_in_format,
+            'check_out_format' => $check_out_format,
+            'nights' => $nights,
+        ]);
+    }
+
+    public function booking_store(Request $request)
+    {
+        $userId = Auth::user();
+        $user = User::find($userId->id);
+        $partner_order_id = 'hive' . $user->id . Str::random(12);
+        // Highly recommended UUID
+        // $partner_order_id = Str::uuid()->toString();
+
+        $booking = Booking::create([
+            'user' => $user->id,
+            'check_in' => $request->check_in,
+            'check_out' => $request->check_out,
+            'hotel_id' => $request->hotel_id,
+            'guest_adult' => 2,
+            'guest_children' => 0,
+            'currency' => null,
+            'residency' => null,
+            'book_hash' => $request->book_hash,
+            'partner_order_id' => $partner_order_id,
+        ]);
+
+        $hotel_client = new Client();
+        $hotel_response = $hotel_client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/order/booking/finish/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'json' => [
+                "user" => [
+                    "email" => $user->email,
+                    "phone" => $user->phone
+                ],
+                "partner" => [
+                    "partner_order_id" => $partner_order_id,
+                ],
+                "language" => "en",
+                "rooms" => [
+                    [
+                        "guests" => [
+                            [
+                                "first_name" => $user->firstName,
+                                "last_name" => $user->lastName,
+                            ],
+                        ]
+                    ]
+                ],
+                "payment_type" => [
+                    "type" => "now",
+                    "amount" => "10",
+                    "currency_code" => "USD"
+                ]
+            ],
+        ]);
+
+        $hotel_response = $hotel_response->getBody();
+        $hotel_data = json_decode($hotel_response, true);
+
+        return view('booking-success._booking_success', [
+            'user' => $user,
+        ]);
     }
 
     public function flights()
