@@ -55,8 +55,8 @@
                                         <div class="rm-description">
                                             <p>
                                                 {{ $hotel['data']['description_struct'][0]['paragraphs'][0] }}
-                                                {{ $hotel['data']['description_struct'][1]['paragraphs'][0] }}
-                                                {{ $hotel['data']['description_struct'][1]['paragraphs'][1] }}
+                                                {{--  {{ $hotel['data']['description_struct'][1]['paragraphs'][0] }}  --}}
+                                                {{--  {{ $hotel['data']['description_struct'][1]['paragraphs'][1] }}  --}}
                                             </p>
                                         </div>
                                     </div>

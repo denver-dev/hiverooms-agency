@@ -6,29 +6,81 @@ use App\Models\Package;
 use App\Models\Referral;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User;
 
 class ControllerName extends Controller
 {
-    public function index()
-    {
+    public function index(Request $request){
+
+        // Search hotel keyword
+        $going_to = $request->input('going_to');
+        $check_in = $request->input('check_in');
+        $check_out = $request->input('check_out');
+        $traveler = $request->input('traveler');
+
+        $hotel_client = new Client();
+        $hotel_response = $hotel_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/multicomplete/', [
+            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+            'json' => [
+                "query" => "'.$going_to.'",
+                "language" => "en",
+            ],
+            'debug' => null,
+            'error' => null,
+            'status' => "ok",
+        ]);
+
+        $hotel_response = $hotel_response->getBody();
+        $hotel_data = json_decode($hotel_response, true);
+
+        // Search hotels from keyword's region
+        $region_ids = [];
+        foreach($hotel_data['data']['regions'] as $hotel_datas){
+            $region_id = $hotel_datas['id'];
+            array_push($region_ids, $region_id);
+        }
+
+        $region_client = new Client();
+        foreach($region_ids as $region_id){
+            $region_response = $region_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/serp/region/', [
+                'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                'json' => [
+                    "checkin" => $check_in,
+                    "checkout" => $check_out,
+                    "guests" => [
+                        [
+                            "adults" => 2,
+                            "children" => [],
+                        ]
+                    ],
+                    "region_id" => $region_id,
+                    "hotels_limit" => 5,
+                ],
+                'debug' => null,
+                'error' => null,
+                'status' => "ok",
+            ]);
+
+            $region_response = $region_response->getBody();
+            $region_data = json_decode($region_response, true);
+        }
+
+        $ids = array_merge(
+            array_column($hotel_data['data']['hotels'], 'id'),
+            array_column($region_data['data']['hotels'], 'id')
+        );
 
         $client = new Client();
 
-        $ids = [
-            'access_international_hotel_annex',
-            'crowne_plaza_berlin_city_centre',
-            'city_hotel_berlin_east',
-        ];
         $results = [];
-
-        foreach ($ids as $id) {
+        foreach($ids as $id){
             $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
                 'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
                 'query' => [
@@ -44,74 +96,20 @@ class ControllerName extends Controller
 
             $response = $response->getBody();
             $data = json_decode($response, true);
-            // dd($data);
             $results[] = $data;
         }
+
+        $userId = Auth::user();
+        $user = User::find($userId->id);
         return view('component._hotels', [
             'data' => $data,
             'hotels' => $results,
+            'user' => $user,
         ]);
     }
 
     public function dashboard()
     {
-
-        // $body = '{
-        //         "checkin": "2023-06-25",
-        //         "checkout": "2023-06-26",
-        //         "residency": "gb",
-        //         "language": "en",
-        //         "guests": [
-        //             {
-        //             "adults": 2,
-        //             "children": []
-        //             }
-        //         ],
-        //         "id": "access_international_hotel_annex",
-        //         "currency": "EUR"
-        //         "requests_number": 10,
-        // }';
-
-        // $psr7Request = new Psr7Request(
-        //     'POST',
-        //     'https://api.worldota.net/api/b2b/v3/search/hp/',
-        //     [
-        //         'Authorization' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-        //         'Content-Type' => 'application/json',
-        //     ],
-        //     json_encode($body)
-        // );
-
-        // // dd($psr7Request);
-
-        // $client = new Client();
-        // $response = $client->send($psr7Request);
-
-
-        // $client = new Client();
-        // $headers = [
-        //     'Content-Type' => 'application/json',
-        //     'Authorization' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-        // ];
-        // $body = '{
-        //     "checkin": "2020-04-25",
-        //     "checkout": "2020-04-26",
-        //     "residency": "gb",
-        //     "language": "en",
-        //     "guests": [
-        //         {
-        //         "adults": 2,
-        //         "children": []
-        //         }
-        //     ],
-        //     "id": "access_international_hotel_annex",
-        //     "currency": "EUR"
-        // }';
-        // $response = $client->post('https://api.worldota.net/api/b2b/v3/search/hp/', [
-        //     'headers' => $headers,
-        //     'body' => $body
-        // ]);
-        // return $response->getBody();
 
         $client = new Client();
 
@@ -195,11 +193,17 @@ class ControllerName extends Controller
         return view('points._points')->with('user', $user);
     }
 
-    public function create_booking()
-    {
+    public function create_booking(){
+        $today = Carbon::now()->format('Y-m-d');
+        $nextDay = Carbon::now()->addDay()->format('Y-m-d');
         $userId = Auth::user();
         $user = User::find($userId->id);
-        return view('create-booking._create_booking')->with('user', $user);
+        // dd($today);
+        return view('create-booking._create_booking', [
+            'today' => $today,
+            'nextDay' => $nextDay,
+            'user' => $user,
+        ]);
     }
 
     public function search_results()
@@ -231,7 +235,6 @@ class ControllerName extends Controller
 
         $response = $response->getBody();
         $data = json_decode($response, true);
-        // dd($data);
         return view('search-confirmation._search_confirmation', [
             'hotels' => $data,
             'user' => $user

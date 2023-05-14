@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @include('component._sidebar')
 @include('component._tab')
-@include('component._search')
+{{--  @include('component._search')  --}}
 @section('content')
     <section class="dashboard">
         <div class="dasboard__container">

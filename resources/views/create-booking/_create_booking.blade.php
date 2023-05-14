@@ -9,13 +9,13 @@
         <div class="creat-booking__container">
             {{-- Sidebar Menu --}}
                 @yield('sidebar')
-           {{-- Main content --}}
-           <div class="main-content"> 
+            {{-- Main content --}}
+            <div class="main-content">
                 {{-- Tab selection --}}
                 <div class="tab--content">
                     <div class="tab--flex">
-                       @yield('tab')
-                       @yield('logo')
+                        @yield('tab')
+                        @yield('logo')
                     </div>
                 </div>
                 {{-- Search hotels --}}
@@ -38,8 +38,8 @@
                             </a>
                         </div>
                     </div>
-               </div>
-           </div>
+                </div>
+            </div>
         </div>
 </section>
 

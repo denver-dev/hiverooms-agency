@@ -71,8 +71,10 @@
                                         </label>
                                         <select id="room-type" name="" form="">
                                         <option value="">Select room type</option>
-                                        <option value="">Room type 1</option>
-                                        <option value="">Room type 2</option>
+                                        @foreach($hotels['data']['room_groups'] as $room_types)
+                                        <option value="">{{ $room_types['name'] }}</option>
+                                        @endforeach
+                                        {{--  <option value="">Room type 2</option>
                                         <option value="">Room type 3</option>
                                         <option value="">Room type 4</option>
                                         <option value="">Room type 5</option>
@@ -80,13 +82,13 @@
                                         <option value="">Room type 7</option>
                                         <option value="">Room type 8</option>
                                         <option value="">Room type 9</option>
-                                        <option value="">Room type 10</option>
+                                        <option value="">Room type 10</option>  --}}
                                         </select>
                                     </div>
                                 </form>
                             </div>
                             <div class="search-confirmation__room-type">
-                                <div class="room-type-inner">    
+                                <div class="room-type-inner">
                                     @foreach($hotels['data']['room_groups'] as $room_group)
                                         <div class="swiper-slide layout-grid">
                                             <div class="layout-grid-item">

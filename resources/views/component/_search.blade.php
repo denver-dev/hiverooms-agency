@@ -1,24 +1,24 @@
 
 
 @section('search')
-<form action="" class="search-form">
+<form action="{{ route('hotels.hotels') }}" method="GET" class="search-form">
     <h2 class="ttl1">Search hotels</h2>
     <div class="c-field">
         <dl>
             <div class="date">
-                <dt><input type="text" id="destination-search" placeholder="Going to" class="" >
+                <dt><input type="text" id="destination-search" placeholder="Going to" class="" name="going_to">
                     <label for=""><i class="fa-solid fa-location-dot"></i></label>
                 </dt>
             </div>
         </dl>
         <dl>
             <div class="date">
-                <dt><input type="datetime-local" placeholder="Check in" class="form-control" >
+                <dt><input type="datetime-local" placeholder="Check in" class="form-control" name="check_in" value="{{ $today }}">
                     <label for=""><i class="fa-regular fa-calendar-minus"></i></label>
                 </dt>
             </div>
             <div class="date">
-                <dt><input type="datetime-local" placeholder="Check out" class="form-control" >
+                <dt><input type="datetime-local" placeholder="Check out" class="form-control" name="check_out" value="{{ $nextDay }}">
                     <label for=""><i class="fa-regular fa-calendar-minus"></i></label>
                 </dt>
             </div>
@@ -31,7 +31,7 @@
             </div> --}}
             <div class="date">
                 <dt>
-                    
+
                     <button type="button" class="btn1" onclick="toggleMenu()">
                         <input id="destination-search" placeholder="1 room for 2 guests" class="" disabled>
                     </button>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="select-numb">
                                 <button id="minus">−</button>
-                                <input type="number" value="0" id="input"/>
+                                <input type="number" value="1" id="input"/>
                                 <button id="plus">+</button>
                             </div>
                         </dd>
@@ -70,12 +70,12 @@
                 </dl>
             </div>
         </dl>
-   
+
         <dl>
             <div>
                 <dd>
-                    <a href="{{route ('search-results.search_results')}}"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    {{-- <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button> --}}
+                    {{--  <a href="{{route ('search-results.search_results')}}"><i class="fa-solid fa-magnifying-glass"></i></a>  --}}
+                    <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
                 </dd>
             </div>
         </dl>
@@ -102,10 +102,10 @@
 </script>
 
 <script>
-  // Travellers button
-//   let popup = document.getElementById("subPopup");
-//   function toggleMenu(){
-//         popup.classList.toggle("open-menu");
-//   }
+    {{--  Travellers button  --}}
+    let popup = document.getElementById("subPopup");
+    function toggleMenu(){
+            popup.classList.toggle("open-menu");
+    }
 </script>
 @endsection
