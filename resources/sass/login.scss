@@ -83,6 +83,21 @@ body.template-login\._login{
                     }
                 }
             }
+            a{
+                text-align: center;
+                background-color: #7F6000;
+                width: 57%;
+                color: #fff;
+                padding: 6px 5px;
+                border: 1px solid #757575;
+                border-radius: 5px;
+                display: inline-block;
+                font-weight: 700;
+                transition: 0.2s;
+                &:hover{
+                    background-color: #8b6900;
+                }
+            }
         }
         .chckbox{
             cursor: pointer;

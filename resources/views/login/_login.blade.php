@@ -27,7 +27,8 @@
 
                 <div class="btn1">
                     <button type="submit" class="btn-log">Login</button>
-                    <button type="submit" class="btn-mem">Become a member</button>
+                    {{-- <button type="submit" class="btn-mem">Become a member</button> --}}
+                    <a href="{{route ('register.register')}}">Become a member</a>
                 </div>
                 <label class="chckbox">
                     <input type="checkbox" checked="checked" name="remember"> Accept data privacy, terms & conditions,
