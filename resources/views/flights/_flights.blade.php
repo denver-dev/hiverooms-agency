@@ -2,7 +2,6 @@
 @include('component._sidebar')
 @include('component._tab')
 @include('component._logo')
-@include('component._search')
 
 
 <section class="search-results">
@@ -10,7 +9,7 @@
             {{-- Sidebar Menu --}}
                 @yield('sidebar')
            {{-- Main content --}}
-           <div class="main-content"> 
+           <div class="main-content">
                 {{-- Tab selection --}}
                 <div class="tab--content">
                     <div class="tab--flex">

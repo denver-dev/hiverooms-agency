@@ -25,6 +25,8 @@ class ControllerName extends Controller
         $going_to = $request->input('going_to');
         $check_in = $request->input('check_in');
         $check_out = $request->input('check_out');
+        setcookie('check_in', $check_in, time() + 86400, '/');
+        setcookie('check_out', $check_out, time() + 86400, '/');
         $traveler = $request->input('traveler');
 
         $hotel_client = new Client();
@@ -33,23 +35,18 @@ class ControllerName extends Controller
             'json' => [
                 "query" => "'.$going_to.'",
                 "language" => "en",
-            ],
-            'debug' => null,
-            'error' => null,
-            'status' => "ok",
+            ]
         ]);
 
-        $hotel_response = $hotel_response->getBody();
-        $hotel_data = json_decode($hotel_response, true);
+        $hotel_data = json_decode($hotel_response->getBody(), true);
 
         // Search hotels from keyword's region
-        $region_ids = [];
-        foreach($hotel_data['data']['regions'] as $hotel_datas){
-            $region_id = $hotel_datas['id'];
-            array_push($region_ids, $region_id);
-        }
+        $region_ids = array_column($hotel_data['data']['regions'], 'id');
 
         $region_client = new Client();
+        $results = [];
+        $priceRes = [];
+
         foreach($region_ids as $region_id){
             $region_response = $region_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/serp/region/', [
                 'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
@@ -64,42 +61,35 @@ class ControllerName extends Controller
                     ],
                     "region_id" => $region_id,
                     "hotels_limit" => 5,
-                ],
-                'debug' => null,
-                'error' => null,
-                'status' => "ok",
+                ]
             ]);
 
-            $region_response = $region_response->getBody();
-            $region_data = json_decode($region_response, true);
-        }
+            $region_data = json_decode($region_response->getBody(), true);
+            $ids = array_column($region_data['data']['hotels'], 'id');
 
-        $ids = array_merge(
-            array_column($hotel_data['data']['hotels'], 'id'),
-            array_column($region_data['data']['hotels'], 'id')
-        );
+            $client = new Client();
+            foreach ($ids as $id) {
+                $response = $client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+                    'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                    ],
+                    'json' => [
+                        'id' => $id,
+                        'language' => 'en',
+                    ]
+                ]);
 
-        $client = new Client();
+                $data = json_decode($response->getBody(), true);
 
-        $results = [];
-        foreach($ids as $id){
-            $response = $client->request('GET', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
-                'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-                'query' => [
-                    'data' => '{
-                        "id": "' . $id . '",
-                        "language": "en"
-                    }',
-                ],
-                'debug' => null,
-                'error' => null,
-                'status' => "ok",
-            ]);
-
-            $response = $response->getBody();
-            $data = json_decode($response, true);
-            $results[] = $data;
-            // dd($data);
+                foreach ($region_data['data']['hotels'] as $region_hotel) {
+                    if ($region_hotel['id'] === $id) {
+                        $data['data']['rates'] = $region_hotel['rates'];
+                        break;
+                    }
+                }
+                $results[] = $data;
+            }
         }
 
         $userId = Auth::user();
@@ -396,7 +386,7 @@ class ControllerName extends Controller
     {
         $userId = Auth::user();
         $user = User::find($userId->id);
-        $refers = DB::table('userS')
+        $refers = DB::table('users')
             ->join('packages', 'users.package_id', '=', 'packages.ID')
             ->select('users.*', 'packages.*', 'users.id as userId')
             ->where('users.id', '<>', $userId->id)

@@ -75,7 +75,7 @@
                                         <p><span>8.2</span>/10 Very Good (57 reviews)</p>
                                     </div>
                                     <div>
-                                        <p class="price"><span>₱</span>1,234.10</p>
+                                        <p class="price"><span>$</span>{{ $hotel['data']['rates'][0]['payment_options']['payment_types'][0]['amount'] }}</p>
                                         <a href="{{ route('search-confirmation.search_confirmation', $hotel['data']['id']) }}" class="btn-link">Book Now</a>
                                     </div>
                                 </div>
