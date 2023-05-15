@@ -168,13 +168,14 @@
     width: 100%;
   }
 }
-.search-form .c-field dl:nth-child(4) dd a {
+.search-form .c-field dl:nth-child(4) dd button {
   background-color: #3662D8;
   padding: 8px;
   display: inline-block;
   border-radius: 100px;
+  border: none;
 }
-.search-form .c-field dl:nth-child(4) dd a i {
+.search-form .c-field dl:nth-child(4) dd button i {
   color: #fff;
 }
 .search-form .c-field dl .date {

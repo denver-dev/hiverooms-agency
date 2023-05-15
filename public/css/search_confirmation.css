@@ -179,6 +179,7 @@ body.template-search-confirmation\._search_confirmation {
 }
 .search-confirmation__ch-room-type {
   padding: 25px 0;
+  clear: both;
 }
 .search-confirmation__ch-room-type form label strong {
   font-size: 20px;
@@ -196,6 +197,7 @@ body.template-search-confirmation\._search_confirmation {
 }
 .search-confirmation__room-type {
   overflow-y: auto;
+  width: 100%;
 }
 .search-confirmation__room-type .room-type-inner {
   display: grid;
@@ -273,6 +275,7 @@ body.template-search-confirmation\._search_confirmation {
 }
 .search-confirmation__form form {
   margin: 25px 0 0 0;
+  clear: both;
 }
 .search-confirmation__form form dl {
   display: flex;

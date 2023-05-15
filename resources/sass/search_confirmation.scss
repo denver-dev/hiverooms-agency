@@ -195,6 +195,7 @@ body.template-search-confirmation\._search_confirmation{
     }
     &__ch-room-type{
         padding: 25px 0;
+        clear: both;
         form{
             label{
                 strong{
@@ -216,6 +217,7 @@ body.template-search-confirmation\._search_confirmation{
     }
     &__room-type{
         overflow-y: auto;
+        width: 100%;
         .room-type-inner{
             display: grid;
             grid-gap: 1rem;
@@ -304,6 +306,7 @@ body.template-search-confirmation\._search_confirmation{
         }
         form{
             margin: 25px 0 0 0;
+            clear: both;
             dl{
                 display: flex;
                 flex-wrap: wrap;

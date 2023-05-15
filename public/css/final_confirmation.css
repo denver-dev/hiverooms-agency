@@ -32,9 +32,13 @@ body.template-final-confirmation\._final_confirmation {
 .final-confirmation__table .btn {
   text-align: center;
 }
-.final-confirmation__table .btn a {
+.final-confirmation__table .btn button {
   display: inline-block;
   padding: 10px 35px;
+  background-color: #3264FF;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
 }
 .final-confirmation__table-1 {
   margin: 0 0 75px 0;
