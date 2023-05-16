@@ -67,7 +67,12 @@
                                         </div>
                                     </div>
                                     <div class="rm-refund">
-                                        <a href="{{ route('search-confirmation.search_confirmation', $hotel['data']['id']) }}" class="btn-link">Fully refundable</a>
+                                        <a href="{{ route('search-confirmation.search_confirmation', [
+                                            'hotel_id' => $hotel['data']['id'],
+                                            'going_to' => $going_to,
+                                            'check_in' => $check_in,
+                                            'check_out' => $check_out,
+                                        ]) }}" class="btn-link">Fully refundable</a>
                                     </div>
                                 </div>
                                 <div class="rm-bottom">
