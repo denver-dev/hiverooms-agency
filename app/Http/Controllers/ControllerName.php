@@ -330,38 +330,66 @@ class ControllerName extends Controller
             'partner_order_id' => $partner_order_id,
         ]);
 
-        $hotel_client = new Client();
-        $hotel_response = $hotel_client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/order/booking/finish/', [
-            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-            'json' => [
-                "user" => [
-                    "email" => $user->email,
-                    "phone" => $user->phone
-                ],
-                "partner" => [
-                    "partner_order_id" => $partner_order_id,
-                ],
-                "language" => "en",
-                "rooms" => [
-                    [
-                        "guests" => [
-                            [
-                                "first_name" => $user->firstName,
-                                "last_name" => $user->lastName,
-                            ],
-                        ]
-                    ]
-                ],
-                "payment_type" => [
-                    "type" => "now",
-                    "amount" => "10",
-                    "currency_code" => "USD"
-                ]
-            ],
-        ]);
+        $client = new \GuzzleHttp\Client();
 
-        $hotel_response = $hotel_response->getBody();
-        $hotel_data = json_decode($hotel_response, true);
+        // // For Paymaya Payment
+        // $response = $client->request('POST', 'https://pg-sandbox.paymaya.com/payby/v2/paymaya/payments', [
+        //     'headers' => [
+        //         'accept' => 'application/json',
+        //         'authorization' => 'Basic cGstcnB3YjVZUjZFZm5LaU1zbGRacVk0aGdwdkpqdXk4aGh4VzJiVkFBaXoyTjo=',
+        //         'content-type' => 'application/json'
+        //     ],
+        //     'json' => [
+        //         'totalAmount' => [
+        //             'value' => 100,
+        //             'currency' => 'PHP'
+        //         ],
+        //         'redirectUrl' => [
+        //             'success' => 'https://www.merchantsite.com/success?id=567834590',
+        //             'failure' => 'https://www.merchantsite.com/failure?id=567834590',
+        //             'cancel' => 'https://www.merchantsite.com/cancel?id=567834590'
+        //         ],
+        //         'requestReferenceNumber' => '5b4a6d60-2165-4bc1-bb0e-e610d1a3f82d'
+        //         ],
+        // ]);
+
+        // //For Gcash Payment
+        // // Set your X-API-KEY with the API key from the Customer Area.
+        // $client = new \Adyen\Client();
+        // $client->setXApiKey("YOUR_X-API-KEY");
+        // $service = new \Adyen\Service\Checkout($client);
+
+        // $params = array(
+        //     "amount" => array(
+        //         "currency" => "PHP",
+        //         "value" => 1000
+        //     ),
+        //     "reference" => "YOUR_ORDER_NUMBER",
+        //     "paymentMethod" => array(
+        //         "type" => "gcash"
+        //     ),
+        //     "returnUrl" => "https://your-company.com/checkout?shopperOrder=12xy..",
+        //     "merchantAccount" => "YOUR_MERCHANT_ACCOUNT"
+        // );
+        // $result = $service->payments($params);
+
+        // //For Paypal Payment
+        // $client = new Client();
+        // $response = $client->request('POST', 'https://api-m.sandbox.paypal.com/v3/vault/payment-tokens', [
+        //     'headers' => [
+        //         'Authorization' => 'Bearer FULL_scoped_access_token',
+        //         'Content-Type' => 'application/json',
+        //         'PayPal-Request-ID' => 'b5efbe82-bbad-4bb0-aeeb-bfef5b442e49'
+        //     ],
+        //     'json' => [
+        //         'payment_source' => [
+        //             'token' => [
+        //                 'id' => '5C991763VB2781612',
+        //                 'type' => 'SETUP_TOKEN'
+        //             ]
+        //         ]
+        //     ]
+        // ]);
 
         return view('booking-success._booking_success', [
             'user' => $user,
