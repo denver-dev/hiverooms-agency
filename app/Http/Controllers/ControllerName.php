@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Exception;
 use GuzzleHttp\Client;
 use App\Models\Booking;
 use App\Models\Package;
 use App\Models\Referral;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +21,8 @@ use GuzzleHttp\Psr7\Request as Psr7Request;
 
 class ControllerName extends Controller
 {
-    public function index(Request $request){
-
+    public function index(Request $request)
+    {
         // Search hotel keyword
         $going_to = $request->input('going_to');
         $check_in = $request->input('check_in');
@@ -47,7 +49,7 @@ class ControllerName extends Controller
         $results = [];
         $priceRes = [];
 
-        foreach($region_ids as $region_id){
+        foreach ($region_ids as $region_id) {
             $region_response = $region_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/serp/region/', [
                 'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
                 'json' => [
@@ -61,6 +63,7 @@ class ControllerName extends Controller
                     ],
                     "region_id" => $region_id,
                     "hotels_limit" => 5,
+                    "currency" => "PHP"
                 ]
             ]);
 
@@ -69,26 +72,65 @@ class ControllerName extends Controller
 
             $client = new Client();
             foreach ($ids as $id) {
-                $response = $client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
-                    'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                    ],
-                    'json' => [
-                        'id' => $id,
-                        'language' => 'en',
-                    ]
-                ]);
+                $retryCount = 0;
+                $retryLimit = 3;
+                $retryDelay = 1; // seconds
 
-                $data = json_decode($response->getBody(), true);
+                while ($retryCount < $retryLimit) {
+                    try {
+                        $response = $client->request('POST', 'https://api.worldota.net/api/b2b/v3/hotel/info/', [
+                            'auth' => ['5164', '4f8b3f0f-7186-48a1-9d2b-76cebfa35884'],
+                            'headers' => [
+                                'Content-Type' => 'application/json',
+                            ],
+                            'json' => [
+                                'id' => $id,
+                                'language' => 'en',
+                            ]
+                        ]);
 
-                foreach ($region_data['data']['hotels'] as $region_hotel) {
-                    if ($region_hotel['id'] === $id) {
-                        $data['data']['rates'] = $region_hotel['rates'];
+                        $data = json_decode($response->getBody(), true);
+
+                        foreach ($region_data['data']['hotels'] as $region_hotel) {
+                            if ($region_hotel['id'] === $id) {
+                                $rates = $region_hotel['rates'];
+                                foreach ($rates as &$rate) {
+                                    $rate['daily_prices'][0] += $rate['daily_prices'][0] * 0.05;
+                                }
+
+                                // Replace {size} with 1024x768 in the image URLs
+                                $images = $data['data']['images'];
+                                $sizePlaceholder = '{size}';
+                                $replacement = '1024x768';
+
+                                $processedImages = array_map(function ($image) use ($sizePlaceholder, $replacement) {
+                                    return str_replace($sizePlaceholder, $replacement, $image);
+                                }, $images);
+
+                                $data['data']['images'] = $processedImages;
+
+                                $data['data']['rates'] = $rates;
+                                break;
+                            }
+                        }
+                        $results[] = $data;
+
                         break;
+                    } catch (ClientException $e) {
+                        $statusCode = $e->getResponse()->getStatusCode();
+                        if ($statusCode === 429) {
+                            sleep($retryDelay);
+                            $retryCount++;
+                            continue;
+                        } else {
+                            // Handle other exceptions or errors
+                            // ...
+                        }
+                    } catch (Exception $e) {
+                        // Handle other exceptions or errors
+                        // ...
                     }
                 }
-                $results[] = $data;
             }
         }
 
@@ -103,6 +145,7 @@ class ControllerName extends Controller
             'check_out' => $check_out,
         ]);
     }
+
 
     public function dashboard()
     {
@@ -189,7 +232,8 @@ class ControllerName extends Controller
         return view('points._points')->with('user', $user);
     }
 
-    public function create_booking(){
+    public function create_booking()
+    {
         $today = Carbon::now()->format('Y-m-d');
         $nextDay = Carbon::now()->addDay()->format('Y-m-d');
         $userId = Auth::user();
@@ -211,7 +255,6 @@ class ControllerName extends Controller
 
     public function search_confirmation($hotel_id, $check_in, $check_out)
     {
-        // dd($hotel_id);
         $userId = Auth::user();
         $user = User::find($userId->id);
 
@@ -231,7 +274,6 @@ class ControllerName extends Controller
 
         $response = $response->getBody();
         $data = json_decode($response, true);
-        // dd($data);
 
         $hotel_client = new Client();
         $hotel_response = $hotel_client->request('POST', 'https://api.worldota.net/api/b2b/v3/search/hp/', [
@@ -247,6 +289,7 @@ class ControllerName extends Controller
                     ]
                 ],
                 "id" => $hotel_id,
+                "currency" => "PHP"
             ],
             'debug' => null,
             'error' => null,
@@ -255,8 +298,19 @@ class ControllerName extends Controller
 
         $hotel_response = $hotel_response->getBody();
         $hotel_data = json_decode($hotel_response, true);
-        // dd($hotel_data);
 
+        $sizePlaceholder = '{size}';
+        $replacement = '1024x768';
+        $data['data']['images'] = array_map(function ($image) use ($sizePlaceholder, $replacement) {
+            return str_replace($sizePlaceholder, $replacement, $image);
+        }, $data['data']['images']);
+
+        foreach ($data['data']['room_groups'] as &$roomGroup) {
+            $roomGroup['images'] = array_map(function ($image) use ($sizePlaceholder, $replacement) {
+                return str_replace($sizePlaceholder, $replacement, $image);
+            }, $roomGroup['images']);
+        }
+        
         return view('search-confirmation._search_confirmation', [
             'hotels' => $data,
             'user' => $user,
