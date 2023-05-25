@@ -71,7 +71,7 @@
                                         <label for="cars"><i class="fa-solid fa-bed">&nbsp;</i>
                                             <strong>Choose your room</strong>
                                         </label>
-                                        <select id="room_type" name="" form="">
+                                        {{--  <select id="room_type" name="" form="">
                                             <option value="">Select room type</option>
                                             @if ($hotel_data['data']['hotels'] != [])
                                                 @foreach ($hotel_data['data']['hotels'][0]['rates'] as $room_types)
@@ -79,31 +79,31 @@
                                                         {{ $room_types['room_name'] }}</option>
                                                 @endforeach
                                             @endif
-                                        </select>
+                                        </select>  --}}
                                     </div>
                                 </form>
                             </div>
                             <div class="search-confirmation__room-type">
                                 <div class="room-type-inner">
-                                    @foreach ($hotels['data']['room_groups'] as $room_group)
+                                    @foreach ($hotel_data['data']['hotels'][0]['rates'] as $room_group)
                                         <div class="swiper-slide layout-grid">
-                                            <div class="layout-grid-item">
+                                            <div class="layout-grid-item" id="room_type_{{ $loop->index }}" style="cursor: pointer;" data-value="{{ $room_group['book_hash'] }}">
                                                 <div class="gallery">
                                                     <a href="#">
                                                         <figure>
-                                                            @if (!empty($room_group['images']) && isset($room_group['images'][0]))
+                                                            {{--  @if (!empty($room_group['images']) && isset($room_group['images'][0]))
                                                                 <img src="{{ $room_group['images'][0] }}"
                                                                     alt="">
-                                                            @else
+                                                            @else  --}}
                                                                 <img src="{{ asset('images/hotel-room/bohol-hotel.jpg') }}"
                                                                     alt="">
-                                                            @endif
+                                                            {{--  @endif  --}}
                                                         </figure>
                                                     </a>
                                                 </div>
                                                 <div class="rm-inner-content">
                                                     <div class="rm-type">
-                                                        <h3>{{ $room_group['name'] }}</h3>
+                                                        <h3>{{ $room_group['room_name'] }}</h3>
                                                     </div>
                                                     <div class="rm-amenities">
                                                         <dl>
@@ -221,30 +221,35 @@
     </div>
     <script>
         // JavaScript code
-        var selectElement = document.getElementById('room_type');
         var nextStepBtn = document.getElementById('next_step_btn');
+        document.querySelectorAll('[id^="room_type"]').forEach(function(element) {
+            element.addEventListener('click', function() {
+                var value = element.getAttribute('data-value');
+                console.log(value);
 
-        nextStepBtn.addEventListener('click', function() {
-            var selectedOption = selectElement.value;
+                nextStepBtn.addEventListener('click', function() {
+                    var selectedOption = value;
 
-            var hotelId = '{{ $hotel_id }}';
-            var checkIn = '{{ $check_in }}';
-            var checkOut = '{{ $check_out }}';
+                    var hotelId = '{{ $hotel_id }}';
+                    var checkIn = '{{ $check_in }}';
+                    var checkOut = '{{ $check_out }}';
 
-            var url =
-                "{{ route('final-confirmation.final_confirmation', [
-                    'hotel_id' => ':hotel_id',
-                    'book_hash' => ':book_hash',
-                    'check_in' => ':check_in',
-                    'check_out' => ':check_out',
-                ]) }}";
+                    var url =
+                        "{{ route('final-confirmation.final_confirmation', [
+                            'hotel_id' => ':hotel_id',
+                            'book_hash' => ':book_hash',
+                            'check_in' => ':check_in',
+                            'check_out' => ':check_out',
+                        ]) }}";
 
-            url = url.replace(':hotel_id', hotelId)
-                .replace(':book_hash', selectedOption)
-                .replace(':check_in', checkIn)
-                .replace(':check_out', checkOut);
+                    url = url.replace(':hotel_id', hotelId)
+                        .replace(':book_hash', selectedOption)
+                        .replace(':check_in', checkIn)
+                        .replace(':check_out', checkOut);
 
-            window.location.href = url;
-        });
+                    window.location.href = url;
+                });
+            })
+        })
     </script>
 </section>
