@@ -233,6 +233,7 @@
                     var hotelId = '{{ $hotel_id }}';
                     var checkIn = '{{ $check_in }}';
                     var checkOut = '{{ $check_out }}';
+                    var total_amount = '{{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.05, 2) }}';
 
                     var url =
                         "{{ route('final-confirmation.final_confirmation', [
@@ -240,12 +241,14 @@
                             'book_hash' => ':book_hash',
                             'check_in' => ':check_in',
                             'check_out' => ':check_out',
+                            'total_amount' => ':total_amount',
                         ]) }}";
 
                     url = url.replace(':hotel_id', hotelId)
                         .replace(':book_hash', selectedOption)
                         .replace(':check_in', checkIn)
-                        .replace(':check_out', checkOut);
+                        .replace(':check_out', checkOut)
+                        .replace(':total_amount', total_amount);
 
                     window.location.href = url;
                 });

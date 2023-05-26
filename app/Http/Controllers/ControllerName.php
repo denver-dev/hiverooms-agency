@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Exception;
+use Carbon\Carbon;
+use Omnipay\Omnipay;
 use GuzzleHttp\Client;
 use App\Models\Booking;
 use App\Models\Package;
+use App\Models\Payment;
 use App\Models\Referral;
-use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,10 +18,21 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request as Psr7Request;
 
 class ControllerName extends Controller
 {
+    private $gateway;
+
+    public function __construct()
+    {
+        $this->gateway = Omnipay::create('PayPal_Rest');
+        $this->gateway->setClientId(config('paypal.client_id'));
+        $this->gateway->setSecret(config('paypal.client_secret'));
+        $this->gateway->setTestMode(true);
+    }
+
     public function index(Request $request)
     {
         // Search hotel keyword
@@ -310,7 +322,7 @@ class ControllerName extends Controller
                 return str_replace($sizePlaceholder, $replacement, $image);
             }, $roomGroup['images']);
         }
-        
+
         return view('search-confirmation._search_confirmation', [
             'hotels' => $data,
             'user' => $user,
@@ -321,7 +333,7 @@ class ControllerName extends Controller
         ]);
     }
 
-    public function final_confirmation($hotel_id, $book_hash, $check_in, $check_out)
+    public function final_confirmation($hotel_id, $book_hash, $check_in, $check_out, $total_amount)
     {
         $userId = Auth::user();
         $user = User::find($userId->id);
@@ -360,31 +372,33 @@ class ControllerName extends Controller
             'check_in_format' => $check_in_format,
             'check_out_format' => $check_out_format,
             'nights' => $nights,
+            'total_amount' => $total_amount,
         ]);
     }
 
     public function booking_store(Request $request)
     {
-        $userId = Auth::user();
-        $user = User::find($userId->id);
-        $partner_order_id = 'hive' . $user->id . Str::random(12);
+        // dd('hello');
+        // $userId = Auth::user();
+        // $user = User::find($userId->id);
+        // $partner_order_id = 'hive' . $user->id . Str::random(12);
         // Highly recommended UUID
         // $partner_order_id = Str::uuid()->toString();
 
-        $booking = Booking::create([
-            'user' => $user->id,
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
-            'hotel_id' => $request->hotel_id,
-            'guest_adult' => 2,
-            'guest_children' => 0,
-            'currency' => null,
-            'residency' => null,
-            'book_hash' => $request->book_hash,
-            'partner_order_id' => $partner_order_id,
-        ]);
+        // $booking = Booking::create([
+        //     'user' => $user->id,
+        //     'check_in' => $request->check_in,
+        //     'check_out' => $request->check_out,
+        //     'hotel_id' => $request->hotel_id,
+        //     'guest_adult' => 2,
+        //     'guest_children' => 0,
+        //     'currency' => null,
+        //     'residency' => null,
+        //     'book_hash' => $request->book_hash,
+        //     'partner_order_id' => $partner_order_id,
+        // ]);
 
-        $client = new \GuzzleHttp\Client();
+        // $client = new \GuzzleHttp\Client();
 
         // // For Paymaya Payment
         // $response = $client->request('POST', 'https://pg-sandbox.paymaya.com/payby/v2/paymaya/payments', [
@@ -426,28 +440,29 @@ class ControllerName extends Controller
         //     "merchantAccount" => "YOUR_MERCHANT_ACCOUNT"
         // );
         // $result = $service->payments($params);
+        $amount = preg_replace('/[^0-9.]/', '', $request->amount);
+        // dd($request->amount);
+        //For Paypal Payment
+        try {
+            $response = $this->gateway->purchase(array(
+                'amount' => $amount,
+                'currency' => config('paypal.currency'),
+                'returnUrl' => url('booking-success'),
+                'cancelUrl' => url('error')
+            ))->send();
 
-        // //For Paypal Payment
-        // $client = new Client();
-        // $response = $client->request('POST', 'https://api-m.sandbox.paypal.com/v3/vault/payment-tokens', [
-        //     'headers' => [
-        //         'Authorization' => 'Bearer FULL_scoped_access_token',
-        //         'Content-Type' => 'application/json',
-        //         'PayPal-Request-ID' => 'b5efbe82-bbad-4bb0-aeeb-bfef5b442e49'
-        //     ],
-        //     'json' => [
-        //         'payment_source' => [
-        //             'token' => [
-        //                 'id' => '5C991763VB2781612',
-        //                 'type' => 'SETUP_TOKEN'
-        //             ]
-        //         ]
-        //     ]
+            if($response->isRedirect()) {
+                $response->redirect();
+            } else {
+                return $response->getMessage();
+            }
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+
+        // return view('booking-success._booking_success', [
+        //     'user' => $user,
         // ]);
-
-        return view('booking-success._booking_success', [
-            'user' => $user,
-        ]);
     }
 
     public function flights()
@@ -457,11 +472,43 @@ class ControllerName extends Controller
         return view('flights._flights')->with('user', $user);
     }
 
-    public function booking_success()
+    public function booking_success(Request $request)
     {
         $userId = Auth::user();
         $user = User::find($userId->id);
-        return view('booking-success._booking_success')->with('user', $user);
+
+        if ($request->input('paymentId') && $request->input('PayerID')) {
+            $transaction = $this->gateway->completePurchase(array(
+                'payer_id' => $request->input('PayerID'),
+                'transactionReference' => $request->input('paymentId')
+            ));
+
+            $response = $transaction->send();
+
+            if ($response->isSuccessful()) {
+
+                $arr = $response->getData();
+
+                Payment::create([
+                    'payment_id' => $arr['id'],
+                    'payer_id' => $arr['payer']['payer_info']['payer_id'],
+                    'payer_email' => $arr['payer']['payer_info']['email'],
+                    'amount' => $arr['transactions'][0]['amount']['total'],
+                    'currency' => config('paypal.currency'),
+                    'payment_status' => $arr['state'],
+                ]);
+
+                return view('booking-success._booking_success', [
+                    'user' => $user,
+                    'payment_id' => $arr['id'],
+                ]);
+
+            } else{
+                return $response->getMessage();
+            }
+        } else{
+            return 'Payment declined!!';
+        }
     }
 
     public function referral()

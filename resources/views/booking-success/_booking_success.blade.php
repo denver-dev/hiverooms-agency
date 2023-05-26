@@ -8,7 +8,7 @@
         {{-- Sidebar Menu --}}
             @yield('sidebar')
        {{-- Main content --}}
-       <div class="main-content"> 
+       <div class="main-content">
             {{-- Tab selection --}}
                 <div class="tab--content">
                     <div class="tab--flex">
@@ -25,7 +25,8 @@
                             <dl>
                                 <dt>Awesome!</dt>
                                 <dd>Your booking has been confirmed.<br>
-                                    Check your email for details.</dd>
+                                    Check your email for details. <br>
+                                    Your Transaction Id is : {{ $payment_id }}</dd>
                             </dl>
                             <div class="btn-success">
                                 <a href="{{route ('dashboard.dashboard')}}" class="btn-opa">OK</a>

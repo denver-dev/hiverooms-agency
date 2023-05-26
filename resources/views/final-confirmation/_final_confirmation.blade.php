@@ -63,12 +63,12 @@
                                     <td>{{ $nights }}</td>
                                     <td>1</td>
                                     <td>3</td>
-                                    <td>PHP 784</td>
+                                    <td>PHP {{ $total_amount }}4</td>
                                 </tr>
                                 <tr>
                                     <td colspan="5"></td>
                                     <td class="sub-total">Subtotal:</td>
-                                    <td class="total">PHP 784</td>
+                                    <td class="total">PHP {{ $total_amount }}</td>
                                 </tr>
                             </table>
                         </div>
@@ -95,11 +95,13 @@
                             </form>
                         </div>
                         <form action="{{ route('booking_store') }}" method="POST" class="search-form">
+                            @csrf
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
                             <input type="hidden" name="check_in" value="{{ $check_in }}">
                             <input type="hidden" name="check_out" value="{{ $check_out }}">
                             <input type="hidden" name="hotel_id" value="{{ $hotel_id }}"
                             <input type="hidden" name="book_hash" value="{{ $book_hash }}">
+                            <input type="hidden" name="amount" value="{{ $total_amount }}">
                             <div class="btn">
                                 {{--  <a href="{{ route ('booking_store') }}" class="btn-opa">Submit Booking <span class="arrow"><i class="fa fa-chevron-right"></i></span></a>  --}}
                                 <button type="submit" class="btn-opa">Submit Booking <span class="arrow"><i class="fa fa-chevron-right"></i></span></button>
