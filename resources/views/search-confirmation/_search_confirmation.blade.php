@@ -3,6 +3,7 @@
 @include('component._tab')
 @include('component._logo')
 
+@section('content')
 <section class="search-confirmation">
     <div class="search-confirmation__container">
         {{-- Sidebar Menu --}}
@@ -84,7 +85,7 @@
                             <div class="search-confirmation__room-type">
                                 <div class="room-type-inner">
                                     @foreach($hotels['data']['room_groups'] as $room_group)
-                                        <div class="swiper-slide layout-grid">
+                                        <div class="swiper-slide layout-grid custom-hover">
                                             <div class="layout-grid-item">
                                                 <div class="gallery">
                                                     <a href="#"><figure><img src="{{ asset('images/hotel-room/bohol-hotel.jpg') }}" alt=""></figure></a>
@@ -210,3 +211,4 @@
         });
     </script>
 </section>
+@endsection

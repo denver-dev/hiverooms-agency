@@ -180,6 +180,7 @@ body.template-search-confirmation\._search_confirmation {
 .search-confirmation__ch-room-type {
   padding: 25px 0;
   clear: both;
+  padding: 15px;
 }
 .search-confirmation__ch-room-type form label strong {
   font-size: 20px;
@@ -206,6 +207,13 @@ body.template-search-confirmation\._search_confirmation {
   clear: both;
   height: 800px;
   margin: 0 15px 0 0;
+}
+.search-confirmation__room-type .room-type-inner .custom-hover:hover {
+  box-shadow: 0 0 20px -10px #e8bd01;
+  background-color: rgba(232, 189, 1, 0.0784313725);
+}
+.search-confirmation__room-type .room-type-inner .custom-hover .gallery:hover {
+  opacity: 0.7;
 }
 .search-confirmation__room-type .room-type-inner .layout-grid .layout-grid-item .rm-inner-content {
   padding: 12px;

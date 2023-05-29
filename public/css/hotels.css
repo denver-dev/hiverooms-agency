@@ -2,6 +2,35 @@ body.template-component\._hotels {
   background-color: #f8f5f4;
 }
 
+.hotel__filtering {
+  flex: 0 1 235px;
+}
+.hotel__filtering form .ttl {
+  border: 1px solid #b6b6b6;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.hotel__filtering form .filter-inner {
+  border: 1px solid #b6b6b6;
+  padding: 5px 10px;
+}
+.hotel__filtering form .filter-inner .ttl2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.hotel__filtering form .filter-inner dl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.hotel__filtering form .filter-inner dl dd {
+  font-size: 13px;
+}
+.hotel__destinations {
+  flex: 1 1 80%;
+}
 .hotel__rm-card {
   display: flex;
   background-color: #fff;
@@ -132,6 +161,10 @@ body.template-component\._hotels {
 .hotel__rm-card .rm-content .rm-bottom .price span {
   padding: 0 8px 0 0;
   font-size: 20px;
+}
+.hotel .flex-responsive {
+  display: flex;
+  flex-wrap: wrap;
 }
 .hotel .dashboard__sidebar--content {
   padding: 25px 40px 50px 300px;
