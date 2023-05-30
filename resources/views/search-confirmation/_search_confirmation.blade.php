@@ -196,21 +196,6 @@
                                         {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['tax_data']['taxes'][1]['amount'], 2) }}
                                     </dd>
                                 </dl>
-                                <dl>
-                                    <dt>5% Commission</dt>
-                                    <dd>PHP
-                                        {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.05, 2) }}
-                                    </dd>
-                                </dl>
-                                <hr class="hr-line">
-                                <div class="total">
-                                    <p>Prepay Online</p>
-                                    <p>PHP
-                                        {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.05, 2) }}<span><i
-                                                class="fa-regular fa-heart">&nbsp;</i>We Price
-                                            Match</span>
-                                    </p>
-                                </div>
                             </div>
                         </div>
 

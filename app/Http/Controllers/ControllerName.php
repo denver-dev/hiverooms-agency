@@ -107,7 +107,7 @@ class ControllerName extends Controller
                             if ($region_hotel['id'] === $id) {
                                 $rates = $region_hotel['rates'];
                                 foreach ($rates as &$rate) {
-                                    $rate['daily_prices'][0] += $rate['daily_prices'][0] * 0.05;
+                                    $rate['daily_prices'][0] += $rate['daily_prices'][0] * 0.075;
                                 }
 
                                 // Replace {size} with 1024x768 in the image URLs
@@ -607,15 +607,17 @@ class ControllerName extends Controller
             $currentUser->points = $points;
             $currentUser->price = $price;
             $currentUser->level = $userLevel + 1;
+
             $currentUser->save();
 
             // Check the referred user's level
             $referredUser = User::find($referralCode);
+
             if (!$referredUser || $referredUser->level !== 0) {
                 $errorMessage = 'Invalid referred user';
                 return redirect()->back()->withErrors($errorMessage)->withInput();
             }
-            $referredPackage = Package::find($referredUser->id);
+            $referredPackage = Package::find($referredUser->package_id);
             // Determine the commission and points based on the referred user's level
             $referredLevel = $userLevel + 1;
 
@@ -646,7 +648,6 @@ class ControllerName extends Controller
 
             $referredPoints = $referredComm / 100;
             $referredPrice = $referredComm;
-
             // Update the referred user's commission, points, and level
             $referredUser->commission = $referredComm;
             $referredUser->points = $referredPoints;
