@@ -444,14 +444,16 @@ class ControllerName extends Controller
         // dd($request->amount);
         //For Paypal Payment
         try {
-            $response = $this->gateway->purchase(array(
-                'amount' => $amount,
-                'currency' => config('paypal.currency'),
-                'returnUrl' => url('booking-success'),
-                'cancelUrl' => url('error')
-            ))->send();
+            $response = $this->gateway->purchase(
+                array(
+                    'amount' => $amount,
+                    'currency' => config('paypal.currency'),
+                    'returnUrl' => url('booking-success'),
+                    'cancelUrl' => url('error')
+                )
+            )->send();
 
-            if($response->isRedirect()) {
+            if ($response->isRedirect()) {
                 $response->redirect();
             } else {
                 return $response->getMessage();
@@ -478,10 +480,12 @@ class ControllerName extends Controller
         $user = User::find($userId->id);
 
         if ($request->input('paymentId') && $request->input('PayerID')) {
-            $transaction = $this->gateway->completePurchase(array(
-                'payer_id' => $request->input('PayerID'),
-                'transactionReference' => $request->input('paymentId')
-            ));
+            $transaction = $this->gateway->completePurchase(
+                array(
+                    'payer_id' => $request->input('PayerID'),
+                    'transactionReference' => $request->input('paymentId')
+                )
+            );
 
             $response = $transaction->send();
 
@@ -503,10 +507,10 @@ class ControllerName extends Controller
                     'payment_id' => $arr['id'],
                 ]);
 
-            } else{
+            } else {
                 return $response->getMessage();
             }
-        } else{
+        } else {
             return 'Payment declined!!';
         }
     }
@@ -531,6 +535,136 @@ class ControllerName extends Controller
             'refers' => $refers,
             'referred' => $referred
         ]);
+    }
+
+    public function addingReferral(Request $request)
+    {
+        $referralCode = $request->input('referralCode');
+
+        // Get the currently logged-in user
+        $currentUser = Auth::user();
+
+        // Find the user with the given referral code
+        $user = User::find($referralCode);
+
+        if ($user) {
+            // Check if the referral code belongs to the current user
+            if ($user->id === $currentUser->id) {
+                $errorMessage = 'You cannot use your own referral code';
+                return redirect()->back()->withErrors($errorMessage)->withInput();
+            }
+
+            $checkReferralList = DB::table('referrals')
+                ->where('user_id', $user->id)
+                ->get();
+            if ($checkReferralList->count() > 20) {
+                $errorMessage = 'You have reached the maximum number of referrals';
+                return redirect()->back()->withErrors($errorMessage)->withInput();
+            }
+
+            $package = Package::find($user->package_id);
+
+            if (!$package) {
+                $errorMessage = 'Invalid package';
+                return redirect()->back()->withErrors($errorMessage)->withInput();
+            }
+
+            // Determine the commission and points based on the current user's level
+            $userLevel = $currentUser->level;
+            $commission = 0;
+            $points = 0;
+            $price = 0;
+
+            switch ($userLevel) {
+                case 0:
+                    $commission = $package->package_price * 0.20;
+                    break;
+                case 1:
+                    $commission = $package->package_price * 0.05;
+                    break;
+                case 2:
+                    $commission = $package->package_price * 0.03;
+                    break;
+                case 3:
+                    $commission = $package->package_price * 0.02;
+                    break;
+                case 4:
+                    $commission = $package->package_price * 0.01;
+                    break;
+                case 5:
+                    $commission = $package->package_price * 0.01;
+                    break;
+                case 6:
+                    $commission = $package->package_price * 0.01;
+                    break;
+            }
+
+            $points = $commission / 100;
+            $price = $commission;
+
+            // Update the current user's commission, points, and level
+            $currentUser->commission = $commission;
+            $currentUser->points = $points;
+            $currentUser->price = $price;
+            $currentUser->level = $userLevel + 1;
+            $currentUser->save();
+
+            // Check the referred user's level
+            $referredUser = User::find($referralCode);
+            if (!$referredUser || $referredUser->level !== 0) {
+                $errorMessage = 'Invalid referred user';
+                return redirect()->back()->withErrors($errorMessage)->withInput();
+            }
+            $referredPackage = Package::find($referredUser->id);
+            // Determine the commission and points based on the referred user's level
+            $referredLevel = $userLevel + 1;
+
+            $referredComm = 0;
+            $referredPoints = 0;
+            $referredPrice = 0;
+
+            switch ($referredLevel) {
+                case 1:
+                    $referredComm = $referredPackage->package_price * 0.5;
+                    break;
+                case 2:
+                    $referredComm = $referredPackage->package_price * 0.03;
+                    break;
+                case 3:
+                    $referredComm = $referredPackage->package_price * 0.02;
+                    break;
+                case 4:
+                    $referredComm = $referredPackage->package_price * 0.01;
+                    break;
+                case 5:
+                    $referredComm = $referredPackage->package_price * 0.01;
+                    break;
+                case 6:
+                    $referredComm = $referredPackage->package_price * 0.01;
+                    break;
+            }
+
+            $referredPoints = $referredComm / 100;
+            $referredPrice = $referredComm;
+
+            // Update the referred user's commission, points, and level
+            $referredUser->commission = $referredComm;
+            $referredUser->points = $referredPoints;
+            $referredUser->price = $referredPrice;
+            $referredUser->level = $referredLevel;
+            $referredUser->save();
+
+            Referral::create([
+                'user_id' => $currentUser->id,
+                'referral_id' => $referralCode
+            ]);
+
+            $successMessage = 'Referral added successfully';
+            return redirect()->back()->with('success', $successMessage);
+        } else {
+            $errorMessage = 'Referral code not found';
+            return redirect()->back()->withErrors($errorMessage)->withInput();
+        }
     }
 
     public function addReferral(Request $request, $id)

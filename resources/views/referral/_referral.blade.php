@@ -36,47 +36,26 @@
                                                 <div class="content-inner">
                                                     <h2 class="ttl1">Direct Referrals</h2>
                                                     <div class="transactions__record">
-                                                        <div class="transactions__record--main global-bg">
-                                                            <div class="transactions__search">
-                                                                <div class="ttl-w-search">
-                                                                    <h2 class="hdng-title">Direct Referrals</h2>
-                                                                    <div class="d-flex">
-                                                                        <div class="search-inner">
-                                                                            <form active="#">
-                                                                                <div class="search-field">
-                                                                                    <input type="text"
-                                                                                        placeholder="Search content here...">
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
+                                                        <div>
+                                                            <form method="POST"
+                                                                action="{{ route('referral.addingReferral') }}">
+                                                                @csrf
+                                                                <div class="container">
+                                                                    <label for="referralCode"><b>Referral Code</b></label>
+                                                                    <input type="text" placeholder="Enter Referral code"
+                                                                        name="referralCode" id="referralCode" required
+                                                                        autofocus>
+                                                                    @error('referralCode')
+                                                                        <span role="alert">{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
-                                                            </div>
-                                                            <div class="transactions__responsive">
-                                                                <table>
-                                                                    <tr>
-                                                                        <th>Referral Name</th>
-                                                                        <th>Package Name</th>
-                                                                        <th>Phone Number</th>
-                                                                        <th>Address</th>
-                                                                        <th>Email</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                    @foreach ($refers as $refer)
-                                                                        <tr>
-                                                                            <td>{{ $refer->firstName }}
-                                                                                {{ $refer->lastName }}</td>
-                                                                            <td>{{ $refer->package_name }}</td>
-                                                                            <td>{{ $refer->phone }}</td>
-                                                                            <td>{{ $refer->address }}</td>
-                                                                            <td>{{ $refer->email }}</td>
-                                                                            <td><a href="{{ route('referral.addReferral', $refer->userId) }}"
-                                                                                    id="myBtn" class="btn">Add
-                                                                                    Referral</a></td>
-                                                                        </tr>
-                                                                    @endforeach
-                                                                </table>
-                                                            </div>
+
+                                                                <div class="btn1">
+                                                                    <button type="submit" class="btn-log">Add
+                                                                        Referral</button>
+                                                                </div>
+                                                            </form>
+
                                                         </div>
                                                     </div>
                                                 </div>

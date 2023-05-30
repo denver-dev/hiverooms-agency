@@ -52,6 +52,8 @@ Route::get('/referral', [ControllerName::class, 'referral'])->name('referral.ref
 
 Route::get('/addReferral/{id}', [ControllerName::class, 'addReferral'])->name('referral.addReferral');
 
+Route::post('/add-referral', [ControllerName::class, 'addingReferral'])->name('referral.addingReferral');
+
 Route::get('/register', [ControllerName::class, 'register'])->name('register.register');
 
 Route::get('/', function () {
