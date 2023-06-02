@@ -527,9 +527,21 @@ class ControllerName extends Controller
         $referred = DB::table('referrals')
             ->join('users', 'users.id', '=', 'referrals.referral_id')
             ->select('users.*', 'users.id as userId')
-            ->where('referrals.user_id', '=', $userId->id)
+            ->where('referrals.user_id', $userId->id)
+            ->orderBy('users.id', 'desc')
             ->get();
 
+        $updateRefer = DB::table('referrals')
+            ->where('user_id', $userId->id)
+            ->get();
+
+        $totalCommission = 0;
+        foreach ($updateRefer as $ref) {
+            $searchUser = User::find($ref->referral_id);
+            $totalCommission += $searchUser->price;
+        }
+        $userId->commission = $totalCommission;
+        $userId->save();
         return view('referral._referral', [
             'user' => $user,
             'refers' => $refers,
@@ -539,14 +551,13 @@ class ControllerName extends Controller
 
     public function addingReferral(Request $request)
     {
-        $referralCode = $request->input('referralCode');
-
+        $firstNumber = $request->input('referralCode');
+        preg_match('/^\d+/', $firstNumber, $matches);
+        $referralCode = isset($matches[0]) ? $matches[0] : null;
         // Get the currently logged-in user
         $currentUser = Auth::user();
-
         // Find the user with the given referral code
         $user = User::find($referralCode);
-
         if ($user) {
             // Check if the referral code belongs to the current user
             if ($user->id === $currentUser->id) {
@@ -554,111 +565,61 @@ class ControllerName extends Controller
                 return redirect()->back()->withErrors($errorMessage)->withInput();
             }
 
-            $checkReferralList = DB::table('referrals')
-                ->where('user_id', $user->id)
-                ->get();
-            if ($checkReferralList->count() > 20) {
-                $errorMessage = 'You have reached the maximum number of referrals';
-                return redirect()->back()->withErrors($errorMessage)->withInput();
-            }
-
             $package = Package::find($user->package_id);
-
             if (!$package) {
                 $errorMessage = 'Invalid package';
                 return redirect()->back()->withErrors($errorMessage)->withInput();
             }
 
-            // Determine the commission and points based on the current user's level
-            $userLevel = $currentUser->level;
-            $commission = 0;
-            $points = 0;
-            $price = 0;
+            $referralLevels = [
+                0.2,
+                // Level 1: 20%
+                0.05,
+                // Level 2: 5%
+                0.03,
+                // Level 3: 3%
+                0.02,
+                // Level 4: 2%
+                0.01,
+                // Levels 5-7: 1%
+                0 // Levels 8 and beyond: 0%
+            ];
 
-            switch ($userLevel) {
-                case 0:
-                    $commission = $package->package_price * 0.20;
-                    break;
-                case 1:
-                    $commission = $package->package_price * 0.05;
-                    break;
-                case 2:
-                    $commission = $package->package_price * 0.03;
-                    break;
-                case 3:
-                    $commission = $package->package_price * 0.02;
-                    break;
-                case 4:
-                    $commission = $package->package_price * 0.01;
-                    break;
-                case 5:
-                    $commission = $package->package_price * 0.01;
-                    break;
-                case 6:
-                    $commission = $package->package_price * 0.01;
-                    break;
-            }
+            $referralCommission = 0;
+            $userLevel = $user->level;
+            $currentUserLevel = $currentUser->level;
 
-            $points = $commission / 100;
-            $price = $commission;
-
-            // Update the current user's commission, points, and level
-            $currentUser->commission = $commission;
-            $currentUser->points = $points;
-            $currentUser->price = $price;
-            $currentUser->level = $userLevel + 1;
-
-            $currentUser->save();
-
-            // Check the referred user's level
-            $referredUser = User::find($referralCode);
-
-            if (!$referredUser || $referredUser->level !== 0) {
-                $errorMessage = 'Invalid referred user';
+            if ($currentUserLevel !== 0 && $userLevel === 0) {
+                $userLevel = $currentUserLevel + 1;
+            } else if ($currentUserLevel === 0 && $userLevel === 0) {
+                $userLevel = 1;
+            } else {
+                $errorMessage = 'Users already referred';
                 return redirect()->back()->withErrors($errorMessage)->withInput();
             }
-            $referredPackage = Package::find($referredUser->package_id);
-            // Determine the commission and points based on the referred user's level
-            $referredLevel = $userLevel + 1;
 
-            $referredComm = 0;
-            $referredPoints = 0;
-            $referredPrice = 0;
-
-            switch ($referredLevel) {
-                case 1:
-                    $referredComm = $referredPackage->package_price * 0.5;
-                    break;
-                case 2:
-                    $referredComm = $referredPackage->package_price * 0.03;
-                    break;
-                case 3:
-                    $referredComm = $referredPackage->package_price * 0.02;
-                    break;
-                case 4:
-                    $referredComm = $referredPackage->package_price * 0.01;
-                    break;
-                case 5:
-                    $referredComm = $referredPackage->package_price * 0.01;
-                    break;
-                case 6:
-                    $referredComm = $referredPackage->package_price * 0.01;
-                    break;
+            if ($userLevel <= 4) {
+                $referralCommission = $referralLevels[$userLevel - 1] * $package->package_price;
+                $currentCommission = $referralLevels[0] * $package->package_price;
+            } elseif ($userLevel >= 5 && $userLevel <= 7) {
+                $referralCommission = $referralLevels[4] * $package->package_price;
             }
 
-            $referredPoints = $referredComm / 100;
-            $referredPrice = $referredComm;
-            // Update the referred user's commission, points, and level
-            $referredUser->commission = $referredComm;
-            $referredUser->points = $referredPoints;
-            $referredUser->price = $referredPrice;
-            $referredUser->level = $referredLevel;
-            $referredUser->save();
+            // Update User B's commission or perform the necessary action based on the referral commission
+            $currentUser->commission += $currentCommission;
+            $currentUser->price = $referralCommission;
+            $currentUser->save();
+
+            $user->price = $currentCommission;
+            $user->level = $userLevel;
+            $user->save();
 
             Referral::create([
                 'user_id' => $currentUser->id,
-                'referral_id' => $referralCode
+                'referral_id' => $user->id
             ]);
+
+            // $this->recursiveChecking($currentUser->id);
 
             $successMessage = 'Referral added successfully';
             return redirect()->back()->with('success', $successMessage);
@@ -667,6 +628,38 @@ class ControllerName extends Controller
             return redirect()->back()->withErrors($errorMessage)->withInput();
         }
     }
+
+    public function recursiveChecking($user_id, $depth = 10)
+    {
+        if ($depth <= 0) {
+            return; // Depth limit reached, stop recursion
+        }
+
+        if ($user_id) {
+            $checkReferrals = Referral::where('referral_id', $user_id)->get();
+            if ($checkReferrals->isNotEmpty()) {
+                $updateReferUser = User::find($checkReferrals[0]->user_id);
+                $referredUser = User::find($checkReferrals[0]->referral_id);
+                $updateReferUser->commission = $referredUser->commission;
+                $updateReferUser->save();
+                $this->recursiveChecking($checkReferrals[0]->user_id, $depth - 1);
+                // $referralCommission = 0;
+
+                // foreach ($checkReferrals as $referral) {
+                //     $updateReferredUser = User::find($referral->user_id);
+
+                //     if ($updateReferredUser) {
+                //         $referralCommission += $updateReferredUser->price;
+
+                //     }
+                // }
+
+                // $updateReferUser->commission = $referralCommission;
+                // $updateReferUser->save();
+            }
+        }
+    }
+
 
     public function addReferral(Request $request, $id)
     {

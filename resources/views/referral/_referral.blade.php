@@ -93,9 +93,8 @@
                                     <table>
                                         <tr>
                                             <th>Package Name</th>
-                                            <th>Price</th>
-                                            <th>Points</th>
-                                            <th>Commision</th>
+                                            <th>Amount</th>
+                                            <th>% Commission</th>
                                             <th>Referral Name</th>
                                             <th>Upline Level</th>
                                             <th>Action</th>
@@ -109,9 +108,20 @@
                                                         Package B
                                                     @endif
                                                 </td>
-                                                <td>{{ $ref->price }}</td>
-                                                <td>{{ $ref->points }}</td>
-                                                <td>{{ $ref->commission }}</td>
+                                                <td>₱ {{ number_format($ref->price) }}</td>
+                                                <td>
+                                                    @if ($ref->level === 1)
+                                                        20%
+                                                    @elseif ($ref->level === 2)
+                                                        5%
+                                                    @elseif ($ref->level === 3)
+                                                        3%
+                                                    @elseif ($ref->level === 4)
+                                                        2%
+                                                    @else
+                                                        1%
+                                                    @endif
+                                                </td>
                                                 <td>{{ $ref->firstName }} {{ $ref->lastName }}</td>
                                                 <td>{{ $ref->level }}</td>
                                             </tr>

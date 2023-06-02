@@ -24,6 +24,11 @@
                         <div class="form-responsive">
                             <form action="">
                                 <dl>
+                                    <dt><label for="fname">Referral Code</label></dt>
+                                    <dd>:</dd>
+                                    <dd><label for="">{{ $user->id }}{{ $user->firstName }}{{ $user->lastName }}{{ $user->lastName }}</label></dd>
+                                </dl>
+                                <dl>
                                     <dt><label for="fname">First name</label></dt>
                                     <dd>:</dd>
                                     <dd><label for="">{{ $user->firstName }}</label></dd>

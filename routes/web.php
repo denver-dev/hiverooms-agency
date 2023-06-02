@@ -50,8 +50,6 @@ Route::get('/flights', [ControllerName::class, 'flights'])->name('flights.flight
 
 Route::get('/referral', [ControllerName::class, 'referral'])->name('referral.referral');
 
-Route::get('/addReferral/{id}', [ControllerName::class, 'addReferral'])->name('referral.addReferral');
-
 Route::post('/add-referral', [ControllerName::class, 'addingReferral'])->name('referral.addingReferral');
 
 Route::get('/register', [ControllerName::class, 'register'])->name('register.register');
