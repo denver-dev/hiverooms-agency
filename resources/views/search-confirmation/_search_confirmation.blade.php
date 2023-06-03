@@ -87,9 +87,9 @@
                                 <div class="room-type-inner">
                                     @foreach ($hotel_data['data']['hotels'][0]['rates'] as $room_group)
                                         <div class="swiper-slide layout-grid">
-                                            <div class="layout-grid-item" id="room_type_{{ $loop->index }}" style="cursor: pointer;" data-value="{{ $room_group['book_hash'] }}">
+                                            <div class="layout-grid-item" id="room_type_{{ $loop->index }}" style="cursor: pointer;" data-value="{{ $room_group['book_hash'] }}" data-price="{{ $room_group['daily_prices'][0] }}">
                                                 <div class="gallery">
-                                                    <a href="#">
+                                                    {{--  <a href="#">  --}}
                                                         <figure>
                                                             {{--  @if (!empty($room_group['images']) && isset($room_group['images'][0]))
                                                                 <img src="{{ $room_group['images'][0] }}"
@@ -99,7 +99,7 @@
                                                                     alt="">
                                                             {{--  @endif  --}}
                                                         </figure>
-                                                    </a>
+                                                    {{--  </a>  --}}
                                                 </div>
                                                 <div class="rm-inner-content">
                                                     <div class="rm-type">
@@ -124,7 +124,7 @@
                                                                 <i class="fa fa-circle-check"></i>
                                                                 <span>
                                                                     Free cancellation before 00:00, April 03, 2023 GMT+8
-                                                                    (hotel's local time)
+                                                                    (hotels local time)
                                                                 </span>
                                                             </dd>
                                                         </dl>
@@ -175,16 +175,19 @@
                                 </div>
                             </div>
                         </div>
+                        @php($room_price = number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'], 2))
+                        @php($room_price_commission = number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.075, 2))
+                        @php($total_price = number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.075, 2))
                         <div class="destinations--prices">
                             <div class="row row-1">
                                 <h2 class="ttl">Prices Details</h2>
                                 <dl>
                                     <dt>1 room x 1 night</dt>
-                                    <dd>PHP
-                                        {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] - ($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['tax_data']['taxes'][0]['amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['tax_data']['taxes'][1]['amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.05), 2) }}
+                                    <dd id="room_price_text">PHP
+                                        {{ $room_price }}
                                     </dd>
                                 </dl>
-                                <dl>
+                                {{--  <dl>
                                     <dt>Service Fee</dt>
                                     <dd>PHP
                                         {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['tax_data']['taxes'][0]['amount'], 2) }}
@@ -195,10 +198,28 @@
                                     <dd>PHP
                                         {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['tax_data']['taxes'][1]['amount'], 2) }}
                                     </dd>
+                                </dl>  --}}
+                                <dl>
+                                    <dt>Markup Commission</dt>
+                                    <dd>PHP
+                                        {{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.075, 2) }}
+                                    </dd>
                                 </dl>
+                                <hr class="hr-line">
+                                <div class="total">
+                                    <p>Prepay Online</p>
+                                    <p>
+                                        <span id="total_price" style="font-size: 18px; color: #404040; font-weight: 600; text-align: center;">
+                                            PHP {{ $total_price }}
+                                        </span>
+                                        <span>
+                                            <i class="fa-regular fa-heart">&nbsp;</i>
+                                            We Price Match
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -206,37 +227,52 @@
     </div>
     <script>
         // JavaScript code
-        var nextStepBtn = document.getElementById('next_step_btn');
-        document.querySelectorAll('[id^="room_type"]').forEach(function(element) {
-            element.addEventListener('click', function() {
-                var value = element.getAttribute('data-value');
-                console.log(value);
+        document.addEventListener("DOMContentLoaded", function() {
+            function addCommas(number) {
+                var formattedNumber = parseFloat(number).toFixed(2);
+                var parts = formattedNumber.split(".");
+                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                return parts.join(".");
+            }
 
-                nextStepBtn.addEventListener('click', function() {
-                    var selectedOption = value;
+            var nextStepBtn = document.getElementById('next_step_btn');
+            var room_price_text = document.getElementById('room_price_text');
+            var total_price_text = document.getElementById('total_price');
 
-                    var hotelId = '{{ $hotel_id }}';
-                    var checkIn = '{{ $check_in }}';
-                    var checkOut = '{{ $check_out }}';
-                    var total_amount = '{{ number_format($hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] + $hotel_data['data']['hotels'][0]['rates'][0]['payment_options']['payment_types'][0]['show_amount'] * 0.05, 2) }}';
+            document.querySelectorAll('[id^="room_type"]').forEach(function(element) {
+                element.addEventListener('click', function() {
+                    var new_room_price = element.getAttribute('data-price');
+                    var value = element.getAttribute('data-value');
+                    var formatted_new_room_price = addCommas(new_room_price)
+                    room_price_text.textContent = "PHP " + formatted_new_room_price;
+                    total_price_text.textContent = "PHP " + formatted_new_room_price;
 
-                    var url =
-                        "{{ route('final-confirmation.final_confirmation', [
-                            'hotel_id' => ':hotel_id',
-                            'book_hash' => ':book_hash',
-                            'check_in' => ':check_in',
-                            'check_out' => ':check_out',
-                            'total_amount' => ':total_amount',
-                        ]) }}";
+                    nextStepBtn.addEventListener('click', function() {
+                        var selectedOption = value;
 
-                    url = url.replace(':hotel_id', hotelId)
-                        .replace(':book_hash', selectedOption)
-                        .replace(':check_in', checkIn)
-                        .replace(':check_out', checkOut)
-                        .replace(':total_amount', total_amount);
+                        var hotelId = '{{ $hotel_id }}';
+                        var checkIn = '{{ $check_in }}';
+                        var checkOut = '{{ $check_out }}';
+                        var total_amount = new_room_price;
 
-                    window.location.href = url;
-                });
+                        var url =
+                            "{{ route('final-confirmation.final_confirmation', [
+                                'hotel_id' => ':hotel_id',
+                                'book_hash' => ':book_hash',
+                                'check_in' => ':check_in',
+                                'check_out' => ':check_out',
+                                'total_amount' => ':total_amount',
+                            ]) }}";
+
+                        url = url.replace(':hotel_id', hotelId)
+                            .replace(':book_hash', selectedOption)
+                            .replace(':check_in', checkIn)
+                            .replace(':check_out', checkOut)
+                            .replace(':total_amount', total_amount);
+
+                        window.location.href = url;
+                    });
+                })
             })
         })
     </script>

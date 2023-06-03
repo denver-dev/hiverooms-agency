@@ -310,6 +310,7 @@ class ControllerName extends Controller
 
         $hotel_response = $hotel_response->getBody();
         $hotel_data = json_decode($hotel_response, true);
+        // dd($hotel_data['data']['hotels'][0]['rates']);
 
         $sizePlaceholder = '{size}';
         $replacement = '1024x768';

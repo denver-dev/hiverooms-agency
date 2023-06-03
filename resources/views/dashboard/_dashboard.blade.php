@@ -35,6 +35,7 @@
                                 <h2 class="hdng">Here's the summary of your earnings.</h2>
                                 <div class="earnings">
                                     <p class="price"><span>PHP {{ $user->commission }}</span> Commission</p>
+                                    <p class="price"><span>PHP {{ number_format($user->commission * 0.075, 2) }}</span> Markup Commission</p>
                                     <p class="price"><span>{{ $user->points }}</span> Points</p>
                                     <i>1 point is equivalent to 1 peso (PHP)</i>
                                 </div>
