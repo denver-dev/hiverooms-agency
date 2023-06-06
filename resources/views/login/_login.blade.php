@@ -38,7 +38,7 @@
 
             <div class="btn2">
                 <span class="no-acc"><a href="#">Don't have account?</a></span>
-                <span class="forgot"><a href="#">Don't have account?</a></span>
+                <span class="forgot"><a href="#">Forgot your password?</a></span>
             </div>
         </form>
     </div>
