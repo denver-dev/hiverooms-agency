@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ mix('css/points.css') }}">
     <link rel="stylesheet" href="{{ mix('css/create_booking.css') }}">
     <link rel="stylesheet" href="{{ mix('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/variables.css') }}">
     <link rel="stylesheet" href="{{ mix('css/search_results.css') }}">
     <link rel="stylesheet" href="{{ mix('css/search_confirmation.css') }}">
     <link rel="stylesheet" href="{{ mix('css/final_confirmation.css') }}">
@@ -39,6 +40,10 @@
 </head>
 <body class="template-{{ $viewName }}">
 
+    <div class="preload-screen">
+        <img src="{{ asset('images/bee-loader.gif') }}" alt="">
+    </div>
+
 
     @yield('content')
 
@@ -57,6 +62,75 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ mix('js/swiper.js') }}"></script>
 <script src="{{ mix('js/bootstrap.js') }}"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  var preloadScreen = document.querySelector('.preload-screen');
+
+  window.addEventListener('load', function() {
+    preloadScreen.style.display = 'none'; // Hide the preload screen after the page has loaded
+  });
+
+  function showPreloadScreen() {
+    preloadScreen.style.display = 'block'; // Show the preload screen
+  }
+
+  function hidePreloadScreen() {
+    preloadScreen.style.display = 'none'; // Hide the preload screen
+  }
+
+  // Handle button clicks
+  var buttons = document.querySelectorAll('.your-button-class'); // Replace with the actual class or ID of your button(s)
+
+  buttons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      showPreloadScreen();
+    });
+  });
+
+  // Handle form submission
+  var forms = document.querySelectorAll('form');
+
+  forms.forEach(function(form) {
+    form.addEventListener('submit', function() {
+      showPreloadScreen();
+    });
+  });
+
+  // Handle <a> tag clicks
+  var links = document.querySelectorAll('a');
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function() {
+      showPreloadScreen();
+    });
+  });
+
+  // Handle API loading
+  function loadDataFromAPI() {
+    showPreloadScreen();
+
+    // Perform API request using fetch or any other method
+    fetch('your-api-endpoint')
+      .then(function(response) {
+        // Handle response
+      })
+      .catch(function(error) {
+        // Handle error
+      })
+      .finally(function() {
+        hidePreloadScreen();
+      });
+  }
+
+  // Example usage: Call the loadDataFromAPI function when needed
+  loadDataFromAPI();
+});
+    </script>
+
+    <script>
+
+    </script>
 
 </footer>
 

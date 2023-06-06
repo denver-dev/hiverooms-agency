@@ -22,6 +22,7 @@ const mix = require('laravel-mix');
  mix.sass('resources/sass/app.scss', 'public/css');
  mix.sass('resources/sass/dashboard.scss', 'public/css');
  mix.sass('resources/sass/styles.scss', 'public/css');
+ mix.sass('resources/sass/variables.scss', 'public/css');
  mix.sass('resources/sass/hotels.scss', 'public/css');
  mix.sass('resources/sass/profile.scss', 'public/css');
  mix.sass('resources/sass/transactions.scss', 'public/css');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('class', 'Your boddy class')
+@section('content')
 
 <section class="login">
     <div class="login__container">
@@ -43,7 +43,4 @@
         </form>
     </div>
 </section>
-
-
-
-@include('footer')
+@endsection

@@ -75,7 +75,7 @@
             <div>
                 <dd>
                     {{--  <a href="{{route ('search-results.search_results')}}"><i class="fa-solid fa-magnifying-glass"></i></a>  --}}
-                    <button type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button type="submit" class="btn2"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </dd>
             </div>
         </dl>

@@ -1,3 +1,28 @@
+.preload-screen {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: #E8BD01;
+  background-image: radial-gradient(white 1%, transparent 23%);
+  background-size: 5px 5px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.preload-screen img {
+  width: 360px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+  .preload-screen img {
+    width: 250px;
+  }
+}
+
 body.template-login\._login {
   background-color: #E8BD01;
   background-image: radial-gradient(white 1%, transparent 23%);

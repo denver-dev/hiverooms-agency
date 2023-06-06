@@ -11,7 +11,7 @@
             <div class="main-content">
                 <div class="dashboard__main--content">
                     <div class="dashboard__logo">
-                        <a href="#">
+                        <a>
                             <figure class="hive-logo">
                                 <img src="{{ asset('images/icons/main-logo.png') }}" alt="Bee">
                             </figure>
