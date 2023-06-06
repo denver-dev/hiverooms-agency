@@ -1,3 +1,7 @@
 body.template-create-booking\._create_booking {
   background-color: #f8f5f4;
 }
+
+.creat-booking .content-inner {
+  display: none;
+}
